@@ -4,6 +4,8 @@
 
 package com.mycompany.proyecto2;
 
+import com.mycompany.Frontend.VentanaPrincipal;
+
 /**
  *
  * @author Kenny
@@ -11,6 +13,8 @@ package com.mycompany.proyecto2;
 public class Proyecto2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        ventanaPrincipal.setVisible(true);
+        
     }
 }
