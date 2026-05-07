@@ -11,6 +11,7 @@ package com.mycompany.Backend.Aviones;
 public class CabinaDeAvion implements Runnable{
 
     private final Avion avion;
+    private String estadoDeAvion;
     private final String VOLANDO = "VOLANDO";
     private final String ATERRIZANDO = "ATERRIZANDO";
     private final String MANTENIMIENTO = "MANTENIMIENTO";
@@ -25,9 +26,32 @@ public class CabinaDeAvion implements Runnable{
         try {
             while(avion.isEstaVivo()){
                 
+                switch(estadoDeAvion){
+                    case VOLANDO:
+                        
+                        break;
+                    case ATERRIZANDO:
+                        break;
+                    case MANTENIMIENTO:
+                        break;
+                    default:
+                        break;
+                }
+                
             }
         } catch (Exception e) {
         }
     }
+    
+
+    public String getEstadoDeAvion() {
+        return estadoDeAvion;
+    }
+
+    public void setEstadoDeAvion(String estadoDeAvion) {
+        this.estadoDeAvion = estadoDeAvion;
+    }
+    
+    
     
 }

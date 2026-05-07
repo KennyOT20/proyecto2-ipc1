@@ -5,6 +5,7 @@
 package com.mycompany.Backend.Vuelo;
 
 import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 
 /**
  *
@@ -12,13 +13,15 @@ import com.mycompany.Backend.Aviones.Avion;
  */
 public class Vuelo {
     
+    private final ListaGenerica <Avion> listaDeAvionesVuelo;
+    
+    public Vuelo(){
+        this.listaDeAvionesVuelo = new ListaGenerica<>();
+    }
+    
     public void simularVuelo(Avion avionEnVuelo){
         
-        avionEnVuelo.decrementarCombustible();
-        
-        if(avionEnVuelo.lanzarAviso()){
-            
-        }
+        listaDeAvionesVuelo.agregarContenidoAlFinal(avionEnVuelo);
         
     }
     

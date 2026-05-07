@@ -8,12 +8,8 @@ package com.mycompany.Backend.Estaciones;
  *
  * @author Kenny
  */
-public abstract class Estacion implements Runnable {
+public abstract class Estacion {
     
-    
-
-    @Override
-    public void run() {
-    }
+   
     
 }

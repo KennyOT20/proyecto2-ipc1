@@ -11,23 +11,26 @@ package com.mycompany.Backend.Aviones;
 public abstract class Avion{
     
     private final CabinaDeAvion controladorAvion;
+    private String tipo;
     private int tiempoDeVuelo;
     private int tiempoDeAviso;
     private int combustible;
     private int idAvion;
-    private String tipo;
+    private int tiempoConsumo;
     private int capacidadMax;
     private int capacidadMin;
     private boolean estaVivo;
 
-    public Avion(int tiempoDeVuelo, String tipo, int capacidadMin, int capacidadMax) {
+    public Avion(int tiempoDeVuelo, String tipo, int capacidadMin, int capacidadMax, int tiempoConsumo) {
         this.controladorAvion = new CabinaDeAvion(this);
         this.tiempoDeVuelo = tiempoDeVuelo;
         this.tipo = tipo;
         this.capacidadMax = capacidadMax;
         this.capacidadMin = capacidadMin;
+        this.tiempoConsumo = tiempoConsumo;
         this.combustible = 100;
         this.estaVivo = true;
+        
     }
     
     public void decrementarCombustible(){
@@ -90,6 +93,26 @@ public abstract class Avion{
 
     public boolean isEstaVivo() {
         return estaVivo;
+    }
+
+    public CabinaDeAvion getControladorAvion() {
+        return controladorAvion;
+    }
+
+    public int getTiempoDeAviso() {
+        return tiempoDeAviso;
+    }
+
+    public void setTiempoDeAviso(int tiempoDeAviso) {
+        this.tiempoDeAviso = tiempoDeAviso;
+    }
+
+    public int getTiempoConsumo() {
+        return tiempoConsumo;
+    }
+
+    public void setTiempoConsumo(int tiempoConsumo) {
+        this.tiempoConsumo = tiempoConsumo;
     }
     
     
