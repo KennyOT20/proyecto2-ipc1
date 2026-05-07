@@ -6,6 +6,8 @@ package com.mycompany.Backend.Aviones;
 
 /**
  *
+ * Clase encargada para controlar los tiempos de los vuelos, simula una cabina de control
+ * dentro del avion ya que se encarga de controlar los avisos, controlar tiempos.
  * @author Kenny
  */
 public class CabinaDeAvion implements Runnable{
@@ -28,7 +30,7 @@ public class CabinaDeAvion implements Runnable{
                 
                 switch(estadoDeAvion){
                     case VOLANDO:
-                        
+                        controlarVuelo();
                         break;
                     case ATERRIZANDO:
                         break;
@@ -43,7 +45,30 @@ public class CabinaDeAvion implements Runnable{
         }
     }
     
+    /**
+     * Metodo encargado de controlar el vuelo siempre y cuando el avion tenga combustible y evite chocar
+     * gasta el combustible de la manera adecuada.
+     * @throws InterruptedException 
+     */
+    private void controlarVuelo() throws InterruptedException{
+        
+        if(!avion.isEstaVivo()){
+            avion.lanzarAvisoVueloFallado();
+        }
+        
+        Thread.sleep(avion.getTiempoConsumo());
+        
+        avion.decrementarCombustible();
+        
+    }
+    
+    
+    private void verificarTorreControl(){
+        
+    }
 
+    
+    // Getters y setters.
     public String getEstadoDeAvion() {
         return estadoDeAvion;
     }

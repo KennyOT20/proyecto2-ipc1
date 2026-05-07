@@ -4,11 +4,13 @@
  */
 package com.mycompany.Backend.Estaciones;
 
+import com.mycompany.Backend.Aereopuerto.Aereopuerto;
+
 /**
  *
  * @author Kenny
  */
-public abstract class Estacion {
+public abstract class Estacion implements Aereopuerto {
     
    
     

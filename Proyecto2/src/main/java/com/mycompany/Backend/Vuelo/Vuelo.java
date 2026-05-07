@@ -5,6 +5,7 @@
 package com.mycompany.Backend.Vuelo;
 
 import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
 import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 
 /**
@@ -19,10 +20,12 @@ public class Vuelo {
         this.listaDeAvionesVuelo = new ListaGenerica<>();
     }
     
-    public void simularVuelo(Avion avionEnVuelo){
-        
+    public void iniciarVuelo(Avion avionEnVuelo){
         listaDeAvionesVuelo.agregarContenidoAlFinal(avionEnVuelo);
-        
+    }
+    
+    public Avion terminarVuelo() throws ListaEnlazadaExcepcion{
+        return  listaDeAvionesVuelo.obtenerContenido(1);
     }
     
 }

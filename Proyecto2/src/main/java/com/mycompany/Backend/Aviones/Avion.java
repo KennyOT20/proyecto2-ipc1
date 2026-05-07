@@ -4,12 +4,15 @@
  */
 package com.mycompany.Backend.Aviones;
 
+import com.mycompany.Backend.Vuelo.Vuelo;
+
 /**
  *
  * @author Kenny
  */
 public abstract class Avion{
     
+    private final Vuelo vuelo;
     private final CabinaDeAvion controladorAvion;
     private String tipo;
     private int tiempoDeVuelo;
@@ -22,6 +25,7 @@ public abstract class Avion{
     private boolean estaVivo;
 
     public Avion(int tiempoDeVuelo, String tipo, int capacidadMin, int capacidadMax, int tiempoConsumo) {
+        this.vuelo = new Vuelo();
         this.controladorAvion = new CabinaDeAvion(this);
         this.tiempoDeVuelo = tiempoDeVuelo;
         this.tipo = tipo;
@@ -41,6 +45,10 @@ public abstract class Avion{
             estaVivo = false;
         }
         
+    }
+    
+    public boolean lanzarAvisoVueloFallado(){
+        return estaVivo = false;
     }
     
     public boolean lanzarAvisoEmergencia(){
@@ -114,6 +122,11 @@ public abstract class Avion{
     public void setTiempoConsumo(int tiempoConsumo) {
         this.tiempoConsumo = tiempoConsumo;
     }
+
+    public Vuelo getVuelo() {
+        return vuelo;
+    }
+    
     
     
     

@@ -4,10 +4,16 @@
  */
 package com.mycompany.Backend.Aereopuerto;
 
+import com.mycompany.Backend.Aviones.Avion;
+
 /**
  *
  * @author Kenny
  */
-public class Aereopuerto {
+public interface Aereopuerto {
+    
+    public boolean estaLLena();
+    public void ingresarAvion(Avion avion);
+    public void liberarAvion();
     
 }

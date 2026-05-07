@@ -4,13 +4,29 @@
  */
 package com.mycompany.Backend.Pistas;
 
+import com.mycompany.Backend.Aereopuerto.Aereopuerto;
+import com.mycompany.Backend.Aviones.Avion;
+
 /**
  *
  * @author Kenny
  */
-public class Pista {
+public class Pista implements Aereopuerto {
     
     private String tipoDePista;
+
+    @Override
+    public boolean estaLLena() {
+        return false;
+    }
+
+    @Override
+    public void ingresarAvion(Avion avion) {
+    }
+
+    @Override
+    public void liberarAvion() {
+    }
     
     
     
