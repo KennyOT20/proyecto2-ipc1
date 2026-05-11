@@ -10,4 +10,10 @@ package com.mycompany.Backend.Pistas;
  */
 public class PistaDeAterrizaje extends Pista{
     
+    public PistaDeAterrizaje(int idDeArea, String tipoDeArea) {
+        super(idDeArea, tipoDeArea);
+    }
+    
+
+    
 }

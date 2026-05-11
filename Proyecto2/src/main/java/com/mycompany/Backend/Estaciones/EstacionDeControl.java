@@ -8,6 +8,10 @@ package com.mycompany.Backend.Estaciones;
  *
  * @author Kenny
  */
-public class EstacionDeControl {
-    
+public class EstacionDeControl extends Estacion{
+
+    public EstacionDeControl(int idDeArea, String tipoDeArea) {
+        super(idDeArea, tipoDeArea);
+    }
+
 }

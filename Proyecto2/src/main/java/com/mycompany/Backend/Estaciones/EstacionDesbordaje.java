@@ -9,5 +9,11 @@ package com.mycompany.Backend.Estaciones;
  * @author Kenny
  */
 public class EstacionDesbordaje extends Estacion {
+
+    public EstacionDesbordaje(int idDeArea, String tipoDeArea) {
+        super(idDeArea, tipoDeArea);
+    }
+
+
     
 }

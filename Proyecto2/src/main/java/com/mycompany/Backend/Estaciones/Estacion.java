@@ -4,14 +4,17 @@
  */
 package com.mycompany.Backend.Estaciones;
 
-import com.mycompany.Backend.Aereopuerto.Aereopuerto;
+import com.mycompany.Backend.Aereopuerto.AreaDeAviones;
 
 /**
  *
  * @author Kenny
  */
-public abstract class Estacion implements Aereopuerto {
+public class Estacion extends AreaDeAviones {
     
-   
+    public Estacion(int idDeArea, String tipoDeArea) {
+        super(idDeArea, tipoDeArea);
+    }
     
+  
 }

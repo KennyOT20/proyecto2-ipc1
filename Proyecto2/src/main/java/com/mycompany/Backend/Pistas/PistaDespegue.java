@@ -10,4 +10,9 @@ package com.mycompany.Backend.Pistas;
  */
 public class PistaDespegue extends Pista {
     
+    public PistaDespegue(int idDeArea, String tipoDeArea) {
+        super(idDeArea, tipoDeArea);
+    }
+    
+
 }

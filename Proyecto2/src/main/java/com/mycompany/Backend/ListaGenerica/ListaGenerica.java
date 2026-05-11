@@ -9,6 +9,7 @@ import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
 /**
  *
  * @author Kenny
+ * @param <T>
  */
 public class ListaGenerica <T> {
     
@@ -39,7 +40,7 @@ public class ListaGenerica <T> {
     
     public T obtenerContenido(int indiceObtenido) throws ListaEnlazadaExcepcion {
         NodoGenerico nodoBuscado = obtenerContenidoNodo(indiceObtenido);
-        return (T) nodoBuscado;
+        return (T) nodoBuscado.getContenidoDeLista();
     }
     
     private NodoGenerico <T> obtenerContenidoNodo(int indiceObtenido) throws ListaEnlazadaExcepcion{
@@ -54,6 +55,29 @@ public class ListaGenerica <T> {
         }
         
         return nodoActual;
+    }
+    
+    public void encolar(T contenido) {
+        agregarContenidoAlFinal(contenido);
+    }
+    
+     public T desencolar() throws ListaEnlazadaExcepcion {
+
+        if (listaVacia()) {
+            throw new ListaEnlazadaExcepcion("La cola está vacía");
+        }
+
+        T contenido = nodoInicial.getContenidoDeLista();
+
+        nodoInicial = nodoInicial.getSiguienteNodo();
+
+        tamañoDeLista--;
+
+        if (nodoInicial == null) {
+            nodoFinal = null;
+        }
+
+        return contenido;
     }
     
 }

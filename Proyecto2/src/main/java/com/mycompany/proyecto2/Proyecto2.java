@@ -4,7 +4,8 @@
 
 package com.mycompany.proyecto2;
 
-import com.mycompany.Frontend.VentanaPrincipal;
+import com.mycompany.Frontend.VentanaInicial;
+
 
 /**
  *
@@ -13,8 +14,8 @@ import com.mycompany.Frontend.VentanaPrincipal;
 public class Proyecto2 {
 
     public static void main(String[] args) {
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-        ventanaPrincipal.setVisible(true);
+       VentanaInicial ventanaInicial = new VentanaInicial();
+       ventanaInicial.setVisible(true);
         
     }
 }

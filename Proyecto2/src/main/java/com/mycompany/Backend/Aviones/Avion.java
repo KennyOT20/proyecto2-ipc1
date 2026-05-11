@@ -13,9 +13,12 @@ import com.mycompany.Backend.Vuelo.Vuelo;
 public abstract class Avion{
     
     private final Vuelo vuelo;
+    private boolean vueloFallado;
     private final CabinaDeAvion controladorAvion;
     private String tipo;
-    private int tiempoDeVuelo;
+    private int tiempoDeMantenimiento;
+    private int tiempoDeDesbordaje;
+    private int tiempoDeDespegue;
     private int tiempoDeAviso;
     private int combustible;
     private int idAvion;
@@ -23,22 +26,22 @@ public abstract class Avion{
     private int capacidadMax;
     private int capacidadMin;
     private boolean estaVivo;
+    private int tiempoDeAterrizaje;
 
-    public Avion(int tiempoDeVuelo, String tipo, int capacidadMin, int capacidadMax, int tiempoConsumo) {
+    public Avion(String tipo, int capacidadMin, int capacidadMax) {
         this.vuelo = new Vuelo();
         this.controladorAvion = new CabinaDeAvion(this);
-        this.tiempoDeVuelo = tiempoDeVuelo;
         this.tipo = tipo;
         this.capacidadMax = capacidadMax;
         this.capacidadMin = capacidadMin;
-        this.tiempoConsumo = tiempoConsumo;
         this.combustible = 100;
         this.estaVivo = true;
+        this.vueloFallado = false;
         
     }
     
     public void decrementarCombustible(){
-        combustible = combustible - 5;
+        combustible = combustible - 1;
         
         if(combustible <= 0){
             combustible = 0;
@@ -48,17 +51,14 @@ public abstract class Avion{
     }
     
     public boolean lanzarAvisoVueloFallado(){
-        return estaVivo = false;
+        vueloFallado = true;
+        return vueloFallado;
     }
     
     public boolean lanzarAvisoEmergencia(){
         return combustible <= 25;
     }
     
-    public boolean lanzarAvisoNormal(){
-        return tiempoDeVuelo >= tiempoDeAviso;
-    }
-
     public int getCombustible() {
         return combustible;
     }
@@ -91,12 +91,12 @@ public abstract class Avion{
         this.capacidadMin = capacidadMin;
     }
 
-    public int getTiempoDeVuelo() {
-        return tiempoDeVuelo;
+    public int getTiempoDeDespegue() {
+        return tiempoDeDespegue;
     }
-
+    
     public void setTiempoDeVuelo(int tiempoDeVuelo) {
-        this.tiempoDeVuelo = tiempoDeVuelo;
+        this.tiempoDeDespegue = tiempoDeVuelo;
     }
 
     public boolean isEstaVivo() {
@@ -123,11 +123,28 @@ public abstract class Avion{
         this.tiempoConsumo = tiempoConsumo;
     }
 
+    public int getTiempoDeAterrizaje() {
+        return tiempoDeAterrizaje;
+    }
+
+    public void setTiempoDeAterrizaje(int tiempoDeAterrizaje) {
+        this.tiempoDeAterrizaje = tiempoDeAterrizaje;
+    }
+
+    public int getTiempoDeMantenimiento() {
+        return tiempoDeMantenimiento;
+    }
+
+    public int getTiempoDeDesbordaje() {
+        return tiempoDeDesbordaje;
+    }
+
+    public void setTiempoDeDesbordaje(int tiempoDeDesbordaje) {
+        this.tiempoDeDesbordaje = tiempoDeDesbordaje;
+    }
+    
     public Vuelo getVuelo() {
         return vuelo;
     }
-    
-    
-    
     
 }
