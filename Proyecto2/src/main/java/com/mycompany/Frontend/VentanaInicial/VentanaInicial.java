@@ -4,17 +4,29 @@
  */
 package com.mycompany.Frontend.VentanaInicial;
 
+import com.mycompany.Frontend.FrontendMenu.MenuInicial;
+
+
 /**
  *
  * @author Kenny
  */
 public class VentanaInicial extends javax.swing.JFrame {
     
+    private final MenuInicial menuInicial;
 
+    
+    
+    
     /**
      * Creates new form VentanaInicial
      */
     public VentanaInicial() {
+        this.menuInicial = new MenuInicial(this);
+        
+        
+      
+        
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

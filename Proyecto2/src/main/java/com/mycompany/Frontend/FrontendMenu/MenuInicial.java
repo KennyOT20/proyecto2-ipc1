@@ -4,16 +4,22 @@
  */
 package com.mycompany.Frontend.FrontendMenu;
 
+import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
+
 /**
  *
  * @author Kenny
  */
 public class MenuInicial extends javax.swing.JPanel {
-
+    
+    private final VentanaInicial ventanaInicial;
+    
     /**
      * Creates new form MenuInicial
+     * @param ventanaInicial
      */
-    public MenuInicial() {
+    public MenuInicial(VentanaInicial ventanaInicial) {
+        this.ventanaInicial = ventanaInicial;
         initComponents();
     }
 
@@ -66,7 +72,7 @@ public class MenuInicial extends javax.swing.JPanel {
         botonCreacionEdicion.setForeground(new java.awt.Color(0, 0, 0));
         botonCreacionEdicion.setText("Crear o editar datos");
 
-        jButton2.setBackground(new java.awt.Color(204, 102, 0));
+        jButton2.setBackground(new java.awt.Color(255, 255, 102));
         jButton2.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Logs");
@@ -100,7 +106,7 @@ public class MenuInicial extends javax.swing.JPanel {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -108,18 +114,18 @@ public class MenuInicial extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelContenedorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(349, 349, 349)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(316, 316, 316))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelContenedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(93, 93, 93)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGap(0, 216, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

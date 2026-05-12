@@ -26,19 +26,606 @@ public class CreadorDeDatos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        panelTitulo = new javax.swing.JPanel();
+        labelTiempoDeMantenimiento = new javax.swing.JPanel();
+        labelAvionGrande = new javax.swing.JLabel();
+        labelAvionMediano = new javax.swing.JLabel();
+        labelAvionPequeño = new javax.swing.JLabel();
+        avionesGrande = new javax.swing.JTextField();
+        avionesMedianos = new javax.swing.JTextField();
+        avionesPequeños = new javax.swing.JTextField();
+        panelNotas = new javax.swing.JPanel();
+        labelNota = new javax.swing.JLabel();
+        labelAviso1 = new javax.swing.JLabel();
+        labelAviso2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelTituloConfi = new javax.swing.JPanel();
+        labelCantidadAviones = new javax.swing.JLabel();
+        panelTiempos = new javax.swing.JPanel();
+        labelTiempoAterrizaje = new javax.swing.JLabel();
+        tiempoAterrizaje = new javax.swing.JTextField();
+        labelTIempoDesbordaje = new javax.swing.JLabel();
+        tiempoDesbordaje = new javax.swing.JTextField();
+        labelMantenimiento = new javax.swing.JLabel();
+        tiempoDeMantenimiento = new javax.swing.JTextField();
+        labelConsumo = new javax.swing.JLabel();
+        tiempoDeGalon = new javax.swing.JTextField();
+        labelDespliegue = new javax.swing.JLabel();
+        tiempoDeDespegue = new javax.swing.JTextField();
+        panelTituloTiempos = new javax.swing.JPanel();
+        labelTituloDeTiempos = new javax.swing.JLabel();
+        panelTituloEstaciones = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        panelEscionesPistas = new javax.swing.JPanel();
+        labelPistaDeAterrizaje = new javax.swing.JLabel();
+        pistasDeAterrizaje = new javax.swing.JTextField();
+        labelPistaDespliegue = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cantidadPistasDespliegue = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        labelEstacionDeControl = new javax.swing.JLabel();
+        cantidadEstacionesControl = new javax.swing.JTextField();
+        labelDesbordaje = new javax.swing.JLabel();
+        cantidadEstacionDesbordaje = new javax.swing.JTextField();
+        labelEstacionMantenimiento = new javax.swing.JLabel();
+        cantidadEstacionMantenimiento = new javax.swing.JTextField();
+        capacidadDeAterrizaje = new javax.swing.JTextField();
+        capacidadDeDespliegue = new javax.swing.JTextField();
+        capacidadDeControl = new javax.swing.JTextField();
+        capacidadDeDesbordaje = new javax.swing.JTextField();
+        capacidadDeMantenimiento = new javax.swing.JTextField();
+        panelBotones = new javax.swing.JPanel();
+        botonGuardar = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Creacion de datos");
+
+        setBackground(new java.awt.Color(255, 204, 51));
+
+        panelTitulo.setBackground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
+        panelTitulo.setLayout(panelTituloLayout);
+        panelTituloLayout.setHorizontalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 950, Short.MAX_VALUE)
+        );
+        panelTituloLayout.setVerticalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+
+        labelTiempoDeMantenimiento.setBackground(new java.awt.Color(255, 153, 153));
+
+        labelAvionGrande.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelAvionGrande.setForeground(new java.awt.Color(0, 0, 0));
+        labelAvionGrande.setText("Aviones grandes: ");
+
+        labelAvionMediano.setBackground(new java.awt.Color(0, 0, 0));
+        labelAvionMediano.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelAvionMediano.setForeground(new java.awt.Color(0, 0, 0));
+        labelAvionMediano.setText("Aviones medianos: ");
+
+        labelAvionPequeño.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelAvionPequeño.setForeground(new java.awt.Color(0, 0, 0));
+        labelAvionPequeño.setText("Aviones pequeños: ");
+
+        avionesGrande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avionesGrandeActionPerformed(evt);
+            }
+        });
+
+        panelNotas.setBackground(new java.awt.Color(255, 51, 51));
+
+        labelNota.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelNota.setForeground(new java.awt.Color(0, 0, 0));
+        labelNota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNota.setText("NOTA: ");
+
+        labelAviso1.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
+        labelAviso1.setForeground(new java.awt.Color(0, 0, 0));
+        labelAviso1.setText("LA CAPACIDAD DE CADA AVION ES ALEATORIO Y PUEDEN TENER:");
+
+        labelAviso2.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
+        labelAviso2.setForeground(new java.awt.Color(0, 0, 0));
+        labelAviso2.setText("Grande: (30, 40), Mediano: (15, 25), Pequeño: (5, 10) (Pasajeros)");
+
+        jLabel6.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Todos los aviones poseen 100 galones de combustible");
+
+        javax.swing.GroupLayout panelNotasLayout = new javax.swing.GroupLayout(panelNotas);
+        panelNotas.setLayout(panelNotasLayout);
+        panelNotasLayout.setHorizontalGroup(
+            panelNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelNota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelAviso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelNotasLayout.createSequentialGroup()
+                .addGroup(panelNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelAviso2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelNotasLayout.setVerticalGroup(
+            panelNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNotasLayout.createSequentialGroup()
+                .addComponent(labelNota)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelAviso1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelAviso2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout labelTiempoDeMantenimientoLayout = new javax.swing.GroupLayout(labelTiempoDeMantenimiento);
+        labelTiempoDeMantenimiento.setLayout(labelTiempoDeMantenimientoLayout);
+        labelTiempoDeMantenimientoLayout.setHorizontalGroup(
+            labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelTiempoDeMantenimientoLayout.createSequentialGroup()
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(labelAvionGrande, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelAvionMediano, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(labelAvionPequeño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(avionesMedianos)
+                    .addComponent(avionesGrande)
+                    .addComponent(avionesPequeños))
+                .addContainerGap())
+            .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        labelTiempoDeMantenimientoLayout.setVerticalGroup(
+            labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelTiempoDeMantenimientoLayout.createSequentialGroup()
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAvionGrande, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avionesGrande))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAvionMediano, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avionesMedianos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAvionPequeño, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avionesPequeños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelTituloConfi.setBackground(new java.awt.Color(153, 255, 153));
+        panelTituloConfi.setForeground(new java.awt.Color(153, 255, 153));
+
+        labelCantidadAviones.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelCantidadAviones.setForeground(new java.awt.Color(0, 0, 0));
+        labelCantidadAviones.setText("Cantidad de Aviones");
+
+        javax.swing.GroupLayout panelTituloConfiLayout = new javax.swing.GroupLayout(panelTituloConfi);
+        panelTituloConfi.setLayout(panelTituloConfiLayout);
+        panelTituloConfiLayout.setHorizontalGroup(
+            panelTituloConfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloConfiLayout.createSequentialGroup()
+                .addComponent(labelCantidadAviones, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelTituloConfiLayout.setVerticalGroup(
+            panelTituloConfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelCantidadAviones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        panelTiempos.setBackground(new java.awt.Color(255, 102, 102));
+
+        labelTiempoAterrizaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelTiempoAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
+        labelTiempoAterrizaje.setText("Aterrizaje:");
+
+        tiempoAterrizaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoAterrizajeActionPerformed(evt);
+            }
+        });
+
+        labelTIempoDesbordaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelTIempoDesbordaje.setForeground(new java.awt.Color(0, 0, 0));
+        labelTIempoDesbordaje.setText("Desbordaje de cada pasajero:");
+
+        labelMantenimiento.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelMantenimiento.setForeground(new java.awt.Color(0, 0, 0));
+        labelMantenimiento.setText("Tiempo de mantenimiento: ");
+
+        labelConsumo.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelConsumo.setForeground(new java.awt.Color(0, 0, 0));
+        labelConsumo.setText("Consumo de un galon de combustible:");
+
+        tiempoDeGalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoDeGalonActionPerformed(evt);
+            }
+        });
+
+        labelDespliegue.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelDespliegue.setForeground(new java.awt.Color(0, 0, 0));
+        labelDespliegue.setText("Despegue");
+
+        javax.swing.GroupLayout panelTiemposLayout = new javax.swing.GroupLayout(panelTiempos);
+        panelTiempos.setLayout(panelTiemposLayout);
+        panelTiemposLayout.setHorizontalGroup(
+            panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTiemposLayout.createSequentialGroup()
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(labelMantenimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                        .addComponent(labelTiempoAterrizaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelConsumo, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                    .addComponent(labelDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tiempoDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(tiempoAterrizaje, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tiempoDeDespegue)
+                    .addComponent(tiempoDeGalon, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tiempoDeMantenimiento, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        panelTiemposLayout.setVerticalGroup(
+            panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTiemposLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTiempoAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiempoAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiempoDesbordaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiempoDeMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tiempoDeGalon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDespliegue, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiempoDeDespegue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelTituloTiempos.setBackground(new java.awt.Color(255, 51, 204));
+
+        labelTituloDeTiempos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelTituloDeTiempos.setForeground(new java.awt.Color(0, 0, 0));
+        labelTituloDeTiempos.setText("Configuracion de tiempos");
+
+        javax.swing.GroupLayout panelTituloTiemposLayout = new javax.swing.GroupLayout(panelTituloTiempos);
+        panelTituloTiempos.setLayout(panelTituloTiemposLayout);
+        panelTituloTiemposLayout.setHorizontalGroup(
+            panelTituloTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelTituloDeTiempos, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        );
+        panelTituloTiemposLayout.setVerticalGroup(
+            panelTituloTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelTituloDeTiempos, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+        );
+
+        panelTituloEstaciones.setBackground(new java.awt.Color(204, 102, 255));
+
+        jLabel2.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Estaciones y Pistas");
+
+        jLabel3.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Cantidades y capacidad maxima de aviones (de cada una).");
+
+        javax.swing.GroupLayout panelTituloEstacionesLayout = new javax.swing.GroupLayout(panelTituloEstaciones);
+        panelTituloEstaciones.setLayout(panelTituloEstacionesLayout);
+        panelTituloEstacionesLayout.setHorizontalGroup(
+            panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelTituloEstacionesLayout.setVerticalGroup(
+            panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTituloEstacionesLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+
+        panelEscionesPistas.setBackground(new java.awt.Color(0, 204, 204));
+
+        labelPistaDeAterrizaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelPistaDeAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
+        labelPistaDeAterrizaje.setText("De aterrizaje: ");
+
+        pistasDeAterrizaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pistasDeAterrizajeActionPerformed(evt);
+            }
+        });
+
+        labelPistaDespliegue.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelPistaDespliegue.setForeground(new java.awt.Color(0, 0, 0));
+        labelPistaDespliegue.setText("De despliegue: ");
+
+        jLabel4.setFont(new java.awt.Font("Serif", 3, 19)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Pistas (Cantidad y Capacidad)");
+
+        cantidadPistasDespliegue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadPistasDespliegueActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Serif", 3, 19)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Estaciones (Cantidad y Capacidad)");
+
+        labelEstacionDeControl.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelEstacionDeControl.setForeground(new java.awt.Color(0, 0, 0));
+        labelEstacionDeControl.setText("De control: ");
+
+        labelDesbordaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelDesbordaje.setForeground(new java.awt.Color(0, 0, 0));
+        labelDesbordaje.setText("De desbordaje: ");
+
+        labelEstacionMantenimiento.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelEstacionMantenimiento.setForeground(new java.awt.Color(0, 0, 0));
+        labelEstacionMantenimiento.setText("De Mantenimiento: ");
+
+        cantidadEstacionMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadEstacionMantenimientoActionPerformed(evt);
+            }
+        });
+
+        capacidadDeAterrizaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capacidadDeAterrizajeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEscionesPistasLayout = new javax.swing.GroupLayout(panelEscionesPistas);
+        panelEscionesPistas.setLayout(panelEscionesPistasLayout);
+        panelEscionesPistasLayout.setHorizontalGroup(
+            panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelEscionesPistasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelPistaDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(labelPistaDeAterrizaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pistasDeAterrizaje, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(cantidadPistasDespliegue))
+                .addGap(18, 18, 18)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(capacidadDeAterrizaje)
+                    .addComponent(capacidadDeDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelEscionesPistasLayout.createSequentialGroup()
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(labelDesbordaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelEstacionMantenimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelEstacionDeControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(cantidadEstacionesControl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(cantidadEstacionDesbordaje, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cantidadEstacionMantenimiento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(capacidadDeControl)
+                    .addComponent(capacidadDeDesbordaje)
+                    .addComponent(capacidadDeMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelEscionesPistasLayout.setVerticalGroup(
+            panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEscionesPistasLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPistaDeAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pistasDeAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(capacidadDeAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelPistaDespliegue, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cantidadPistasDespliegue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(capacidadDeDespliegue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEstacionDeControl, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadEstacionesControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(capacidadDeControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDesbordaje, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadEstacionDesbordaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(capacidadDeDesbordaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEstacionMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadEstacionMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(capacidadDeMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
+        panelBotones.setBackground(new java.awt.Color(204, 255, 0));
+        panelBotones.setForeground(new java.awt.Color(204, 204, 0));
+
+        botonGuardar.setBackground(new java.awt.Color(255, 153, 51));
+        botonGuardar.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        botonGuardar.setText("Guardar datos");
+
+        botonVolver.setBackground(new java.awt.Color(255, 51, 204));
+        botonVolver.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        botonVolver.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolver.setText("Volver al menu");
+
+        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
+        panelBotones.setLayout(panelBotonesLayout);
+        panelBotonesLayout.setHorizontalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelBotonesLayout.setVerticalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesLayout.createSequentialGroup()
+                .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelTituloConfi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelTituloTiempos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelTiempos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTiempoDeMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTituloEstaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelEscionesPistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelTituloEstaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTituloConfi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTiempoDeMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelTituloTiempos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelTiempos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelEscionesPistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void avionesGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avionesGrandeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_avionesGrandeActionPerformed
+
+    private void tiempoDeGalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoDeGalonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempoDeGalonActionPerformed
+
+    private void tiempoAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoAterrizajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempoAterrizajeActionPerformed
+
+    private void pistasDeAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pistasDeAterrizajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pistasDeAterrizajeActionPerformed
+
+    private void cantidadPistasDespliegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadPistasDespliegueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadPistasDespliegueActionPerformed
+
+    private void cantidadEstacionMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadEstacionMantenimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadEstacionMantenimientoActionPerformed
+
+    private void capacidadDeAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacidadDeAterrizajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacidadDeAterrizajeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField avionesGrande;
+    private javax.swing.JTextField avionesMedianos;
+    private javax.swing.JTextField avionesPequeños;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JTextField cantidadEstacionDesbordaje;
+    private javax.swing.JTextField cantidadEstacionMantenimiento;
+    private javax.swing.JTextField cantidadEstacionesControl;
+    private javax.swing.JTextField cantidadPistasDespliegue;
+    private javax.swing.JTextField capacidadDeAterrizaje;
+    private javax.swing.JTextField capacidadDeControl;
+    private javax.swing.JTextField capacidadDeDesbordaje;
+    private javax.swing.JTextField capacidadDeDespliegue;
+    private javax.swing.JTextField capacidadDeMantenimiento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel labelAvionGrande;
+    private javax.swing.JLabel labelAvionMediano;
+    private javax.swing.JLabel labelAvionPequeño;
+    private javax.swing.JLabel labelAviso1;
+    private javax.swing.JLabel labelAviso2;
+    private javax.swing.JLabel labelCantidadAviones;
+    private javax.swing.JLabel labelConsumo;
+    private javax.swing.JLabel labelDesbordaje;
+    private javax.swing.JLabel labelDespliegue;
+    private javax.swing.JLabel labelEstacionDeControl;
+    private javax.swing.JLabel labelEstacionMantenimiento;
+    private javax.swing.JLabel labelMantenimiento;
+    private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelPistaDeAterrizaje;
+    private javax.swing.JLabel labelPistaDespliegue;
+    private javax.swing.JLabel labelTIempoDesbordaje;
+    private javax.swing.JLabel labelTiempoAterrizaje;
+    private javax.swing.JPanel labelTiempoDeMantenimiento;
+    private javax.swing.JLabel labelTituloDeTiempos;
+    private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelEscionesPistas;
+    private javax.swing.JPanel panelNotas;
+    private javax.swing.JPanel panelTiempos;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JPanel panelTituloConfi;
+    private javax.swing.JPanel panelTituloEstaciones;
+    private javax.swing.JPanel panelTituloTiempos;
+    private javax.swing.JTextField pistasDeAterrizaje;
+    private javax.swing.JTextField tiempoAterrizaje;
+    private javax.swing.JTextField tiempoDeDespegue;
+    private javax.swing.JTextField tiempoDeGalon;
+    private javax.swing.JTextField tiempoDeMantenimiento;
+    private javax.swing.JTextField tiempoDesbordaje;
     // End of variables declaration//GEN-END:variables
 }
