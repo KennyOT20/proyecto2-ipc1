@@ -4,7 +4,7 @@
 
 package com.mycompany.proyecto2;
 
-import com.mycompany.Frontend.VentanaInicial;
+import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 
 
 /**
