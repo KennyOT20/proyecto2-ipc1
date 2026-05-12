@@ -10,7 +10,6 @@ package com.mycompany.Frontend.VentanaInicial;
  */
 public class VentanaInicial extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaInicial.class.getName());
 
     /**
      * Creates new form VentanaInicial
@@ -30,105 +29,24 @@ public class VentanaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         PanelContenedor = new javax.swing.JPanel();
-        panelContenedorTitulo = new javax.swing.JPanel();
-        LabelTitulo = new javax.swing.JLabel();
-        panelContenedorBotones = new javax.swing.JPanel();
-        botonIniciar = new javax.swing.JButton();
-        botonDeDatos = new javax.swing.JButton();
-        botonLogs = new javax.swing.JButton();
-        botonSalir = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PanelContenedor.setBackground(new java.awt.Color(255, 51, 51));
-
-        panelContenedorTitulo.setBackground(new java.awt.Color(255, 153, 0));
-
-        LabelTitulo.setBackground(new java.awt.Color(255, 255, 51));
-        LabelTitulo.setFont(new java.awt.Font("Serif", 2, 36)); // NOI18N
-        LabelTitulo.setForeground(new java.awt.Color(0, 0, 0));
-        LabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelTitulo.setText("SIMULADOR DE VUELOS");
-
-        javax.swing.GroupLayout panelContenedorTituloLayout = new javax.swing.GroupLayout(panelContenedorTitulo);
-        panelContenedorTitulo.setLayout(panelContenedorTituloLayout);
-        panelContenedorTituloLayout.setHorizontalGroup(
-            panelContenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
-        );
-        panelContenedorTituloLayout.setVerticalGroup(
-            panelContenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-        );
-
-        panelContenedorBotones.setBackground(new java.awt.Color(255, 153, 153));
-
-        botonIniciar.setBackground(new java.awt.Color(153, 255, 51));
-        botonIniciar.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        botonIniciar.setForeground(new java.awt.Color(0, 0, 0));
-        botonIniciar.setText("Iniciar Simulacion");
-
-        botonDeDatos.setBackground(new java.awt.Color(204, 102, 0));
-        botonDeDatos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        botonDeDatos.setForeground(new java.awt.Color(0, 0, 0));
-        botonDeDatos.setText("Crear o editar datos");
-        botonDeDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonDeDatosActionPerformed(evt);
-            }
-        });
-
-        botonLogs.setBackground(new java.awt.Color(51, 255, 153));
-        botonLogs.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        botonLogs.setForeground(new java.awt.Color(0, 0, 0));
-        botonLogs.setText("Logs");
-
-        botonSalir.setBackground(new java.awt.Color(0, 51, 153));
-        botonSalir.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        botonSalir.setForeground(new java.awt.Color(0, 0, 0));
-        botonSalir.setText("Salir");
-
-        javax.swing.GroupLayout panelContenedorBotonesLayout = new javax.swing.GroupLayout(panelContenedorBotones);
-        panelContenedorBotones.setLayout(panelContenedorBotonesLayout);
-        panelContenedorBotonesLayout.setHorizontalGroup(
-            panelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botonIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonDeDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-            .addComponent(botonLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelContenedorBotonesLayout.setVerticalGroup(
-            panelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelContenedorBotonesLayout.createSequentialGroup()
-                .addComponent(botonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonDeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanelContenedorLayout = new javax.swing.GroupLayout(PanelContenedor);
-        PanelContenedor.setLayout(PanelContenedorLayout);
-        PanelContenedorLayout.setHorizontalGroup(
-            PanelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelContenedorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelContenedorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(311, 311, 311))
-        );
-        PanelContenedorLayout.setVerticalGroup(
-            PanelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelContenedorLayout.createSequentialGroup()
-                .addComponent(panelContenedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
-        );
+        PanelContenedor.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,18 +62,8 @@ public class VentanaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonDeDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDeDatosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonDeDatosActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelTitulo;
     private javax.swing.JPanel PanelContenedor;
-    private javax.swing.JButton botonDeDatos;
-    private javax.swing.JButton botonIniciar;
-    private javax.swing.JButton botonLogs;
-    private javax.swing.JButton botonSalir;
-    private javax.swing.JPanel panelContenedorBotones;
-    private javax.swing.JPanel panelContenedorTitulo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
