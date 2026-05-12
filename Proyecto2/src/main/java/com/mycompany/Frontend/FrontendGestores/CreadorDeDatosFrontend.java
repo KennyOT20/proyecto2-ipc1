@@ -4,17 +4,20 @@
  */
 package com.mycompany.Frontend.FrontendGestores;
 
+import com.mycompany.Backend.GestorDeDatos.CreadorDeDatos;
+
 /**
  *
  * @author Kenny
  */
-public class CreadorDeDatos extends javax.swing.JPanel {
+public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CreadorDeDatos
-     */
-    public CreadorDeDatos() {
+    private final CreadorDeDatos creadorDeDatos;
+    
+    
+    public CreadorDeDatosFrontend() {
         initComponents();
+        this.creadorDeDatos = new CreadorDeDatos();
     }
 
     /**
@@ -180,7 +183,7 @@ public class CreadorDeDatos extends javax.swing.JPanel {
                     .addComponent(avionesGrande)
                     .addComponent(avionesPequeños))
                 .addContainerGap())
-            .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 450, Short.MAX_VALUE)
         );
         labelTiempoDeMantenimientoLayout.setVerticalGroup(
             labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,10 +263,9 @@ public class CreadorDeDatos extends javax.swing.JPanel {
             panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTiemposLayout.createSequentialGroup()
                 .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(labelMantenimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                        .addComponent(labelTiempoAterrizaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addComponent(labelTiempoAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelConsumo, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                     .addComponent(labelDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -545,7 +547,8 @@ public class CreadorDeDatos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void avionesGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avionesGrandeActionPerformed
-        // TODO add your handling code here:
+        
+        int avionesGrandes = Integer.parseInt( avionesGrande.getText());
     }//GEN-LAST:event_avionesGrandeActionPerformed
 
     private void tiempoDeGalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoDeGalonActionPerformed

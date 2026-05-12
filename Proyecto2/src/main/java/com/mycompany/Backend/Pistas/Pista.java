@@ -17,5 +17,4 @@ public class Pista extends AreaDeAviones{
     }
     
 
-    
 }

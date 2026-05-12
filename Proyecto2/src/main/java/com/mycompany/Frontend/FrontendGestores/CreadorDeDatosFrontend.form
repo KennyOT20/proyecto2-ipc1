@@ -128,7 +128,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="panelNotas" alignment="0" pref="0" max="32767" attributes="0"/>
+              <Component id="panelNotas" alignment="0" pref="450" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -337,11 +337,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="labelMantenimiento" alignment="0" max="32767" attributes="0"/>
-                          <Component id="labelTIempoDesbordaje" alignment="0" pref="313" max="32767" attributes="0"/>
-                          <Component id="labelTiempoAterrizaje" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="labelMantenimiento" alignment="0" max="32767" attributes="0"/>
+                      <Component id="labelTIempoDesbordaje" alignment="0" pref="313" max="32767" attributes="0"/>
+                      <Component id="labelTiempoAterrizaje" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                       <Component id="labelConsumo" alignment="0" pref="349" max="32767" attributes="0"/>
                       <Component id="labelDespliegue" max="32767" attributes="0"/>
                   </Group>
