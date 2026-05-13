@@ -460,6 +460,11 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         botonGuardar.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         botonGuardar.setText("Guardar datos");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         botonVolver.setBackground(new java.awt.Color(255, 51, 204));
         botonVolver.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
@@ -525,15 +530,44 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        // TODO add your handling code here:
+        guardarDatos();
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
-    private void guardarDatos(){
+
+   private void guardarDatos() {
+
+        // Aviones
         creadorDeDatos.setCantidadDeAvionesGrandes(Integer.parseInt(avionesGrande.getText().trim()));
-        creadorDeDatos.setCantidadDeAvionesMedianos(Integer.parseInt(avionesMedianos.getText().trim()));
+        creadorDeDatos.setCantidadDeAvionesMedianos( Integer.parseInt(avionesMedianos.getText().trim()));
         creadorDeDatos.setCantidadDeAvionesPequeños(Integer.parseInt(avionesPequeños.getText().trim()));
-        
-        creadorDeDatos.setCombustibleGrande(Integer.parseInt(combustibleGrande.getText().trim()));
-        creadorDeDatos.setCombustibleMediano(Integer.parseInt(combustibleMediano.getText().trim()));
-        creadorDeDatos.setCombustiblePequeño(Integer.parseInt(combustiblePequeño.getText().trim()));
+
+        // Combustible
+        creadorDeDatos.setCombustibleGrande( Integer.parseInt(combustibleGrande.getText().trim()));
+        creadorDeDatos.setCombustibleMediano( Integer.parseInt(combustibleMediano.getText().trim()));
+        creadorDeDatos.setCombustiblePequeño( Integer.parseInt(combustiblePequeño.getText().trim()));
+
+        // Tiempos
+        creadorDeDatos.setTiempoAterrizaje(Integer.parseInt(tiempoAterrizaje.getText().trim()));
+        creadorDeDatos.setTiempoDespegue( Integer.parseInt(tiempoDeDespegue.getText().trim()));
+        creadorDeDatos.setTiempoConsumoGalon(Integer.parseInt(tiempoDeGalon.getText().trim()));
+        creadorDeDatos.setTiempoMantenimiento( Integer.parseInt(tiempoDeMantenimiento.getText().trim()));
+        creadorDeDatos.setTiempoDesbordaje(Integer.parseInt(tiempoDesbordaje.getText().trim()));
+
+        // Cantidades de areas
+        creadorDeDatos.setCantidadPistasAterrizaje(  Integer.parseInt(pistasDeAterrizaje.getText().trim()));
+        creadorDeDatos.setCantidadPistasDespegue( Integer.parseInt(cantidadPistasDespliegue.getText().trim()));
+        creadorDeDatos.setCantidadEstacionesControl( Integer.parseInt(cantidadEstacionesControl.getText().trim()));
+        creadorDeDatos.setCantidadEstacionDesbordaje( Integer.parseInt(cantidadEstacionDesbordaje.getText().trim()));
+        creadorDeDatos.setCantidadEstacionMantenimiento(Integer.parseInt(cantidadEstacionMantenimiento.getText().trim()));
+
+        // Capacidades
+        creadorDeDatos.setCapacidadAterrizaje( Integer.parseInt(capacidadDeAterrizaje.getText().trim()));
+        creadorDeDatos.setCapacidadDespegue( Integer.parseInt(capacidadDeDespliegue.getText().trim()));
+        creadorDeDatos.setCapacidadControl( Integer.parseInt(capacidadDeControl.getText().trim()));
+        creadorDeDatos.setCapacidadDesbordaje(  Integer.parseInt(capacidadDeDesbordaje.getText().trim()));
+        creadorDeDatos.setCapacidadMantenimiento( Integer.parseInt(capacidadDeMantenimiento.getText().trim()));
     }
 
     public JTextField getAvionesGrande() {

@@ -9,14 +9,39 @@ package com.mycompany.Backend.GestorDeDatos;
  * @author Kenny
  */
 public class CreadorDeDatos {
-    
+
+    // Aviones
     private int cantidadDeAvionesGrandes;
     private int cantidadDeAvionesMedianos;
     private int cantidadDeAvionesPequeños;
+
+    // Combustible
     private int combustibleGrande;
     private int combustibleMediano;
     private int combustiblePequeño;
 
+    // Tiempos
+    private int tiempoAterrizaje;
+    private int tiempoDespegue;
+    private int tiempoConsumoGalon;
+    private int tiempoMantenimiento;
+    private int tiempoDesbordaje;
+
+    // Cantidades de areas
+    private int cantidadPistasAterrizaje;
+    private int cantidadPistasDespegue;
+    private int cantidadEstacionesControl;
+    private int cantidadEstacionDesbordaje;
+    private int cantidadEstacionMantenimiento;
+
+    // Capacidades
+    private int capacidadAterrizaje;
+    private int capacidadDespegue;
+    private int capacidadControl;
+    private int capacidadDesbordaje;
+    private int capacidadMantenimiento;
+
+    // SETTERS AVIONES
     public void setCantidadDeAvionesGrandes(int cantidadDeAvionesGrandes) {
         this.cantidadDeAvionesGrandes = cantidadDeAvionesGrandes;
     }
@@ -29,6 +54,7 @@ public class CreadorDeDatos {
         this.cantidadDeAvionesPequeños = cantidadDeAvionesPequeños;
     }
 
+    // SETTERS COMBUSTIBLE
     public void setCombustibleGrande(int combustibleGrande) {
         this.combustibleGrande = combustibleGrande;
     }
@@ -40,7 +66,67 @@ public class CreadorDeDatos {
     public void setCombustiblePequeño(int combustiblePequeño) {
         this.combustiblePequeño = combustiblePequeño;
     }
-    
-    
 
+    // SETTERS TIEMPOS
+    public void setTiempoAterrizaje(int tiempoAterrizaje) {
+        this.tiempoAterrizaje = tiempoAterrizaje;
+    }
+
+    public void setTiempoDespegue(int tiempoDespegue) {
+        this.tiempoDespegue = tiempoDespegue;
+    }
+
+    public void setTiempoConsumoGalon(int tiempoConsumoGalon) {
+        this.tiempoConsumoGalon = tiempoConsumoGalon;
+    }
+
+    public void setTiempoMantenimiento(int tiempoMantenimiento) {
+        this.tiempoMantenimiento = tiempoMantenimiento;
+    }
+
+    public void setTiempoDesbordaje(int tiempoDesbordaje) {
+        this.tiempoDesbordaje = tiempoDesbordaje;
+    }
+
+    // SETTERS CANTIDADES
+    public void setCantidadPistasAterrizaje(int cantidadPistasAterrizaje) {
+        this.cantidadPistasAterrizaje = cantidadPistasAterrizaje;
+    }
+
+    public void setCantidadPistasDespegue(int cantidadPistasDespegue) {
+        this.cantidadPistasDespegue = cantidadPistasDespegue;
+    }
+
+    public void setCantidadEstacionesControl(int cantidadEstacionesControl) {
+        this.cantidadEstacionesControl = cantidadEstacionesControl;
+    }
+
+    public void setCantidadEstacionDesbordaje(int cantidadEstacionDesbordaje) {
+        this.cantidadEstacionDesbordaje = cantidadEstacionDesbordaje;
+    }
+
+    public void setCantidadEstacionMantenimiento(int cantidadEstacionMantenimiento) {
+        this.cantidadEstacionMantenimiento = cantidadEstacionMantenimiento;
+    }
+
+    // SETTERS CAPACIDADES
+    public void setCapacidadAterrizaje(int capacidadAterrizaje) {
+        this.capacidadAterrizaje = capacidadAterrizaje;
+    }
+
+    public void setCapacidadDespegue(int capacidadDespegue) {
+        this.capacidadDespegue = capacidadDespegue;
+    }
+
+    public void setCapacidadControl(int capacidadControl) {
+        this.capacidadControl = capacidadControl;
+    }
+
+    public void setCapacidadDesbordaje(int capacidadDesbordaje) {
+        this.capacidadDesbordaje = capacidadDesbordaje;
+    }
+
+    public void setCapacidadMantenimiento(int capacidadMantenimiento) {
+        this.capacidadMantenimiento = capacidadMantenimiento;
+    }
 }

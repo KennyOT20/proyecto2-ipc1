@@ -16,7 +16,7 @@ public class ValidacionesDeDatos {
         this.creadorDeDatos = creadorDeDatos;
     }
     
-    public boolean validarCantidadDeAviones() {
+    protected boolean validarCantidadDeAviones() {
         try {
             int cantidadGrandes = Integer.parseInt(creadorDeDatos.getAvionesGrande().getText().trim());
             int cantidadMedianos = Integer.parseInt(creadorDeDatos.getAvionesMedianos().getText().trim());
@@ -39,7 +39,7 @@ public class ValidacionesDeDatos {
         }
     }
     
-    public boolean validarCombustibleDeAviones() {
+    protected boolean validarCombustibleDeAviones() {
         try {
             int combustibleAvionGrande = Integer.parseInt(creadorDeDatos.getCombustibleGrande().getText().trim());
             int combustibleAvionMediano = Integer.parseInt(creadorDeDatos.getCombustibleMediano().getText().trim());
@@ -56,7 +56,7 @@ public class ValidacionesDeDatos {
         }
     }
     
-    public boolean validarTiempos() {
+    protected boolean validarTiempos() {
         try {
             int tiempoAterrizajeValor = Integer.parseInt(creadorDeDatos.getTiempoAterrizaje().getText().trim());
             int tiempoDespegueValor = Integer.parseInt(creadorDeDatos.getTiempoDeDespegue().getText().trim());
@@ -75,4 +75,46 @@ public class ValidacionesDeDatos {
             return false;
         }
     }
+    
+    protected boolean validarCantidadDeAreas() {
+        try {
+            int cantidadDesbordaje = Integer.parseInt(creadorDeDatos.getCantidadEstacionDesbordaje().getText().trim());
+            int cantidadMantenimiento = Integer.parseInt(creadorDeDatos.getCantidadEstacionMantenimiento().getText().trim());
+            int cantidadControl = Integer.parseInt(creadorDeDatos.getCantidadEstacionesControl().getText().trim());
+
+            int cantidadPistasDespegue = Integer.parseInt( creadorDeDatos.getCantidadPistasDespliegue().getText().trim());
+            int cantidadPistasAterrizaje = Integer.parseInt(creadorDeDatos.getPistasDeAterrizaje().getText().trim());
+
+            if (cantidadDesbordaje <= 0 || cantidadMantenimiento <= 0|| cantidadControl <= 0
+                    || cantidadPistasDespegue <= 0|| cantidadPistasAterrizaje <= 0) {
+                return false;
+            }
+
+            return true;
+
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    protected boolean validarCapacidadDeAreas() {
+        try {
+            int capacidadAterrizaje = Integer.parseInt(creadorDeDatos.getCapacidadDeAterrizaje().getText().trim());
+            int capacidadControl = Integer.parseInt(creadorDeDatos.getCapacidadDeControl().getText().trim());
+            int capacidadDesbordaje = Integer.parseInt(creadorDeDatos.getCapacidadDeDesbordaje().getText().trim());
+            int capacidadDespliegue = Integer.parseInt(creadorDeDatos.getCapacidadDeDespliegue().getText().trim());
+            int capacidadMantenimiento = Integer.parseInt(creadorDeDatos.getCapacidadDeMantenimiento().getText().trim());
+
+            if (capacidadAterrizaje <= 0 || capacidadControl <= 0|| capacidadDesbordaje <= 0
+                    || capacidadDespliegue <= 0 || capacidadMantenimiento <= 0) {
+                return false;
+            }
+
+            return true;
+
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
 }
