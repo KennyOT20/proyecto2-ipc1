@@ -4,10 +4,26 @@
  */
 package com.mycompany.Backend.Aereopuerto.Generadores;
 
+import com.mycompany.Backend.Pistas.Pista;
+import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
+import com.mycompany.Backend.Pistas.PistaDespegue;
+
 /**
  *
  * @author Kenny
  */
-public class GeneradorDePistas {
+public class GeneradorDePistas extends Generadores{
+    
+    private int idPista;
+    
+    public Pista crearPistaAterrizaje(){
+        idPista = generarNumerosAleatorios(100, 999);
+        return new PistaDeAterrizaje(idPista, "Pista de aterrizaje");
+    }
+    
+    public Pista crearPistaDespegue(){
+        idPista = generarNumerosAleatorios(100, 999);
+        return new PistaDespegue(idPista, "Pista de despegue");
+    }
     
 }

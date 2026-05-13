@@ -43,7 +43,7 @@
                   <Component id="panelTiempos" alignment="0" max="32767" attributes="0"/>
                   <Component id="labelTiempoDeMantenimiento" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelTituloEstaciones" alignment="0" max="32767" attributes="0"/>
                   <Component id="panelEscionesPistas" alignment="0" max="32767" attributes="0"/>
@@ -94,15 +94,32 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="950" max="32767" attributes="0"/>
+              <Component id="labelTitulo" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
+              <Component id="labelTitulo" alignment="0" pref="90" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="labelTitulo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="36" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="CREACION DE DATOS"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="labelTiempoDeMantenimiento">
       <Properties>
@@ -114,21 +131,27 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="panelNotas" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="labelAvionGrande" alignment="0" max="32767" attributes="0"/>
-                      <Component id="labelAvionMediano" alignment="0" pref="189" max="32767" attributes="0"/>
                       <Component id="labelAvionPequeño" max="32767" attributes="0"/>
+                      <Component id="labelAvionGrande" alignment="0" max="32767" attributes="0"/>
+                      <Component id="labelAvionMediano" alignment="0" pref="111" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="avionesGrande" pref="139" max="32767" attributes="0"/>
                       <Component id="avionesMedianos" alignment="0" max="32767" attributes="0"/>
-                      <Component id="avionesGrande" max="32767" attributes="0"/>
                       <Component id="avionesPequeños" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="combustibleGrande" max="32767" attributes="0"/>
+                      <Component id="combustibleMediano" max="32767" attributes="0"/>
+                      <Component id="combustiblePequeño" pref="146" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Component id="panelNotas" alignment="0" pref="450" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -137,16 +160,19 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelAvionGrande" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="avionesGrande" alignment="3" max="32767" attributes="0"/>
+                      <Component id="combustibleGrande" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelAvionMediano" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="avionesMedianos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combustibleMediano" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelAvionPequeño" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="avionesPequeños" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combustiblePequeño" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelNotas" min="-2" max="-2" attributes="0"/>
@@ -163,7 +189,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aviones grandes: "/>
+            <Property name="text" type="java.lang.String" value="Grandes: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelAvionMediano">
@@ -177,7 +203,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aviones medianos: "/>
+            <Property name="text" type="java.lang.String" value="Medianos: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelAvionPeque&#xf1;o">
@@ -188,13 +214,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aviones peque&#xf1;os: "/>
+            <Property name="text" type="java.lang.String" value="Peque&#xf1;os: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="avionesGrande">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="avionesGrandeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="avionesMedianos">
         </Component>
@@ -279,11 +302,17 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Todos los aviones poseen 100 galones de combustible"/>
+                <Property name="text" type="java.lang.String" value="El tiempo de vuelo de cada avion se basa en su combustible"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="combustibleGrande">
+        </Component>
+        <Component class="javax.swing.JTextField" name="combustibleMediano">
+        </Component>
+        <Component class="javax.swing.JTextField" name="combustiblePeque&#xf1;o">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelTituloConfi">
@@ -300,7 +329,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="labelCantidadAviones" min="-2" pref="206" max="-2" attributes="0"/>
+                  <Component id="labelCantidadAviones" min="-2" pref="451" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -320,7 +349,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cantidad de Aviones"/>
+            <Property name="text" type="java.lang.String" value="Cantidad de Aviones   - Combustible "/>
           </Properties>
         </Component>
       </SubComponents>
@@ -338,14 +367,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="labelMantenimiento" alignment="0" max="32767" attributes="0"/>
-                      <Component id="labelTIempoDesbordaje" alignment="0" pref="313" max="32767" attributes="0"/>
+                      <Component id="labelTIempoDesbordaje" alignment="0" pref="349" max="32767" attributes="0"/>
                       <Component id="labelTiempoAterrizaje" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                       <Component id="labelConsumo" alignment="0" pref="349" max="32767" attributes="0"/>
                       <Component id="labelDespliegue" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tiempoDesbordaje" alignment="0" pref="89" max="32767" attributes="0"/>
+                      <Component id="tiempoDesbordaje" alignment="0" max="32767" attributes="0"/>
                       <Component id="tiempoAterrizaje" alignment="1" max="32767" attributes="0"/>
                       <Component id="tiempoDeDespegue" alignment="0" max="32767" attributes="0"/>
                       <Component id="tiempoDeGalon" alignment="1" max="32767" attributes="0"/>
@@ -401,9 +430,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tiempoAterrizaje">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tiempoAterrizajeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelTIempoDesbordaje">
           <Properties>
@@ -443,9 +469,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tiempoDeGalon">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tiempoDeGalonActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDespliegue">
           <Properties>
@@ -490,7 +513,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Configuracion de tiempos"/>
+            <Property name="text" type="java.lang.String" value="Configuracion de tiempos (ms)"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -506,7 +529,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jLabel2" max="32767" attributes="0"/>
-              <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+              <Component id="jLabel3" alignment="0" pref="428" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -653,9 +676,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="pistasDeAterrizaje">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pistasDeAterrizajeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelPistaDespliegue">
           <Properties>
@@ -681,9 +701,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadPistasDespliegue">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadPistasDespliegueActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -735,14 +752,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadEstacionMantenimiento">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadEstacionMantenimientoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="capacidadDeAterrizaje">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capacidadDeAterrizajeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="capacidadDeDespliegue">
         </Component>

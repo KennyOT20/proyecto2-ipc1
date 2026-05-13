@@ -26,7 +26,7 @@ public class GeneradorDeEstaciones extends Generadores {
     
    public Estacion crearEstacionDeMantenimiento(){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeMantenimiento(idEstacion, "");
+       return new EstacionDeMantenimiento(idEstacion, "Estacion de mantenimiento");
    }
    
    public Estacion crearEstacionDeDesborde(){

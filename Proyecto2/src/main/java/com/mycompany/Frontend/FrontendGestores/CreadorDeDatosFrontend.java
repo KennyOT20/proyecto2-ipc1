@@ -5,6 +5,7 @@
 package com.mycompany.Frontend.FrontendGestores;
 
 import com.mycompany.Backend.GestorDeDatos.CreadorDeDatos;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,11 +14,13 @@ import com.mycompany.Backend.GestorDeDatos.CreadorDeDatos;
 public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
     private final CreadorDeDatos creadorDeDatos;
+    private final ValidacionesDeDatos validarDatos;
     
     
     public CreadorDeDatosFrontend() {
-        initComponents();
         this.creadorDeDatos = new CreadorDeDatos();
+        this.validarDatos = new ValidacionesDeDatos(this);
+        initComponents();
     }
 
     /**
@@ -31,6 +34,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         panelTitulo = new javax.swing.JPanel();
+        labelTitulo = new javax.swing.JLabel();
         labelTiempoDeMantenimiento = new javax.swing.JPanel();
         labelAvionGrande = new javax.swing.JLabel();
         labelAvionMediano = new javax.swing.JLabel();
@@ -43,6 +47,9 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelAviso1 = new javax.swing.JLabel();
         labelAviso2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        combustibleGrande = new javax.swing.JTextField();
+        combustibleMediano = new javax.swing.JTextField();
+        combustiblePequeño = new javax.swing.JTextField();
         panelTituloConfi = new javax.swing.JPanel();
         labelCantidadAviones = new javax.swing.JLabel();
         panelTiempos = new javax.swing.JPanel();
@@ -92,37 +99,37 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         panelTitulo.setBackground(new java.awt.Color(255, 51, 51));
 
+        labelTitulo.setBackground(new java.awt.Color(0, 0, 0));
+        labelTitulo.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitulo.setText("CREACION DE DATOS");
+
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
         );
 
         labelTiempoDeMantenimiento.setBackground(new java.awt.Color(255, 153, 153));
 
         labelAvionGrande.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelAvionGrande.setForeground(new java.awt.Color(0, 0, 0));
-        labelAvionGrande.setText("Aviones grandes: ");
+        labelAvionGrande.setText("Grandes: ");
 
         labelAvionMediano.setBackground(new java.awt.Color(0, 0, 0));
         labelAvionMediano.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelAvionMediano.setForeground(new java.awt.Color(0, 0, 0));
-        labelAvionMediano.setText("Aviones medianos: ");
+        labelAvionMediano.setText("Medianos: ");
 
         labelAvionPequeño.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelAvionPequeño.setForeground(new java.awt.Color(0, 0, 0));
-        labelAvionPequeño.setText("Aviones pequeños: ");
-
-        avionesGrande.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avionesGrandeActionPerformed(evt);
-            }
-        });
+        labelAvionPequeño.setText("Pequeños: ");
 
         panelNotas.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -141,7 +148,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Todos los aviones poseen 100 galones de combustible");
+        jLabel6.setText("El tiempo de vuelo de cada avion se basa en su combustible");
 
         javax.swing.GroupLayout panelNotasLayout = new javax.swing.GroupLayout(panelNotas);
         panelNotas.setLayout(panelNotasLayout);
@@ -172,33 +179,41 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelTiempoDeMantenimiento.setLayout(labelTiempoDeMantenimientoLayout);
         labelTiempoDeMantenimientoLayout.setHorizontalGroup(
             labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelNotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(labelTiempoDeMantenimientoLayout.createSequentialGroup()
                 .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(labelAvionPequeño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelAvionGrande, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelAvionMediano, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                    .addComponent(labelAvionPequeño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelAvionMediano, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(avionesGrande, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(avionesMedianos)
-                    .addComponent(avionesGrande)
                     .addComponent(avionesPequeños))
-                .addContainerGap())
-            .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 450, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combustibleGrande)
+                    .addComponent(combustibleMediano)
+                    .addComponent(combustiblePequeño, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         labelTiempoDeMantenimientoLayout.setVerticalGroup(
             labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(labelTiempoDeMantenimientoLayout.createSequentialGroup()
                 .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAvionGrande, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(avionesGrande))
+                    .addComponent(avionesGrande)
+                    .addComponent(combustibleGrande, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAvionMediano, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(avionesMedianos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(avionesMedianos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combustibleMediano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(labelTiempoDeMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAvionPequeño, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(avionesPequeños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(avionesPequeños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combustiblePequeño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -208,14 +223,14 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         labelCantidadAviones.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelCantidadAviones.setForeground(new java.awt.Color(0, 0, 0));
-        labelCantidadAviones.setText("Cantidad de Aviones");
+        labelCantidadAviones.setText("Cantidad de Aviones   - Combustible ");
 
         javax.swing.GroupLayout panelTituloConfiLayout = new javax.swing.GroupLayout(panelTituloConfi);
         panelTituloConfi.setLayout(panelTituloConfiLayout);
         panelTituloConfiLayout.setHorizontalGroup(
             panelTituloConfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloConfiLayout.createSequentialGroup()
-                .addComponent(labelCantidadAviones, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelCantidadAviones, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelTituloConfiLayout.setVerticalGroup(
@@ -229,12 +244,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelTiempoAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         labelTiempoAterrizaje.setText("Aterrizaje:");
 
-        tiempoAterrizaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiempoAterrizajeActionPerformed(evt);
-            }
-        });
-
         labelTIempoDesbordaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelTIempoDesbordaje.setForeground(new java.awt.Color(0, 0, 0));
         labelTIempoDesbordaje.setText("Desbordaje de cada pasajero:");
@@ -247,12 +256,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelConsumo.setForeground(new java.awt.Color(0, 0, 0));
         labelConsumo.setText("Consumo de un galon de combustible:");
 
-        tiempoDeGalon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiempoDeGalonActionPerformed(evt);
-            }
-        });
-
         labelDespliegue.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelDespliegue.setForeground(new java.awt.Color(0, 0, 0));
         labelDespliegue.setText("Despegue");
@@ -264,13 +267,13 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
             .addGroup(panelTiemposLayout.createSequentialGroup()
                 .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addComponent(labelTIempoDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                     .addComponent(labelTiempoAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelConsumo, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                     .addComponent(labelDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tiempoDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(tiempoDesbordaje)
                     .addComponent(tiempoAterrizaje, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tiempoDeDespegue)
                     .addComponent(tiempoDeGalon, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -307,7 +310,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         labelTituloDeTiempos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelTituloDeTiempos.setForeground(new java.awt.Color(0, 0, 0));
-        labelTituloDeTiempos.setText("Configuracion de tiempos");
+        labelTituloDeTiempos.setText("Configuracion de tiempos (ms)");
 
         javax.swing.GroupLayout panelTituloTiemposLayout = new javax.swing.GroupLayout(panelTituloTiempos);
         panelTituloTiempos.setLayout(panelTituloTiemposLayout);
@@ -335,7 +338,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         panelTituloEstacionesLayout.setHorizontalGroup(
             panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
         panelTituloEstacionesLayout.setVerticalGroup(
             panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,12 +355,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelPistaDeAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         labelPistaDeAterrizaje.setText("De aterrizaje: ");
 
-        pistasDeAterrizaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pistasDeAterrizajeActionPerformed(evt);
-            }
-        });
-
         labelPistaDespliegue.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelPistaDespliegue.setForeground(new java.awt.Color(0, 0, 0));
         labelPistaDespliegue.setText("De despliegue: ");
@@ -366,12 +363,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Pistas (Cantidad y Capacidad)");
-
-        cantidadPistasDespliegue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadPistasDespliegueActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Serif", 3, 19)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -389,18 +380,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelEstacionMantenimiento.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelEstacionMantenimiento.setForeground(new java.awt.Color(0, 0, 0));
         labelEstacionMantenimiento.setText("De Mantenimiento: ");
-
-        cantidadEstacionMantenimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadEstacionMantenimientoActionPerformed(evt);
-            }
-        });
-
-        capacidadDeAterrizaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                capacidadDeAterrizajeActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelEscionesPistasLayout = new javax.swing.GroupLayout(panelEscionesPistas);
         panelEscionesPistas.setLayout(panelEscionesPistasLayout);
@@ -514,7 +493,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addComponent(panelTituloTiempos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelTiempos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelTiempoDeMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(58, 58, 58)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTituloEstaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelEscionesPistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -546,36 +525,103 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void avionesGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avionesGrandeActionPerformed
+
+    private void guardarDatos(){
+        creadorDeDatos.setCantidadDeAvionesGrandes(Integer.parseInt(avionesGrande.getText().trim()));
+        creadorDeDatos.setCantidadDeAvionesMedianos(Integer.parseInt(avionesMedianos.getText().trim()));
+        creadorDeDatos.setCantidadDeAvionesPequeños(Integer.parseInt(avionesPequeños.getText().trim()));
         
-        int avionesGrandes = Integer.parseInt( avionesGrande.getText());
-    }//GEN-LAST:event_avionesGrandeActionPerformed
+        creadorDeDatos.setCombustibleGrande(Integer.parseInt(combustibleGrande.getText().trim()));
+        creadorDeDatos.setCombustibleMediano(Integer.parseInt(combustibleMediano.getText().trim()));
+        creadorDeDatos.setCombustiblePequeño(Integer.parseInt(combustiblePequeño.getText().trim()));
+    }
 
-    private void tiempoDeGalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoDeGalonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tiempoDeGalonActionPerformed
+    public JTextField getAvionesGrande() {
+        return avionesGrande;
+    }
 
-    private void tiempoAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoAterrizajeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tiempoAterrizajeActionPerformed
+    public JTextField getAvionesMedianos() {
+        return avionesMedianos;
+    }
 
-    private void pistasDeAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pistasDeAterrizajeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pistasDeAterrizajeActionPerformed
+    public JTextField getAvionesPequeños() {
+        return avionesPequeños;
+    }
 
-    private void cantidadPistasDespliegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadPistasDespliegueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadPistasDespliegueActionPerformed
+    public JTextField getCantidadEstacionDesbordaje() {
+        return cantidadEstacionDesbordaje;
+    }
 
-    private void cantidadEstacionMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadEstacionMantenimientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadEstacionMantenimientoActionPerformed
+    public JTextField getCantidadEstacionMantenimiento() {
+        return cantidadEstacionMantenimiento;
+    }
 
-    private void capacidadDeAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacidadDeAterrizajeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_capacidadDeAterrizajeActionPerformed
+    public JTextField getCantidadEstacionesControl() {
+        return cantidadEstacionesControl;
+    }
 
+    public JTextField getCantidadPistasDespliegue() {
+        return cantidadPistasDespliegue;
+    }
 
+    public JTextField getCapacidadDeAterrizaje() {
+        return capacidadDeAterrizaje;
+    }
+
+    public JTextField getCapacidadDeControl() {
+        return capacidadDeControl;
+    }
+
+    public JTextField getCapacidadDeDesbordaje() {
+        return capacidadDeDesbordaje;
+    }
+
+    public JTextField getCapacidadDeDespliegue() {
+        return capacidadDeDespliegue;
+    }
+
+    public JTextField getCapacidadDeMantenimiento() {
+        return capacidadDeMantenimiento;
+    }
+
+    public JTextField getCombustibleGrande() {
+        return combustibleGrande;
+    }
+
+    public JTextField getCombustibleMediano() {
+        return combustibleMediano;
+    }
+
+    public JTextField getCombustiblePequeño() {
+        return combustiblePequeño;
+    }
+
+    public JTextField getPistasDeAterrizaje() {
+        return pistasDeAterrizaje;
+    }
+
+    public JTextField getTiempoAterrizaje() {
+        return tiempoAterrizaje;
+    }
+
+    public JTextField getTiempoDeDespegue() {
+        return tiempoDeDespegue;
+    }
+
+    public JTextField getTiempoDeGalon() {
+        return tiempoDeGalon;
+    }
+
+    public JTextField getTiempoDeMantenimiento() {
+        return tiempoDeMantenimiento;
+    }
+
+    public JTextField getTiempoDesbordaje() {
+        return tiempoDesbordaje;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField avionesGrande;
     private javax.swing.JTextField avionesMedianos;
@@ -591,6 +637,9 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
     private javax.swing.JTextField capacidadDeDesbordaje;
     private javax.swing.JTextField capacidadDeDespliegue;
     private javax.swing.JTextField capacidadDeMantenimiento;
+    private javax.swing.JTextField combustibleGrande;
+    private javax.swing.JTextField combustibleMediano;
+    private javax.swing.JTextField combustiblePequeño;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -615,6 +664,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
     private javax.swing.JLabel labelTIempoDesbordaje;
     private javax.swing.JLabel labelTiempoAterrizaje;
     private javax.swing.JPanel labelTiempoDeMantenimiento;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelTituloDeTiempos;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelEscionesPistas;

@@ -4,14 +4,13 @@
  */
 package com.mycompany.Backend.Estaciones;
 
-import com.mycompany.Backend.Aereopuerto.AreaDeAviones;
 
 
 /**
  *
  * @author Kenny
  */
-public class EstacionDeMantenimiento extends AreaDeAviones {
+public class EstacionDeMantenimiento extends Estacion {
     
     public EstacionDeMantenimiento(int idDeArea, String tipoDeArea) {
         super(idDeArea, tipoDeArea);
