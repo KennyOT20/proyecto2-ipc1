@@ -38,7 +38,6 @@ public abstract class Avion{
         this.combustible = combustible;
         this.estaVivo = true;
         this.vueloFallado = false;
-        
     }
     
     public void decrementarCombustible(){

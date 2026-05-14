@@ -117,4 +117,13 @@ public class ValidacionesDeDatos {
         }
     }
     
+    protected boolean validarNombre(){
+        
+        if(creadorDeDatos.getNombreDeDatos().getText().isEmpty()){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
 }

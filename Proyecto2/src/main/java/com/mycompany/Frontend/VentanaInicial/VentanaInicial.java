@@ -4,7 +4,9 @@
  */
 package com.mycompany.Frontend.VentanaInicial;
 
-import com.mycompany.Frontend.FrontendMenu.MenuInicial;
+import com.mycompany.Frontend.FrontendMenus.MenuInicial;
+import com.mycompany.Frontend.PanelesContenedores.ContenedorDatos;
+import java.awt.CardLayout;
 
 
 /**
@@ -14,22 +16,41 @@ import com.mycompany.Frontend.FrontendMenu.MenuInicial;
 public class VentanaInicial extends javax.swing.JFrame {
     
     private final MenuInicial menuInicial;
+    private final ContenedorDatos contenedorDeDatos;
+    private final String CONTENEDOR_DE_DATOS = "CONTENEDOR DE DATOS";
+    private final String MENU_INICIAL = "MENU INICIAL";
 
-    
-    
-    
     /**
      * Creates new form VentanaInicial
      */
     public VentanaInicial() {
         this.menuInicial = new MenuInicial(this);
-        
-        
-      
+        this.contenedorDeDatos = new ContenedorDatos(this);
         
         initComponents();
+        agregarPanelesPrincipales();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        irAMenuInicial();
+    }
+    
+    private void agregarPanelesPrincipales(){
+        PanelContenedor.add(contenedorDeDatos, CONTENEDOR_DE_DATOS);
+        PanelContenedor.add(menuInicial, MENU_INICIAL);
+    }
+    
+    private void cambiarDePaneles(String panel){
+    CardLayout layout = (CardLayout) PanelContenedor.getLayout();
+    layout.show(PanelContenedor, panel);
+    }
+    
+    public void irAMenuDatos(){
+        cambiarDePaneles(CONTENEDOR_DE_DATOS);
+    }
+    
+    public  final void irAMenuInicial(){
+        cambiarDePaneles(MENU_INICIAL);
     }
 
     /**

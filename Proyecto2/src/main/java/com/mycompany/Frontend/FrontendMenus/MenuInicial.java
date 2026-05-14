@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.Frontend.FrontendMenu;
+package com.mycompany.Frontend.FrontendMenus;
 
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 
@@ -71,6 +71,11 @@ public class MenuInicial extends javax.swing.JPanel {
         botonCreacionEdicion.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonCreacionEdicion.setForeground(new java.awt.Color(0, 0, 0));
         botonCreacionEdicion.setText("Crear o editar datos");
+        botonCreacionEdicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCreacionEdicionActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 102));
         jButton2.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
@@ -117,7 +122,7 @@ public class MenuInicial extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(349, 349, 349)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +137,11 @@ public class MenuInicial extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonCreacionEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCreacionEdicionActionPerformed
+        // TODO add your handling code here:
+        ventanaInicial.irAMenuDatos();
+    }//GEN-LAST:event_botonCreacionEdicionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

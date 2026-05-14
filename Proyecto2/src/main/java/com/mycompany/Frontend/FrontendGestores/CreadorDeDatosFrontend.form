@@ -78,7 +78,6 @@
                       <Component id="panelBotones" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -597,8 +596,9 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
+              <Component id="jLabel5" alignment="0" pref="428" max="32767" attributes="0"/>
+              <Component id="labelNombreDeDatos" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="labelDesbordaje" alignment="0" max="32767" attributes="0"/>
                       <Component id="labelEstacionMantenimiento" alignment="0" max="32767" attributes="0"/>
@@ -618,6 +618,7 @@
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
+              <Component id="nombreDeDatos" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -658,7 +659,11 @@
                       <Component id="cantidadEstacionMantenimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="capacidadDeMantenimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="labelNombreDeDatos" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="nombreDeDatos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -763,6 +768,19 @@
         </Component>
         <Component class="javax.swing.JTextField" name="capacidadDeMantenimiento">
         </Component>
+        <Component class="javax.swing.JLabel" name="labelNombreDeDatos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="18" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nombre de carga de datos: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nombreDeDatos">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelBotones">
@@ -824,6 +842,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Volver al menu"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVolverActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

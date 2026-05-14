@@ -4,74 +4,80 @@
  */
 package com.mycompany.Backend.GestorDeDatos;
 
+import java.io.File;
+
 /**
  *
  * @author Kenny
  */
 public class CreadorArchivosCSV {
 
-    private final static String PATH_DATOS = "datos/";
-    private final static String ARCHIVO_AVIONES = PATH_DATOS + "aviones.CSV";
-    private final static String ARCHIVO_ESTACIONES_DE_CONTROL = PATH_DATOS + "control.CSV";
-    private final static String ARCHIVO_ESTACIONES_DE_MANTENIMIENTO = PATH_DATOS + "mantenimiento.CSV";
-    private final static String ARCHIVO_ESTACIONES_DE_DESBORDE = PATH_DATOS + "desbordaje.CSV";
-    private final static String ARCHIVO_PISTAS_DE_ATERRIZAJE = PATH_DATOS + "desbordaje.CSV";
-    private final static String ARCHIVO_PISTAS_DE_DESPLIEGUE = PATH_DATOS + "despliegue.CSV";
+    private final static String PATH_PRINCIPAL = "datos/";
+    private String nombreDeDatos;
     
-    // Aviones
     private int cantidadDeAvionesGrandes;
     private int cantidadDeAvionesMedianos;
     private int cantidadDeAvionesPequeños;
-
-    // Combustible
     private int combustibleGrande;
     private int combustibleMediano;
     private int combustiblePequeño;
-
-    // Tiempos
     private int tiempoAterrizaje;
     private int tiempoDespegue;
     private int tiempoConsumoGalon;
     private int tiempoMantenimiento;
     private int tiempoDesbordaje;
-
-    // Cantidades de areas
     private int cantidadPistasAterrizaje;
     private int cantidadPistasDespegue;
     private int cantidadEstacionesControl;
     private int cantidadEstacionDesbordaje;
     private int cantidadEstacionMantenimiento;
-
-    // Capacidades
     private int capacidadAterrizaje;
     private int capacidadDespegue;
     private int capacidadControl;
     private int capacidadDesbordaje;
     private int capacidadMantenimiento;
     
-    public void guardarAviones(){
-        
+    public CreadorArchivosCSV(String nombreDeDatos){
+        this.nombreDeDatos = nombreDeDatos;
+        crearCarpetaDeArchivos();
     }
     
-    public void guardarEstacionesDeControl(){
+    private void crearCarpetaDeArchivos(){
+        File carpetaDeDatos = new File(obtenerPathCarpetas());
         
+        if(carpetaDeDatos.exists() == false){
+            carpetaDeDatos.mkdirs();
+        }
     }
     
-    public void guardarEstacionesDeAterrizaje(){
-        
+    public String obtenerPathCarpetas() {
+        return PATH_PRINCIPAL + nombreDeDatos + "/";
+    }
+
+    public String obtenerArchivoAviones() {
+        return obtenerPathCarpetas() + "aviones.csv";
+    }
+
+    public String obtenerArchivoControl() {
+        return obtenerPathCarpetas() + "control.csv";
+    }
+
+    public String obtenerArchivoMantenimiento() {
+        return obtenerPathCarpetas() + "mantenimiento.csv";
+    }
+
+    public String obtenerArchivoDesbordaje() {
+        return obtenerPathCarpetas() + "desbordaje.csv";
+    }
+
+    public String obtenerArchivoAterrizaje() {
+        return obtenerPathCarpetas() + "aterrizaje.csv";
+    }
+
+    public String obtenerArchivoDespegue() {
+        return obtenerPathCarpetas() + "despegue.csv";
     }
     
-    public void guardarEstacionesDeMantenimiento(){
-        
-    }
-    
-    public void guardarPistasDeAterrizaje(){
-        
-    }
-    
-    public void guardarPistasDeDespliegue(){
-        
-    }
 
     // SETTERS AVIONES
     public void setCantidadDeAvionesGrandes(int cantidadDeAvionesGrandes) {
@@ -161,4 +167,7 @@ public class CreadorArchivosCSV {
     public void setCapacidadMantenimiento(int capacidadMantenimiento) {
         this.capacidadMantenimiento = capacidadMantenimiento;
     }
+
+    
+    
 }

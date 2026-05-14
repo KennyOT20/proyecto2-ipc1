@@ -5,6 +5,9 @@
 package com.mycompany.Frontend.FrontendGestores;
 
 import com.mycompany.Backend.GestorDeDatos.CreadorArchivosCSV;
+import com.mycompany.Frontend.PanelesContenedores.ContenedorDatos;
+import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -13,14 +16,15 @@ import javax.swing.JTextField;
  */
 public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
-    private final CreadorArchivosCSV creadorDeDatos;
     private final ValidacionesDeDatos validarDatos;
+    private final ContenedorDatos contenedorDatos;
     
     
-    public CreadorDeDatosFrontend() {
-        this.creadorDeDatos = new CreadorArchivosCSV();
+    public CreadorDeDatosFrontend(ContenedorDatos contenedorDatos) {
         this.validarDatos = new ValidacionesDeDatos(this);
+        this.contenedorDatos = contenedorDatos;
         initComponents();
+        
     }
 
     /**
@@ -86,6 +90,8 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         capacidadDeControl = new javax.swing.JTextField();
         capacidadDeDesbordaje = new javax.swing.JTextField();
         capacidadDeMantenimiento = new javax.swing.JTextField();
+        labelNombreDeDatos = new javax.swing.JLabel();
+        nombreDeDatos = new javax.swing.JTextField();
         panelBotones = new javax.swing.JPanel();
         botonGuardar = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
@@ -381,6 +387,10 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         labelEstacionMantenimiento.setForeground(new java.awt.Color(0, 0, 0));
         labelEstacionMantenimiento.setText("De Mantenimiento: ");
 
+        labelNombreDeDatos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelNombreDeDatos.setForeground(new java.awt.Color(0, 0, 0));
+        labelNombreDeDatos.setText("Nombre de carga de datos: ");
+
         javax.swing.GroupLayout panelEscionesPistasLayout = new javax.swing.GroupLayout(panelEscionesPistas);
         panelEscionesPistas.setLayout(panelEscionesPistasLayout);
         panelEscionesPistasLayout.setHorizontalGroup(
@@ -400,7 +410,8 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addComponent(capacidadDeAterrizaje)
                     .addComponent(capacidadDeDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(labelNombreDeDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelEscionesPistasLayout.createSequentialGroup()
                 .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(labelDesbordaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -417,6 +428,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addComponent(capacidadDeDesbordaje)
                     .addComponent(capacidadDeMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(nombreDeDatos)
         );
         panelEscionesPistasLayout.setVerticalGroup(
             panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,7 +462,11 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addComponent(labelEstacionMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadEstacionMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(capacidadDeMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNombreDeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombreDeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         panelBotones.setBackground(new java.awt.Color(204, 255, 0));
@@ -470,6 +486,11 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         botonVolver.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonVolver.setForeground(new java.awt.Color(0, 0, 0));
         botonVolver.setText("Volver al menu");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
         panelBotones.setLayout(panelBotonesLayout);
@@ -525,19 +546,58 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelEscionesPistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         // TODO add your handling code here:
+            if (!validarDatos.validarNombre()) {
+            JOptionPane.showMessageDialog(this,  "Debe ingresar un nombre para el conjunto de datos.");
+            return;
+        }
+
+        if (!validarDatos.validarCantidadDeAviones()) {
+            JOptionPane.showMessageDialog(this, "La cantidad de aviones debe ser numerica y mayor a 0.");
+            return;
+        }
+
+        if (!validarDatos.validarCombustibleDeAviones()) {
+            JOptionPane.showMessageDialog(this, "El combustible de los aviones debe ser numerico y mayor a 0.");
+            return;
+        }
+
+        if (!validarDatos.validarTiempos()) {
+            JOptionPane.showMessageDialog(this, "Todos los tiempos deben ser numericos y mayores a 0.");
+            return;
+        }
+
+        if (!validarDatos.validarCantidadDeAreas()) {
+            JOptionPane.showMessageDialog(this,  "Las cantidades de pistas y estaciones deben ser numericas y mayores a 0.");
+            return;
+        }
+
+        if (!validarDatos.validarCapacidadDeAreas()) {
+            JOptionPane.showMessageDialog(this, "Las capacidades de areas deben ser numericas y mayores a 0.");
+            return;
+          }
+
         guardarDatos();
+
+        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
     }//GEN-LAST:event_botonGuardarActionPerformed
 
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        // TODO add your handling code here:
+        contenedorDatos.irAMenuDeDatos();
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    
 
    private void guardarDatos() {
-
+       
+       CreadorArchivosCSV creadorDeDatos = new CreadorArchivosCSV(nombreDeDatos.getText());
+       
         // Aviones
         creadorDeDatos.setCantidadDeAvionesGrandes(Integer.parseInt(avionesGrande.getText().trim()));
         creadorDeDatos.setCantidadDeAvionesMedianos( Integer.parseInt(avionesMedianos.getText().trim()));
@@ -568,7 +628,13 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         creadorDeDatos.setCapacidadControl( Integer.parseInt(capacidadDeControl.getText().trim()));
         creadorDeDatos.setCapacidadDesbordaje(  Integer.parseInt(capacidadDeDesbordaje.getText().trim()));
         creadorDeDatos.setCapacidadMantenimiento( Integer.parseInt(capacidadDeMantenimiento.getText().trim()));
+        
     }
+   
+   
+   
+   
+   
 
     public JTextField getAvionesGrande() {
         return avionesGrande;
@@ -653,8 +719,10 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
     public JTextField getTiempoDesbordaje() {
         return tiempoDesbordaje;
     }
-    
-    
+
+    public JTextField getNombreDeDatos() {
+        return nombreDeDatos;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField avionesGrande;
@@ -692,6 +760,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
     private javax.swing.JLabel labelEstacionDeControl;
     private javax.swing.JLabel labelEstacionMantenimiento;
     private javax.swing.JLabel labelMantenimiento;
+    private javax.swing.JLabel labelNombreDeDatos;
     private javax.swing.JLabel labelNota;
     private javax.swing.JLabel labelPistaDeAterrizaje;
     private javax.swing.JLabel labelPistaDespliegue;
@@ -700,6 +769,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
     private javax.swing.JPanel labelTiempoDeMantenimiento;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelTituloDeTiempos;
+    private javax.swing.JTextField nombreDeDatos;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelEscionesPistas;
     private javax.swing.JPanel panelNotas;
