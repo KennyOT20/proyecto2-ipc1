@@ -28,14 +28,14 @@ public abstract class Avion{
     private boolean estaVivo;
     private int tiempoDeAterrizaje;
 
-    public Avion(String tipo, int capacidadMin, int capacidadMax, int idAvion) {
+    public Avion(String tipo, int capacidadMin, int capacidadMax, int idAvion, int combustible) {
         this.vuelo = new Vuelo();
         this.controladorAvion = new CabinaDeAvion(this);
         this.tipo = tipo;
         this.capacidadMax = capacidadMax;
         this.capacidadMin = capacidadMin;
         this.idAvion = idAvion;
-        this.combustible = 100;
+        this.combustible = combustible;
         this.estaVivo = true;
         this.vueloFallado = false;
         

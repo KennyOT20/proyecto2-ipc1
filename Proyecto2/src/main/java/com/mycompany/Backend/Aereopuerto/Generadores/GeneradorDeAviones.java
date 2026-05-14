@@ -17,25 +17,23 @@ public class GeneradorDeAviones extends Generadores {
     private int pasajerosMax;
     private int idAvion;
     
-    public GeneradorDeAviones(){
-    }
     
-    public Avion crearAvionPequeño(){
+    public Avion crearAvionPequeño(int combustible){
         pasajerosMax = generarNumerosAleatorios(5, 10);
         idAvion = generarNumerosAleatorios(1000, 9999);
-        return new AvionPequeño("PEQUEÑO", 5, pasajerosMax, idAvion );
+        return new AvionPequeño("PEQUEÑO", 5, pasajerosMax, idAvion, combustible );
     }
     
-    public Avion crearAvionMediano(){
+    public Avion crearAvionMediano(int combustible){
         pasajerosMax = generarNumerosAleatorios(15, 25);
         idAvion = generarNumerosAleatorios(1000, 9999);
-        return new AvionMediano("MEDIANO", 15, pasajerosMax, idAvion);
+        return new AvionMediano("MEDIANO", 15, pasajerosMax, idAvion, combustible);
     }
     
-    public Avion crearAvionGrande(){
+    public Avion crearAvionGrande(int combustible){
         pasajerosMax = generarNumerosAleatorios(30, 40);
         idAvion = generarNumerosAleatorios(1000, 9999);
-        return new AvionGrande("GRANDE", 30, pasajerosMax, idAvion);
+        return new AvionGrande("GRANDE", 30, pasajerosMax, idAvion, combustible);
     }
 
     

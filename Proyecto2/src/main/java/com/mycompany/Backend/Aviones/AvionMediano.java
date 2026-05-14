@@ -10,9 +10,9 @@ package com.mycompany.Backend.Aviones;
  */
 public class AvionMediano extends Avion {
 
-    public AvionMediano(String tipo, int capacidadMin, int capacidadMax, int idAvion) {
-        super(tipo, capacidadMin, capacidadMax, idAvion);
+    public AvionMediano(String tipo, int capacidadMin, int capacidadMax, int idAvion, int combustible) {
+        super(tipo, capacidadMin, capacidadMax, idAvion, combustible);
     }
 
-    
+
 }

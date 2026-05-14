@@ -12,9 +12,10 @@ import com.mycompany.Backend.Aereopuerto.AreaDeAviones;
  */
 public class Pista extends AreaDeAviones{
     
-    public Pista(int idDeArea, String tipoDeArea) {
-        super(idDeArea, tipoDeArea);
+    public Pista(int idDeArea, String tipoDeArea, int capacidadMaxima) {
+        super(idDeArea, tipoDeArea, capacidadMaxima);
     }
     
+
 
 }

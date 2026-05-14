@@ -10,8 +10,8 @@ package com.mycompany.Backend.Pistas;
  */
 public class PistaDespegue extends Pista {
     
-    public PistaDespegue(int idDeArea, String tipoDeArea) {
-        super(idDeArea, tipoDeArea);
+    public PistaDespegue(int idDeArea, String tipoDeArea, int capacidadMaxima) {
+        super(idDeArea, tipoDeArea, capacidadMaxima);
     }
     
 

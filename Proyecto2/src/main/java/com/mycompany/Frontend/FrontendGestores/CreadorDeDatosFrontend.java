@@ -4,7 +4,7 @@
  */
 package com.mycompany.Frontend.FrontendGestores;
 
-import com.mycompany.Backend.GestorDeDatos.CreadorDeDatos;
+import com.mycompany.Backend.GestorDeDatos.CreadorArchivosCSV;
 import javax.swing.JTextField;
 
 /**
@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  */
 public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
-    private final CreadorDeDatos creadorDeDatos;
+    private final CreadorArchivosCSV creadorDeDatos;
     private final ValidacionesDeDatos validarDatos;
     
     
     public CreadorDeDatosFrontend() {
-        this.creadorDeDatos = new CreadorDeDatos();
+        this.creadorDeDatos = new CreadorArchivosCSV();
         this.validarDatos = new ValidacionesDeDatos(this);
         initComponents();
     }
@@ -555,7 +555,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         creadorDeDatos.setTiempoMantenimiento( Integer.parseInt(tiempoDeMantenimiento.getText().trim()));
         creadorDeDatos.setTiempoDesbordaje(Integer.parseInt(tiempoDesbordaje.getText().trim()));
 
-        // Cantidades de areas
+        // Cantidades de areasc
         creadorDeDatos.setCantidadPistasAterrizaje(  Integer.parseInt(pistasDeAterrizaje.getText().trim()));
         creadorDeDatos.setCantidadPistasDespegue( Integer.parseInt(cantidadPistasDespliegue.getText().trim()));
         creadorDeDatos.setCantidadEstacionesControl( Integer.parseInt(cantidadEstacionesControl.getText().trim()));

@@ -10,10 +10,7 @@ package com.mycompany.Backend.Estaciones;
  */
 public class EstacionDesbordaje extends Estacion {
 
-    public EstacionDesbordaje(int idDeArea, String tipoDeArea) {
-        super(idDeArea, tipoDeArea);
+    public EstacionDesbordaje(int idDeArea, String tipoDeArea, int capacidadMaxima) {
+        super(idDeArea, tipoDeArea, capacidadMaxima);
     }
-
-
-    
 }

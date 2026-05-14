@@ -16,14 +16,14 @@ public class GeneradorDePistas extends Generadores{
     
     private int idPista;
     
-    public Pista crearPistaAterrizaje(){
+    public Pista crearPistaAterrizaje(int capacidad){
         idPista = generarNumerosAleatorios(100, 999);
-        return new PistaDeAterrizaje(idPista, "Pista de aterrizaje");
+        return new PistaDeAterrizaje(idPista, "Pista de aterrizaje", capacidad);
     }
     
-    public Pista crearPistaDespegue(){
+    public Pista crearPistaDespegue(int capacidad){
         idPista = generarNumerosAleatorios(100, 999);
-        return new PistaDespegue(idPista, "Pista de despegue");
+        return new PistaDespegue(idPista, "Pista de despegue", capacidad);
     }
     
 }

@@ -8,8 +8,16 @@ package com.mycompany.Backend.GestorDeDatos;
  *
  * @author Kenny
  */
-public class CreadorDeDatos {
+public class CreadorArchivosCSV {
 
+    private final static String PATH_DATOS = "datos/";
+    private final static String ARCHIVO_AVIONES = PATH_DATOS + "aviones.CSV";
+    private final static String ARCHIVO_ESTACIONES_DE_CONTROL = PATH_DATOS + "control.CSV";
+    private final static String ARCHIVO_ESTACIONES_DE_MANTENIMIENTO = PATH_DATOS + "mantenimiento.CSV";
+    private final static String ARCHIVO_ESTACIONES_DE_DESBORDE = PATH_DATOS + "desbordaje.CSV";
+    private final static String ARCHIVO_PISTAS_DE_ATERRIZAJE = PATH_DATOS + "desbordaje.CSV";
+    private final static String ARCHIVO_PISTAS_DE_DESPLIEGUE = PATH_DATOS + "despliegue.CSV";
+    
     // Aviones
     private int cantidadDeAvionesGrandes;
     private int cantidadDeAvionesMedianos;
@@ -40,6 +48,30 @@ public class CreadorDeDatos {
     private int capacidadControl;
     private int capacidadDesbordaje;
     private int capacidadMantenimiento;
+    
+    public void guardarAviones(){
+        
+    }
+    
+    public void guardarEstacionesDeControl(){
+        
+    }
+    
+    public void guardarEstacionesDeAterrizaje(){
+        
+    }
+    
+    public void guardarEstacionesDeMantenimiento(){
+        
+    }
+    
+    public void guardarPistasDeAterrizaje(){
+        
+    }
+    
+    public void guardarPistasDeDespliegue(){
+        
+    }
 
     // SETTERS AVIONES
     public void setCantidadDeAvionesGrandes(int cantidadDeAvionesGrandes) {

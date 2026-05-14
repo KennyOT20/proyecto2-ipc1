@@ -12,10 +12,9 @@ package com.mycompany.Backend.Estaciones;
  */
 public class EstacionDeMantenimiento extends Estacion {
     
-    public EstacionDeMantenimiento(int idDeArea, String tipoDeArea) {
-        super(idDeArea, tipoDeArea);
+    public EstacionDeMantenimiento(int idDeArea, String tipoDeArea, int capacidadMaxima) {
+        super(idDeArea, tipoDeArea, capacidadMaxima);
     }
     
-
-    
+ 
 }

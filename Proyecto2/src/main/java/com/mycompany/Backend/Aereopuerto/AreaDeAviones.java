@@ -17,13 +17,14 @@ public abstract class AreaDeAviones {
     private final ListaGenerica <Avion> avionesEnLista;
     private String tipoDeArea;
     private int capacidad;
-    private int capacidadMaxima;
-    private int idDeArea;
+    private final int capacidadMaxima;
+    private final int idDeArea;
     
-    public AreaDeAviones(int idDeArea, String tipoDeArea){
+    public AreaDeAviones(int idDeArea, String tipoDeArea, int capacidadMaxima){
         this.idDeArea = idDeArea;
         this.tipoDeArea = tipoDeArea;
         this.avionesEnLista = new ListaGenerica<>();
+        this.capacidadMaxima = capacidadMaxima;
     }
  
     public boolean estaLLena(){

@@ -19,19 +19,19 @@ public class GeneradorDeEstaciones extends Generadores {
     
     private int idEstacion;
     
-   public Estacion crearEstacionDeContro(){
+   public Estacion crearEstacionDeContro(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeControl(idEstacion, "Estacion de control");
+       return new EstacionDeControl(idEstacion, "Estacion de control", capacidad);
    }
     
-   public Estacion crearEstacionDeMantenimiento(){
+   public Estacion crearEstacionDeMantenimiento(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeMantenimiento(idEstacion, "Estacion de mantenimiento");
+       return new EstacionDeMantenimiento(idEstacion, "Estacion de mantenimiento", capacidad);
    }
    
-   public Estacion crearEstacionDeDesborde(){
+   public Estacion crearEstacionDeDesborde(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDesbordaje(idEstacion, "Estacion de desbordaje");
+       return new EstacionDesbordaje(idEstacion, "Estacion de desbordaje", capacidad);
    }
     
     
