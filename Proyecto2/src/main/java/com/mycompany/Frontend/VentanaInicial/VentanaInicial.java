@@ -6,6 +6,7 @@ package com.mycompany.Frontend.VentanaInicial;
 
 import com.mycompany.Frontend.FrontendMenus.MenuInicial;
 import com.mycompany.Frontend.PanelesContenedores.ContenedorDatos;
+import com.mycompany.Frontend.PanelesDeEdicion.PanelContenedorEdicion;
 import java.awt.CardLayout;
 
 
@@ -17,7 +18,9 @@ public class VentanaInicial extends javax.swing.JFrame {
     
     private final MenuInicial menuInicial;
     private final ContenedorDatos contenedorDeDatos;
+    private final PanelContenedorEdicion contenedorEdicion;
     private final String CONTENEDOR_DE_DATOS = "CONTENEDOR DE DATOS";
+    private final String CONTENEDOR_DE_EDICIONES = "CONTENEDOR DE EDICION";
     private final String MENU_INICIAL = "MENU INICIAL";
 
     /**
@@ -26,6 +29,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     public VentanaInicial() {
         this.menuInicial = new MenuInicial(this);
         this.contenedorDeDatos = new ContenedorDatos(this);
+        this.contenedorEdicion = new PanelContenedorEdicion(this);
         
         initComponents();
         agregarPanelesPrincipales();
@@ -38,6 +42,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     private void agregarPanelesPrincipales(){
         PanelContenedor.add(contenedorDeDatos, CONTENEDOR_DE_DATOS);
         PanelContenedor.add(menuInicial, MENU_INICIAL);
+        PanelContenedor.add(contenedorEdicion, CONTENEDOR_DE_EDICIONES);
     }
     
     private void cambiarDePaneles(String panel){
@@ -51,6 +56,10 @@ public class VentanaInicial extends javax.swing.JFrame {
     
     public  final void irAMenuInicial(){
         cambiarDePaneles(MENU_INICIAL);
+    }
+    
+    public void irAEdicionDeDatos(){
+        cambiarDePaneles(CONTENEDOR_DE_EDICIONES);
     }
 
     /**

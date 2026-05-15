@@ -56,26 +56,6 @@ public class ValidacionesDeDatos {
         }
     }
     
-    protected boolean validarTiempos() {
-        try {
-            int tiempoAterrizajeValor = Integer.parseInt(creadorDeDatos.getTiempoAterrizaje().getText().trim());
-            int tiempoDespegueValor = Integer.parseInt(creadorDeDatos.getTiempoDeDespegue().getText().trim());
-            int tiempoGalonValor = Integer.parseInt(creadorDeDatos.getTiempoDeGalon().getText().trim());
-            int tiempoMantenimientoValor = Integer.parseInt(creadorDeDatos.getTiempoDeMantenimiento().getText().trim());
-            int tiempoDesbordajeValor = Integer.parseInt(creadorDeDatos.getTiempoDesbordaje().getText().trim());
-
-            if (tiempoAterrizajeValor <= 0|| tiempoDespegueValor <= 0 || tiempoGalonValor <= 0
-                    || tiempoMantenimientoValor <= 0|| tiempoDesbordajeValor <= 0) {
-                return false;
-            }
-
-            return true;
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-    
     protected boolean validarCantidadDeAreas() {
         try {
             int cantidadDesbordaje = Integer.parseInt(creadorDeDatos.getCantidadEstacionDesbordaje().getText().trim());

@@ -39,8 +39,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="panelTituloConfi" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="panelTituloTiempos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="panelTiempos" alignment="0" max="32767" attributes="0"/>
                   <Component id="labelTiempoDeMantenimiento" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
@@ -66,10 +64,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="labelTiempoDeMantenimiento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelTituloTiempos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelTiempos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -349,170 +343,6 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cantidad de Aviones   - Combustible "/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="panelTiempos">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="labelMantenimiento" alignment="0" max="32767" attributes="0"/>
-                      <Component id="labelTIempoDesbordaje" alignment="0" pref="349" max="32767" attributes="0"/>
-                      <Component id="labelTiempoAterrizaje" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                      <Component id="labelConsumo" alignment="0" pref="349" max="32767" attributes="0"/>
-                      <Component id="labelDespliegue" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tiempoDesbordaje" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tiempoAterrizaje" alignment="1" max="32767" attributes="0"/>
-                      <Component id="tiempoDeDespegue" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tiempoDeGalon" alignment="1" max="32767" attributes="0"/>
-                      <Component id="tiempoDeMantenimiento" alignment="1" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelTiempoAterrizaje" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="tiempoAterrizaje" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelTIempoDesbordaje" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="tiempoDesbordaje" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelMantenimiento" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="tiempoDeMantenimiento" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tiempoDeGalon" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelConsumo" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelDespliegue" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="tiempoDeDespegue" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelTiempoAterrizaje">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Aterrizaje:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tiempoAterrizaje">
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelTIempoDesbordaje">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Desbordaje de cada pasajero:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tiempoDesbordaje">
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelMantenimiento">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Tiempo de mantenimiento: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tiempoDeMantenimiento">
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelConsumo">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Consumo de un galon de combustible:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tiempoDeGalon">
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelDespliegue">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Despegue"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tiempoDeDespegue">
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="panelTituloTiempos">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="33" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labelTituloDeTiempos" alignment="0" pref="317" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labelTituloDeTiempos" alignment="0" pref="44" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelTituloDeTiempos">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Configuracion de tiempos (ms)"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -806,7 +636,7 @@
                   <Component id="botonGuardar" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="botonVolver" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -59,6 +59,11 @@ public class MenuDeDatos extends javax.swing.JPanel {
         botonEditarDatos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonEditarDatos.setForeground(new java.awt.Color(0, 0, 0));
         botonEditarDatos.setText("Editar Datos");
+        botonEditarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarDatosActionPerformed(evt);
+            }
+        });
 
         botonVolverAlMenu.setBackground(new java.awt.Color(51, 102, 255));
         botonVolverAlMenu.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
@@ -120,6 +125,12 @@ public class MenuDeDatos extends javax.swing.JPanel {
         // TODO add your handling code here:
         contenedorDeDatos.getVentanaPrincipal().irAMenuInicial();
     }//GEN-LAST:event_botonVolverAlMenuActionPerformed
+
+    private void botonEditarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarDatosActionPerformed
+        // TODO add your handling code here:
+        
+        contenedorDeDatos.getVentanaPrincipal().irAEdicionDeDatos();
+    }//GEN-LAST:event_botonEditarDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,7 +4,16 @@
  */
 package com.mycompany.Backend.GestorDeDatos;
 
+import com.mycompany.Backend.Aereopuerto.Generadores.GeneradorDeAviones;
+import com.mycompany.Backend.Aereopuerto.Generadores.GeneradorDeEstaciones;
+import com.mycompany.Backend.Aereopuerto.Generadores.GeneradorDePistas;
+import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Estaciones.Estacion;
+import com.mycompany.Backend.Pistas.Pista;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -12,8 +21,11 @@ import java.io.File;
  */
 public class CreadorArchivosCSV {
 
+    private final GeneradorDeAviones crearAviones;
+    private final GeneradorDeEstaciones crearEstaciones;
+    private final GeneradorDePistas crearPistas;
     private final static String PATH_PRINCIPAL = "datos/";
-    private String nombreDeDatos;
+    private final String nombreDeDatos;
     
     private int cantidadDeAvionesGrandes;
     private int cantidadDeAvionesMedianos;
@@ -21,11 +33,6 @@ public class CreadorArchivosCSV {
     private int combustibleGrande;
     private int combustibleMediano;
     private int combustiblePequeño;
-    private int tiempoAterrizaje;
-    private int tiempoDespegue;
-    private int tiempoConsumoGalon;
-    private int tiempoMantenimiento;
-    private int tiempoDesbordaje;
     private int cantidadPistasAterrizaje;
     private int cantidadPistasDespegue;
     private int cantidadEstacionesControl;
@@ -39,8 +46,12 @@ public class CreadorArchivosCSV {
     
     public CreadorArchivosCSV(String nombreDeDatos){
         this.nombreDeDatos = nombreDeDatos;
+        this.crearAviones = new GeneradorDeAviones();
+        this.crearEstaciones = new GeneradorDeEstaciones();
+        this.crearPistas = new GeneradorDePistas();
         crearCarpetaDeArchivos();
     }
+    
     
     private void crearCarpetaDeArchivos(){
         File carpetaDeDatos = new File(obtenerPathCarpetas());
@@ -49,6 +60,178 @@ public class CreadorArchivosCSV {
             carpetaDeDatos.mkdirs();
         }
     }
+    
+    public void guardarDatos(){
+        guardarAviones();
+        guardarEstaciones();
+        guardarPistas();
+    }
+    
+    private void guardarAviones(){
+        File archivoAviones = new File(obtenerArchivoAviones());
+        guardarAvionesPequeños(archivoAviones);
+        guardarAvionesMedianos(archivoAviones);
+        guardarAvionesGrandes(archivoAviones);
+        
+    }
+    
+    private void guardarEstaciones(){
+        File archivoControl = new File(obtenerArchivoControl());
+        File archivoMantenimiento = new File(obtenerArchivoMantenimiento());
+        File archivoDesbordaje = new File(obtenerArchivoDesbordaje());
+        
+        guardarEstacionDeControl(archivoControl);
+        guardarEstacionesDeMantenimiento(archivoMantenimiento);
+        guardarEstacionDesbordaje(archivoDesbordaje);
+    }
+    
+    private void guardarPistas(){
+        File archivoPistaDeAterrizaje = new File(obtenerArchivoAterrizaje());
+        File archivoPistaDeDespegue = new File(obtenerArchivoDespegue());
+        
+        guardarPistasDeAterrizaje(archivoPistaDeAterrizaje);
+        guardarPistasDeDespeje(archivoPistaDeDespegue);
+        
+    }
+    
+    private void guardarPistasDeAterrizaje(File archivoPistaDeAterrizaje){
+        try (FileWriter fileWriter = new FileWriter(archivoPistaDeAterrizaje, true)){ 
+            
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            for (int i = 0; i < cantidadPistasAterrizaje; i++) {
+                Pista pistasDeAterrizaje = crearPistas.crearPistaAterrizaje(capacidadAterrizaje);
+                
+                String lineaCSVAterrizaje = pistasDeAterrizaje.getIdDeArea() + ", " + pistasDeAterrizaje.getCapacidadMaxima();
+                
+                printWriter.println(lineaCSVAterrizaje);
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void guardarPistasDeDespeje(File archivoPistaDespeje){
+        try (FileWriter fileWriter = new FileWriter(archivoPistaDespeje, true)){ 
+            
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            for (int i = 0; i < cantidadPistasDespegue; i++) {
+                Pista pistaDeDespegue = crearPistas.crearPistaAterrizaje(capacidadDespegue);
+                
+                String lineaCSVDespegue = pistaDeDespegue.getIdDeArea() + ", " + pistaDeDespegue.getCapacidadMaxima();
+                
+                printWriter.println(lineaCSVDespegue);
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     private void guardarAvionesPequeños(File archivoAviones){
+        
+        try (FileWriter fileWriter = new FileWriter(archivoAviones, true)){ 
+            
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            for (int i = 0; i < cantidadDeAvionesMedianos; i++) {
+                Avion avionPequeño = crearAviones.crearAvionPequeño(combustiblePequeño);
+                
+                String lineaCSV = avionPequeño.getIdAvion() + ", " + avionPequeño.getCombustible() + ", " + avionPequeño.getCapacidadMin() + ", "+ avionPequeño.getCapacidadMax() 
+                        + ", " + avionPequeño.getTipo();
+                
+                printWriter.println(lineaCSV);
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       
+    }
+     
+     private void guardarAvionesGrandes(File archivoAviones){
+         try (FileWriter fileWriter = new FileWriter(archivoAviones, true)) {
+             PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            for (int i = 0; i < cantidadDeAvionesGrandes; i++) {
+                Avion avionGrande = crearAviones.crearAvionGrande(combustibleGrande);
+                
+                String lineaCSV = avionGrande.getIdAvion() + ", " + avionGrande.getCombustible() + ", " + avionGrande.getCapacidadMin() + ", "+ avionGrande.getCapacidadMax() 
+                        + ", " + avionGrande.getTipo();
+                
+                printWriter.println(lineaCSV);
+            }
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+     }
+     
+     private void guardarAvionesMedianos(File archivoAviones){
+         try (FileWriter fileWriter = new FileWriter(archivoAviones, true)) {
+             PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            for (int i = 0; i < cantidadDeAvionesPequeños; i++) {
+                Avion avionMediano = crearAviones.crearAvionMediano(combustibleMediano);
+                
+                String lineaCSV = avionMediano.getIdAvion() + ", " + avionMediano.getCombustible() + ", " + avionMediano.getCapacidadMin() + ", "+ avionMediano.getCapacidadMax() 
+                        + ", " + avionMediano.getTipo();
+                
+                printWriter.println(lineaCSV);
+            }
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+     }
+     
+     private void guardarEstacionesDeMantenimiento(File archivoMantenimiento){
+         try (FileWriter fileWriter = new FileWriter(archivoMantenimiento, true )) {
+             PrintWriter printWriter = new PrintWriter(fileWriter);
+             
+             for (int i = 0; i < cantidadEstacionMantenimiento; i++) {
+                 Estacion estacionDeMantenimiento = crearEstaciones.crearEstacionDeMantenimiento(capacidadMantenimiento);
+                 
+                 String lineaCSVMantenimiento = estacionDeMantenimiento.getIdDeArea() + ", " + estacionDeMantenimiento.getCapacidadMaxima();
+                 
+                 printWriter.println(lineaCSVMantenimiento);
+             }
+             
+         } catch (Exception e) {
+         }
+     }
+     
+     private void guardarEstacionDeControl(File archivoControl){
+         try (FileWriter fileWriter = new FileWriter(archivoControl, true )) {
+             PrintWriter printWriter = new PrintWriter(fileWriter);
+             
+             for (int i = 0; i < cantidadEstacionesControl; i++) {
+                 Estacion estacionDeControl = crearEstaciones.crearEstacionDeMantenimiento(capacidadControl);
+                 
+                 String lineaCSVControl = estacionDeControl.getIdDeArea() + ", " + estacionDeControl.getCapacidadMaxima();
+                 
+                 printWriter.println(lineaCSVControl);
+             }
+             
+         } catch (Exception e) {
+         }
+     }
+     
+     private void guardarEstacionDesbordaje(File archivoDesbordaje){
+         try (FileWriter fileWriter = new FileWriter(archivoDesbordaje, true )) {
+             PrintWriter printWriter = new PrintWriter(fileWriter);
+             
+             for (int i = 0; i < cantidadEstacionDesbordaje; i++) {
+                 Estacion estacionDeMantenimiento = crearEstaciones.crearEstacionDeMantenimiento(capacidadDesbordaje);
+                 
+                 String lineaCSVDesbordaje = estacionDeMantenimiento.getIdDeArea() + ", " + estacionDeMantenimiento.getCapacidadMaxima();
+                 
+                 printWriter.println(lineaCSVDesbordaje);
+             }
+             
+         } catch (Exception e) {
+         }
+     }
     
     public String obtenerPathCarpetas() {
         return PATH_PRINCIPAL + nombreDeDatos + "/";
@@ -78,7 +261,7 @@ public class CreadorArchivosCSV {
         return obtenerPathCarpetas() + "despegue.csv";
     }
     
-
+    
     // SETTERS AVIONES
     public void setCantidadDeAvionesGrandes(int cantidadDeAvionesGrandes) {
         this.cantidadDeAvionesGrandes = cantidadDeAvionesGrandes;
@@ -105,26 +288,6 @@ public class CreadorArchivosCSV {
         this.combustiblePequeño = combustiblePequeño;
     }
 
-    // SETTERS TIEMPOS
-    public void setTiempoAterrizaje(int tiempoAterrizaje) {
-        this.tiempoAterrizaje = tiempoAterrizaje;
-    }
-
-    public void setTiempoDespegue(int tiempoDespegue) {
-        this.tiempoDespegue = tiempoDespegue;
-    }
-
-    public void setTiempoConsumoGalon(int tiempoConsumoGalon) {
-        this.tiempoConsumoGalon = tiempoConsumoGalon;
-    }
-
-    public void setTiempoMantenimiento(int tiempoMantenimiento) {
-        this.tiempoMantenimiento = tiempoMantenimiento;
-    }
-
-    public void setTiempoDesbordaje(int tiempoDesbordaje) {
-        this.tiempoDesbordaje = tiempoDesbordaje;
-    }
 
     // SETTERS CANTIDADES
     public void setCantidadPistasAterrizaje(int cantidadPistasAterrizaje) {

@@ -45,6 +45,11 @@ public abstract class AreaDeAviones {
     public int getIdDeArea() {
         return idDeArea;
     }
+
+    public int getCapacidadMaxima() {
+        return capacidadMaxima;
+    }
+    
     
     
     

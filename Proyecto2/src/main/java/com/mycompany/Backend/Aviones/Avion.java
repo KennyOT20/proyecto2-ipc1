@@ -5,6 +5,7 @@
 package com.mycompany.Backend.Aviones;
 
 import com.mycompany.Backend.Vuelo.Vuelo;
+import java.util.Random;
 
 /**
  *
@@ -12,6 +13,7 @@ import com.mycompany.Backend.Vuelo.Vuelo;
  */
 public abstract class Avion{
     
+    private final Random random ;
     private final Vuelo vuelo;
     private boolean vueloFallado;
     private final CabinaDeAvion controladorAvion;
@@ -30,6 +32,7 @@ public abstract class Avion{
 
     public Avion(String tipo, int capacidadMin, int capacidadMax, int idAvion, int combustible) {
         this.vuelo = new Vuelo();
+        this.random = new Random();
         this.controladorAvion = new CabinaDeAvion(this);
         this.tipo = tipo;
         this.capacidadMax = capacidadMax;
@@ -143,5 +146,11 @@ public abstract class Avion{
     public Vuelo getVuelo() {
         return vuelo;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+    
+    
     
 }
