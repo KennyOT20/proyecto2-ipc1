@@ -13,9 +13,6 @@ import javax.swing.DefaultListModel;
  */
 public class PanelMenuDeEdicion extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelMenuDeEdicion
-     */
     public PanelMenuDeEdicion() {
         initComponents();
         cargarSimulaciones();
@@ -35,6 +32,9 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
         panelDeListas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaDeArchivos = new javax.swing.JList<>();
+        panelBotones = new javax.swing.JPanel();
+        botonElegirDatos = new javax.swing.JButton();
+        botonVolverAlMenu = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -83,6 +83,35 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        panelBotones.setBackground(new java.awt.Color(51, 255, 204));
+
+        botonElegirDatos.setBackground(new java.awt.Color(255, 204, 102));
+        botonElegirDatos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        botonElegirDatos.setForeground(new java.awt.Color(0, 0, 0));
+        botonElegirDatos.setText("Elegir Datos");
+
+        botonVolverAlMenu.setBackground(new java.awt.Color(102, 102, 255));
+        botonVolverAlMenu.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        botonVolverAlMenu.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolverAlMenu.setText("Volver al menu");
+
+        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
+        panelBotones.setLayout(panelBotonesLayout);
+        panelBotonesLayout.setHorizontalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(botonElegirDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonVolverAlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+        );
+        panelBotonesLayout.setVerticalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(botonElegirDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(botonVolverAlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,15 +120,23 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(panelDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(638, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(panelDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(panelDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 32, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,12 +163,17 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
 
         listaDeArchivos.setModel(modelo);
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonElegirDatos;
+    private javax.swing.JButton botonVolverAlMenu;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JList<String> listaDeArchivos;
+    private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelDeListas;
     // End of variables declaration//GEN-END:variables
 }

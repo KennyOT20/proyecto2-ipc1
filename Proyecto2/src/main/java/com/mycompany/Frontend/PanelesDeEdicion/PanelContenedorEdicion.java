@@ -54,6 +54,12 @@ public class PanelContenedorEdicion extends javax.swing.JPanel {
         cambiarPaneles(MENU_EDICION);
     }
 
+    public PanelMenuDeEdicion getMenuEditar() {
+        return menuEditar;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

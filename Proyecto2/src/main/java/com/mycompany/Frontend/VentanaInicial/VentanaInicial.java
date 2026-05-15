@@ -104,6 +104,11 @@ public class VentanaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public PanelContenedorEdicion getContenedorEdicion() {
+        return contenedorEdicion;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelContenedor;
     private javax.swing.JPanel jPanel1;

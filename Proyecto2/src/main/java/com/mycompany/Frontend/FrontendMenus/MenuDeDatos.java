@@ -129,7 +129,9 @@ public class MenuDeDatos extends javax.swing.JPanel {
     private void botonEditarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarDatosActionPerformed
         // TODO add your handling code here:
         
+        contenedorDeDatos.getVentanaPrincipal().getContenedorEdicion().getMenuEditar().cargarSimulaciones();
         contenedorDeDatos.getVentanaPrincipal().irAEdicionDeDatos();
+        
     }//GEN-LAST:event_botonEditarDatosActionPerformed
 
 

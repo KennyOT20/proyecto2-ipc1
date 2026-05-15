@@ -49,7 +49,6 @@ public class CreadorArchivosCSV {
         this.crearAviones = new GeneradorDeAviones();
         this.crearEstaciones = new GeneradorDeEstaciones();
         this.crearPistas = new GeneradorDePistas();
-        crearCarpetaDeArchivos();
     }
     
     
@@ -62,6 +61,7 @@ public class CreadorArchivosCSV {
     }
     
     public void guardarDatos(){
+        crearCarpetaDeArchivos();
         guardarAviones();
         guardarEstaciones();
         guardarPistas();
@@ -233,6 +233,11 @@ public class CreadorArchivosCSV {
          }
      }
     
+    public boolean verificarNombreRepetido() {
+        File carpetaDeDatos = new File(obtenerPathCarpetas());
+        return carpetaDeDatos.exists();
+    }
+     
     public String obtenerPathCarpetas() {
         return PATH_PRINCIPAL + nombreDeDatos + "/";
     }

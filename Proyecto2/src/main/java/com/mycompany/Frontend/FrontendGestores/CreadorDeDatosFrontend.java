@@ -474,12 +474,12 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
         guardarDatos();
 
-        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
         contenedorDatos.irAMenuDeDatos();
+        reiniciarTextos();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     
@@ -487,6 +487,11 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
    private void guardarDatos() {
        
        CreadorArchivosCSV creadorDeDatos = new CreadorArchivosCSV(nombreDeDatos.getText());
+       
+       if (creadorDeDatos.verificarNombreRepetido()) {
+            JOptionPane.showMessageDialog( this, "Ya existe un conjunto de datos con ese nombre.");
+            return;
+        }
        
         // Aviones
         creadorDeDatos.setCantidadDeAvionesGrandes(Integer.parseInt(avionesGrande.getText().trim()));
@@ -514,9 +519,31 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         
         creadorDeDatos.guardarDatos();
         
+        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
+        
+        reiniciarTextos();
+        contenedorDatos.irAMenuDeDatos();
+        
     }
    
-   
+   private void reiniciarTextos(){
+       avionesGrande.setText("");
+       avionesPequeños.setText("");
+       avionesMedianos.setText("");
+       combustibleGrande.setText("");
+       combustiblePequeño.setText("");
+       combustibleMediano.setText("");
+       cantidadEstacionDesbordaje.setText("");
+       cantidadEstacionMantenimiento.setText("");
+       cantidadEstacionesControl.setText("");
+       cantidadPistasDespliegue.setText("");
+       capacidadDeAterrizaje.setText("");
+       capacidadDeControl.setText("");
+       capacidadDeDesbordaje.setText("");
+       capacidadDeDespliegue.setText("");
+       capacidadDeMantenimiento.setText("");
+       pistasDeAterrizaje.setText("");
+   }
    
    
    
