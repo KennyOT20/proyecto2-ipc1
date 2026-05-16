@@ -4,6 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesDeEdicion;
 
+import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.io.File;
 import javax.swing.DefaultListModel;
 
@@ -13,9 +14,16 @@ import javax.swing.DefaultListModel;
  */
 public class PanelMenuDeEdicion extends javax.swing.JPanel {
 
-    public PanelMenuDeEdicion() {
+    private final PanelContenedorEdicion editarArchivos;
+    private final VentanaInicial ventanaInicial;
+    
+    public PanelMenuDeEdicion(VentanaInicial ventanaInicial, PanelContenedorEdicion editarArchivos) {
         initComponents();
+        this.ventanaInicial = ventanaInicial;
+        this.editarArchivos = editarArchivos;
         cargarSimulaciones();
+        configurarLista();
+        botonElegirDatos.setEnabled(false);
     }
 
     /**
@@ -89,11 +97,21 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
         botonElegirDatos.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonElegirDatos.setForeground(new java.awt.Color(0, 0, 0));
         botonElegirDatos.setText("Elegir Datos");
+        botonElegirDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonElegirDatosActionPerformed(evt);
+            }
+        });
 
         botonVolverAlMenu.setBackground(new java.awt.Color(102, 102, 255));
         botonVolverAlMenu.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonVolverAlMenu.setForeground(new java.awt.Color(0, 0, 0));
         botonVolverAlMenu.setText("Volver al menu");
+        botonVolverAlMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverAlMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
         panelBotones.setLayout(panelBotonesLayout);
@@ -140,6 +158,41 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void configurarLista() {
+
+        listaDeArchivos.addListSelectionListener(e -> {
+
+            if (!e.getValueIsAdjusting()) {
+
+                String seleccionado = listaDeArchivos.getSelectedValue();
+
+                if (seleccionado != null
+                        && !seleccionado.equals("No hay archivos creados")) {
+
+                    botonElegirDatos.setEnabled(true);
+
+                } else {
+                    botonElegirDatos.setEnabled(false);
+                }
+            }
+        });
+    }
+    
+    private void botonElegirDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonElegirDatosActionPerformed
+        // TODO add your handling code here:
+        
+       String simulacionSeleccionada = listaDeArchivos.getSelectedValue();
+
+      editarArchivos.irAEdicion(simulacionSeleccionada);
+      
+        
+    }//GEN-LAST:event_botonElegirDatosActionPerformed
+
+    private void botonVolverAlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverAlMenuActionPerformed
+        // TODO add your handling code here:
+        ventanaInicial.irAMenuDatos();
+    }//GEN-LAST:event_botonVolverAlMenuActionPerformed
+
     
     
     public final void cargarSimulaciones() {
@@ -163,8 +216,6 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
 
         listaDeArchivos.setModel(modelo);
     }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonElegirDatos;

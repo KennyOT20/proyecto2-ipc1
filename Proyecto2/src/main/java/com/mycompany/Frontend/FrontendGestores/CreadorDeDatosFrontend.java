@@ -15,12 +15,12 @@ import javax.swing.JTextField;
  */
 public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
-    private final ValidacionesDeDatos validarDatos;
+    private final ValidacionCreacionDeDatos validarDatos;
     private final ContenedorDatos contenedorDatos;
     
     
     public CreadorDeDatosFrontend(ContenedorDatos contenedorDatos) {
-        this.validarDatos = new ValidacionesDeDatos(this);
+        this.validarDatos = new ValidacionCreacionDeDatos(this);
         this.contenedorDatos = contenedorDatos;
         initComponents();
         

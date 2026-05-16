@@ -102,7 +102,8 @@ public class CreadorArchivosCSV {
             for (int i = 0; i < cantidadPistasAterrizaje; i++) {
                 Pista pistasDeAterrizaje = crearPistas.crearPistaAterrizaje(capacidadAterrizaje);
                 
-                String lineaCSVAterrizaje = pistasDeAterrizaje.getIdDeArea() + ", " + pistasDeAterrizaje.getCapacidadMaxima();
+                String lineaCSVAterrizaje = pistasDeAterrizaje.getTipoDeArea() + ", " +
+                        pistasDeAterrizaje.getIdDeArea() + ", " + pistasDeAterrizaje.getCapacidadMaxima();
                 
                 printWriter.println(lineaCSVAterrizaje);
             }
@@ -118,9 +119,10 @@ public class CreadorArchivosCSV {
             PrintWriter printWriter = new PrintWriter(fileWriter);
             
             for (int i = 0; i < cantidadPistasDespegue; i++) {
-                Pista pistaDeDespegue = crearPistas.crearPistaAterrizaje(capacidadDespegue);
+                Pista pistaDeDespegue = crearPistas.crearPistaDespegue(capacidadDespegue);
                 
-                String lineaCSVDespegue = pistaDeDespegue.getIdDeArea() + ", " + pistaDeDespegue.getCapacidadMaxima();
+                String lineaCSVDespegue = pistaDeDespegue.getTipoDeArea() + ", " +
+                        pistaDeDespegue.getIdDeArea() + ", " + pistaDeDespegue.getCapacidadMaxima();
                 
                 printWriter.println(lineaCSVDespegue);
             }
@@ -192,7 +194,8 @@ public class CreadorArchivosCSV {
              for (int i = 0; i < cantidadEstacionMantenimiento; i++) {
                  Estacion estacionDeMantenimiento = crearEstaciones.crearEstacionDeMantenimiento(capacidadMantenimiento);
                  
-                 String lineaCSVMantenimiento = estacionDeMantenimiento.getIdDeArea() + ", " + estacionDeMantenimiento.getCapacidadMaxima();
+                 String lineaCSVMantenimiento = estacionDeMantenimiento.getTipoDeArea() + ", " + 
+                         estacionDeMantenimiento.getIdDeArea() + ", " + estacionDeMantenimiento.getCapacidadMaxima();
                  
                  printWriter.println(lineaCSVMantenimiento);
              }
@@ -206,9 +209,10 @@ public class CreadorArchivosCSV {
              PrintWriter printWriter = new PrintWriter(fileWriter);
              
              for (int i = 0; i < cantidadEstacionesControl; i++) {
-                 Estacion estacionDeControl = crearEstaciones.crearEstacionDeMantenimiento(capacidadControl);
+                 Estacion estacionDeControl = crearEstaciones.crearEstacionDeContro(capacidadControl);
                  
-                 String lineaCSVControl = estacionDeControl.getIdDeArea() + ", " + estacionDeControl.getCapacidadMaxima();
+                 String lineaCSVControl = estacionDeControl.getTipoDeArea() + ", " + estacionDeControl.getIdDeArea() + ", " + 
+                         estacionDeControl.getCapacidadMaxima();
                  
                  printWriter.println(lineaCSVControl);
              }
@@ -222,9 +226,10 @@ public class CreadorArchivosCSV {
              PrintWriter printWriter = new PrintWriter(fileWriter);
              
              for (int i = 0; i < cantidadEstacionDesbordaje; i++) {
-                 Estacion estacionDeMantenimiento = crearEstaciones.crearEstacionDeMantenimiento(capacidadDesbordaje);
+                 Estacion estacionDeMantenimiento = crearEstaciones.crearEstacionDeDesborde(capacidadDesbordaje);
                  
-                 String lineaCSVDesbordaje = estacionDeMantenimiento.getIdDeArea() + ", " + estacionDeMantenimiento.getCapacidadMaxima();
+                 String lineaCSVDesbordaje = estacionDeMantenimiento.getTipoDeArea() + ", " + estacionDeMantenimiento.getIdDeArea() + ", " 
+                         + estacionDeMantenimiento.getCapacidadMaxima();
                  
                  printWriter.println(lineaCSVDesbordaje);
              }

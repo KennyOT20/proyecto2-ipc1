@@ -8,11 +8,11 @@ package com.mycompany.Frontend.FrontendGestores;
  *
  * @author Kenny
  */
-public class ValidacionesDeDatos {
+public class ValidacionCreacionDeDatos {
     
     private final CreadorDeDatosFrontend creadorDeDatos;
     
-    public ValidacionesDeDatos(CreadorDeDatosFrontend creadorDeDatos){
+    public ValidacionCreacionDeDatos(CreadorDeDatosFrontend creadorDeDatos){
         this.creadorDeDatos = creadorDeDatos;
     }
     
@@ -98,12 +98,7 @@ public class ValidacionesDeDatos {
     }
     
     protected boolean validarNombre(){
-        
-        if(creadorDeDatos.getNombreDeDatos().getText().isEmpty()){
-            return false;
-        } else {
-            return true;
-        }
+        return !creadorDeDatos.getNombreDeDatos().getText().isEmpty();
     }
     
 }

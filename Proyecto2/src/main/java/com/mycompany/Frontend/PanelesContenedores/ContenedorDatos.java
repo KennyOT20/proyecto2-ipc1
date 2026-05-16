@@ -26,10 +26,10 @@ public class ContenedorDatos extends javax.swing.JPanel {
      * @param ventanaPrincipal
      */
     public ContenedorDatos(VentanaInicial ventanaPrincipal) {
-        this.ventanaPrincipal = ventanaPrincipal;
+        initComponents();
+         this.ventanaPrincipal = ventanaPrincipal;
         this.crearDatosFrontend = new CreadorDeDatosFrontend(this);
         this.menuDeDatos = new MenuDeDatos(this);
-        initComponents();
         agregarPaneles();
         irAMenuDeDatos();
     }

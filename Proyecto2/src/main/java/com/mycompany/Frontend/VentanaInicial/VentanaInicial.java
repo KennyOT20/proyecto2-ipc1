@@ -107,6 +107,10 @@ public class VentanaInicial extends javax.swing.JFrame {
     public PanelContenedorEdicion getContenedorEdicion() {
         return contenedorEdicion;
     }
+
+    public ContenedorDatos getContenedorDeDatos() {
+        return contenedorDeDatos;
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

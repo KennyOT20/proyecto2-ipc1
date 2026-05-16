@@ -4,17 +4,28 @@
  */
 package com.mycompany.Frontend.PanelesDeEdicion;
 
+import com.mycompany.Backend.GestorDeDatos.LectorArchivoCSV;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny
  */
 public class PanelEdicionDeArchivos extends javax.swing.JPanel {
 
-    private final String nombreDeCargaElegida;
+    private final PanelContenedorEdicion contenedor;
+    private String carpetaElegida;
 
-    public PanelEdicionDeArchivos(String nombreDeCargaElegida) {
-        this.nombreDeCargaElegida = nombreDeCargaElegida;
+    public PanelEdicionDeArchivos(PanelContenedorEdicion contenedor) {
+        this.contenedor = contenedor;
         initComponents();
+      
     }
 
     /**
@@ -48,7 +59,7 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
         labelTitulo.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Edicion de carga de datos");
+        labelTitulo.setText("Edicion de datos");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
@@ -148,11 +159,21 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
         botonSalir.setFont(new java.awt.Font("Serif", 3, 15)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(0, 0, 0));
         botonSalir.setText("Volver y no guardar cambios");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         botonGuardar.setBackground(new java.awt.Color(0, 255, 51));
         botonGuardar.setFont(new java.awt.Font("Serif", 3, 15)); // NOI18N
         botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         botonGuardar.setText("Guardar cambio");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -163,20 +184,20 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(295, 295, 295)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,8 +221,316 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editarTablas(){
-        
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        // TODO add your handling code here:
+          if (!validarTablaAviones()) {
+            return;
+        }
+
+        if (!validarTablaPistas()) {
+            return;
+        }
+
+        if (!validarTablaEstaciones()) {
+            return;
+        }
+
+        guardarCambiosCSV();
+
+        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        contenedor.irAMenuEdicion();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void guardarCambiosCSV(){
+        guardarTablaAviones();
+        guardarTablaPistas();
+        guardarTablaEstaciones();
+    }
+    
+   public void editarTablas() {
+
+        LectorArchivoCSV lector = new LectorArchivoCSV(carpetaElegida);
+
+        String[][] datosAviones = lector.leerArchivo("aviones.csv");
+        String[][] datosAterrizaje = lector.leerArchivo("aterrizaje.csv");
+        String[][] datosDespegue = lector.leerArchivo("despegue.csv");
+        String[][] datosControl = lector.leerArchivo("control.csv");
+        String[][] datosMantenimiento = lector.leerArchivo("mantenimiento.csv");
+        String[][] datosDesbordaje = lector.leerArchivo("desbordaje.csv");
+
+        String[][] datosPistas = unirMatrices(datosAterrizaje, datosDespegue);
+        String[][] datosEstaciones = unirMatrices(
+                datosControl,
+                datosMantenimiento,
+                datosDesbordaje
+        );
+
+            // TABLA AVIONES
+            DefaultTableModel modeloAviones = new DefaultTableModel(
+                    datosAviones,
+                    new String[]{"ID", "Combustible", "Capacidad Min", "Capacidad Max", "Tipo"}
+            ) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // solo editar ID y Combustible
+                    return column == 0 || column == 1;
+                }
+            };
+
+            // TABLA PISTAS
+            DefaultTableModel modeloPistas = new DefaultTableModel(
+                    datosPistas,
+                    new String[]{"Tipo", "ID", "Capacidad"}
+            ) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // bloquear Tipo
+                    return column != 0;
+                }
+            };
+
+            // TABLA ESTACIONES
+            DefaultTableModel modeloEstaciones = new DefaultTableModel(
+                    datosEstaciones,
+                    new String[]{"Tipo", "ID", "Capacidad"}
+            ) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // bloquear Tipo
+                    return column != 0;
+                }
+            };
+
+            tablaDeAviones.setModel(modeloAviones);
+            TablaDePistas.setModel(modeloPistas);
+            TablaDeEstaciones.setModel(modeloEstaciones);
+    }
+   
+   private String[][] unirMatrices(String[][]... matrices) {
+
+        int totalFilas = 0;
+
+        for (String[][] matriz : matrices) {
+            totalFilas += matriz.length;
+        }
+
+        String[][] resultado = new String[totalFilas][];
+
+        int indice = 0;
+
+        for (String[][] matriz : matrices) {
+            for (String[] fila : matriz) {
+                resultado[indice] = fila;
+                indice++;
+            }
+        }
+
+        return resultado;
+    }
+   
+   
+   
+   private boolean validarTablaAviones() {
+
+        DefaultTableModel modelo = (DefaultTableModel) tablaDeAviones.getModel();
+
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+            try {
+                int id = Integer.parseInt(
+                        modelo.getValueAt(fila, 0).toString().trim()
+                );
+
+                int combustible = Integer.parseInt(
+                        modelo.getValueAt(fila, 1).toString().trim()
+                );
+
+                if (id <= 0 || combustible <= 0) {
+                    throw new NumberFormatException();
+                }
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(  this, "Error en tabla Aviones, fila " + (fila + 1)  + ". ID y combustible deben ser numeros mayores a 0."
+                );
+                return false;
+            }
+        }
+
+        return true;
+    }
+   
+   private boolean validarTablaPistas() {
+
+        DefaultTableModel modelo = (DefaultTableModel) TablaDePistas.getModel();
+
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+            try {
+                int id = Integer.parseInt(
+                        modelo.getValueAt(fila, 1).toString().trim()
+                );
+
+                int capacidad = Integer.parseInt(
+                        modelo.getValueAt(fila, 2).toString().trim()
+                );
+
+                if (id <= 0 || capacidad <= 0) {
+                    throw new NumberFormatException();
+                }
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(
+                        this,   "Error en tabla Pistas, fila " + (fila + 1) + ". ID y capacidad deben ser números mayores a 0."
+                );
+                return false;
+            }
+        }
+
+        return true;
+    }
+   
+   private boolean validarTablaEstaciones() {
+
+        DefaultTableModel modelo = (DefaultTableModel) TablaDeEstaciones.getModel();
+
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+            try {
+                int id = Integer.parseInt(
+                        modelo.getValueAt(fila, 1).toString().trim()
+                );
+
+                int capacidad = Integer.parseInt(
+                        modelo.getValueAt(fila, 2).toString().trim()
+                );
+
+                if (id <= 0 || capacidad <= 0) {
+                    throw new NumberFormatException();
+                }
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Error en tabla Estaciones, fila " + (fila + 1)
+                        + ". ID y capacidad deben ser números mayores a 0."
+                );
+                return false;
+            }
+        }
+
+        return true;
+    }
+   
+   private void guardarTablaAviones() {
+
+        File archivo = new File("datos/" + carpetaElegida + "/aviones.csv");
+
+        try (FileWriter fileWriter = new FileWriter(archivo);
+             PrintWriter writer = new PrintWriter(fileWriter)) {
+
+            DefaultTableModel modelo = (DefaultTableModel) tablaDeAviones.getModel();
+
+            for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+                String linea = modelo.getValueAt(fila, 0) + ","   + modelo.getValueAt(fila, 1) + ","  + modelo.getValueAt(fila, 2) + ","
+                        + modelo.getValueAt(fila, 3) + "," + modelo.getValueAt(fila, 4);
+
+                writer.println(linea);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+   
+   private void guardarTablaPistas() {
+
+        File archivoAterrizaje = new File("datos/" + carpetaElegida + "/aterrizaje.csv");
+        File archivoDespegue = new File("datos/" + carpetaElegida + "/despegue.csv");
+
+        try (
+            FileWriter fwAterrizaje = new FileWriter(archivoAterrizaje);
+            PrintWriter writerAterrizaje = new PrintWriter(fwAterrizaje);
+
+            FileWriter fwDespegue = new FileWriter(archivoDespegue);
+            PrintWriter writerDespegue = new PrintWriter(fwDespegue)
+        ) {
+
+            DefaultTableModel modelo = (DefaultTableModel) TablaDePistas.getModel();
+
+            for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+                String tipo = modelo.getValueAt(fila, 0).toString();
+
+                String linea = modelo.getValueAt(fila, 0) + ","
+                        + modelo.getValueAt(fila, 1) + ","
+                        + modelo.getValueAt(fila, 2);
+
+                if (tipo.equalsIgnoreCase("ATERRIZAJE")) {
+                    writerAterrizaje.println(linea);
+                } else {
+                    writerDespegue.println(linea);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+   
+   private void guardarTablaEstaciones() {
+
+        File archivoControl = new File("datos/" + carpetaElegida + "/control.csv");
+        File archivoMantenimiento = new File("datos/" + carpetaElegida + "/mantenimiento.csv");
+        File archivoDesbordaje = new File("datos/" + carpetaElegida + "/desbordaje.csv");
+
+        try (
+            FileWriter fwControl = new FileWriter(archivoControl);
+            PrintWriter writerControl = new PrintWriter(fwControl);
+
+            FileWriter fwMantenimiento = new FileWriter(archivoMantenimiento);
+            PrintWriter writerMantenimiento = new PrintWriter(fwMantenimiento);
+
+            FileWriter fwDesbordaje = new FileWriter(archivoDesbordaje);
+            PrintWriter writerDesbordaje = new PrintWriter(fwDesbordaje)
+        ) {
+
+            DefaultTableModel modelo = (DefaultTableModel) TablaDeEstaciones.getModel();
+
+            for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+
+                String tipo = modelo.getValueAt(fila, 0).toString();
+
+                String linea = modelo.getValueAt(fila, 0) + ","
+                        + modelo.getValueAt(fila, 1) + ","
+                        + modelo.getValueAt(fila, 2);
+
+                if (tipo.equalsIgnoreCase("CONTROL")) {
+                    writerControl.println(linea);
+
+                } else if (tipo.equalsIgnoreCase("MANTENIMIENTO")) {
+                    writerMantenimiento.println(linea);
+
+                } else {
+                    writerDesbordaje.println(linea);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setArchivoElegido(String archivoElegido) {
+        this.carpetaElegida = archivoElegido;
+    }
+    
+    private void reiniciarArchivo(){
+        carpetaElegida = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

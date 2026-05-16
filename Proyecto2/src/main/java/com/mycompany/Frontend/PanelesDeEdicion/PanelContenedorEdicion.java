@@ -6,15 +6,18 @@ package com.mycompany.Frontend.PanelesDeEdicion;
 
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.awt.CardLayout;
+import java.io.File;
 
 /**
  *
  * @author Kenny
  */
-public class PanelContenedorEdicion extends javax.swing.JPanel {
+public final class PanelContenedorEdicion extends javax.swing.JPanel {
 
     private final VentanaInicial ventanaInicial;
     private final PanelMenuDeEdicion menuEditar;
+    private final PanelEdicionDeArchivos editarArchivos;
+    private final String EDITAR_ARCHIVOS = "EDITAR ARCHIVOS";
     private final String MENU_EDICION = "MENU EDICION";
     
     /**
@@ -23,10 +26,11 @@ public class PanelContenedorEdicion extends javax.swing.JPanel {
      */
     public PanelContenedorEdicion(VentanaInicial ventanaInicial) {
         this.ventanaInicial = ventanaInicial;
-        this.menuEditar = new PanelMenuDeEdicion();
+        this.menuEditar = new PanelMenuDeEdicion(ventanaInicial, this);
+        this.editarArchivos = new PanelEdicionDeArchivos(this);
         initComponents();
         agregarPaneles();
-        irAEdicion();
+        irAMenuEdicion();
     }
 
     /**
@@ -43,6 +47,7 @@ public class PanelContenedorEdicion extends javax.swing.JPanel {
 
     private void agregarPaneles(){
         this.add(menuEditar, MENU_EDICION);
+        this.add(editarArchivos, EDITAR_ARCHIVOS);
     }
     
     public void cambiarPaneles(String panel){
@@ -50,13 +55,26 @@ public class PanelContenedorEdicion extends javax.swing.JPanel {
         cardLayout.show(this, panel);
     }
     
-    private void irAEdicion(){
+    public void irAMenuEdicion(){
         cambiarPaneles(MENU_EDICION);
     }
+    
+    public void irAEdicion(String nombreDeArchivoElegido){
+        editarArchivos.setArchivoElegido(nombreDeArchivoElegido);
+        editarArchivos.editarTablas();
+        cambiarPaneles(EDITAR_ARCHIVOS);
+    }
+    
 
     public PanelMenuDeEdicion getMenuEditar() {
         return menuEditar;
     }
+
+    public VentanaInicial getVentanaInicial() {
+        return ventanaInicial;
+    }
+    
+    
     
     
 
