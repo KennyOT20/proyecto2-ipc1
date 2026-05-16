@@ -120,6 +120,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Iniciar Simulacion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonInicioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonCreacionEdicion">
           <Properties>
@@ -132,7 +135,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Crear o editar datos"/>
+            <Property name="text" type="java.lang.String" value="Crear Datos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCreacionEdicionActionPerformed"/>

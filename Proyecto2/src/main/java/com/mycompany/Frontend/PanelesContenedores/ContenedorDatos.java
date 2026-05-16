@@ -5,7 +5,6 @@
 package com.mycompany.Frontend.PanelesContenedores;
 
 import com.mycompany.Frontend.FrontendGestores.CreadorDeDatosFrontend;
-import com.mycompany.Frontend.FrontendMenus.MenuDeDatos;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.awt.CardLayout;
 
@@ -17,9 +16,7 @@ public class ContenedorDatos extends javax.swing.JPanel {
 
     private final VentanaInicial ventanaPrincipal;
     private final CreadorDeDatosFrontend crearDatosFrontend;
-    private final MenuDeDatos menuDeDatos;
     private final String CREADOR_DE_DATOS = "DATOS";
-    private final String MENU_DE_DATOS = "MENU DE DATOS";
     
     /**
      * Creates new form PanelContenedorDeDatos
@@ -29,14 +26,12 @@ public class ContenedorDatos extends javax.swing.JPanel {
         initComponents();
          this.ventanaPrincipal = ventanaPrincipal;
         this.crearDatosFrontend = new CreadorDeDatosFrontend(this);
-        this.menuDeDatos = new MenuDeDatos(this);
         agregarPaneles();
-        irAMenuDeDatos();
+        irACreadorDeDatos();
     }
     
     private void agregarPaneles(){
         this.add(crearDatosFrontend, CREADOR_DE_DATOS);
-        this.add(menuDeDatos, MENU_DE_DATOS);
     }
     
     private void cambiarDePaneles(String panel){
@@ -44,15 +39,10 @@ public class ContenedorDatos extends javax.swing.JPanel {
         cardLayout.show(this, panel);
     }
     
-    public void irACreadorDeDatos(){
+    public final void irACreadorDeDatos(){
         cambiarDePaneles(CREADOR_DE_DATOS);
     }
     
-    public final void irAMenuDeDatos(){
-        cambiarDePaneles(MENU_DE_DATOS);
-    }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

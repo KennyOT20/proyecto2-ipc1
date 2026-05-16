@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.Frontend.PanelesDeEdicion;
+package com.mycompany.Frontend.PanelesSimulacion;
 
 import com.mycompany.Backend.GestorDeDatos.LectorArchivoCSV;
 import java.io.File;
@@ -10,7 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,11 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PanelEdicionDeArchivos extends javax.swing.JPanel {
 
-    private final PanelContenedorEdicion contenedor;
     private String carpetaElegida;
 
-    public PanelEdicionDeArchivos(PanelContenedorEdicion contenedor) {
-        this.contenedor = contenedor;
+    public PanelEdicionDeArchivos() {
         initComponents();
       
     }
@@ -242,7 +239,7 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
-        contenedor.irAMenuEdicion();
+        reiniciarArchivo();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void guardarCambiosCSV(){
@@ -487,6 +484,7 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
         File archivoControl = new File("datos/" + carpetaElegida + "/control.csv");
         File archivoMantenimiento = new File("datos/" + carpetaElegida + "/mantenimiento.csv");
         File archivoDesbordaje = new File("datos/" + carpetaElegida + "/desbordaje.csv");
+        
 
         try (
             FileWriter fwControl = new FileWriter(archivoControl);
@@ -525,13 +523,28 @@ public class PanelEdicionDeArchivos extends javax.swing.JPanel {
         }
     }
 
+   
+   private boolean verificarCarpetaExistente(File archivo){
+       if(archivo.exists()){
+           return true;
+       } else {
+           return false;
+       }
+       
+   }
+   
     public void setArchivoElegido(String archivoElegido) {
         this.carpetaElegida = archivoElegido;
     }
     
-    private void reiniciarArchivo(){
+   private void reiniciarArchivo() {
         carpetaElegida = null;
+
+        tablaDeAviones.setModel(new DefaultTableModel());
+        TablaDePistas.setModel(new DefaultTableModel());
+        TablaDeEstaciones.setModel(new DefaultTableModel());
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaDeEstaciones;

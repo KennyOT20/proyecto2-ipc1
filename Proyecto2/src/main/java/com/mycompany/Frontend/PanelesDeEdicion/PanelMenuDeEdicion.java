@@ -4,6 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesDeEdicion;
 
+import com.mycompany.Frontend.PanelesSimulacion.PanelContenedorSimulacion;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.io.File;
 import javax.swing.DefaultListModel;
@@ -14,13 +15,13 @@ import javax.swing.DefaultListModel;
  */
 public class PanelMenuDeEdicion extends javax.swing.JPanel {
 
-    private final PanelContenedorEdicion editarArchivos;
+    private final PanelContenedorSimulacion contenedorSimulacion;
     private final VentanaInicial ventanaInicial;
     
-    public PanelMenuDeEdicion(VentanaInicial ventanaInicial, PanelContenedorEdicion editarArchivos) {
+    public PanelMenuDeEdicion(VentanaInicial ventanaInicial, PanelContenedorSimulacion contenedorSimulacion) {
         initComponents();
         this.ventanaInicial = ventanaInicial;
-        this.editarArchivos = editarArchivos;
+        this.contenedorSimulacion = contenedorSimulacion;
         cargarSimulaciones();
         configurarLista();
         botonElegirDatos.setEnabled(false);
@@ -51,7 +52,7 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
         labelTitulo.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Edicion de datos");
+        labelTitulo.setText("Seleccion de datos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,15 +183,14 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
         // TODO add your handling code here:
         
        String simulacionSeleccionada = listaDeArchivos.getSelectedValue();
-
-      editarArchivos.irAEdicion(simulacionSeleccionada);
-      
+       
+       contenedorSimulacion.irAEleccionDeRuta();
         
     }//GEN-LAST:event_botonElegirDatosActionPerformed
 
     private void botonVolverAlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverAlMenuActionPerformed
         // TODO add your handling code here:
-        ventanaInicial.irAMenuDatos();
+        ventanaInicial.irAMenuInicial();
     }//GEN-LAST:event_botonVolverAlMenuActionPerformed
 
     

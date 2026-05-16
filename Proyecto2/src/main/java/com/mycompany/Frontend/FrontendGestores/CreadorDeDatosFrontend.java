@@ -478,8 +478,8 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
-        contenedorDatos.irAMenuDeDatos();
         reiniciarTextos();
+        contenedorDatos.getVentanaPrincipal().irAMenuInicial();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     
@@ -522,7 +522,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
         
         reiniciarTextos();
-        contenedorDatos.irAMenuDeDatos();
         
     }
    

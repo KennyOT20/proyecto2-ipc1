@@ -66,11 +66,16 @@ public class MenuInicial extends javax.swing.JPanel {
         botonInicio.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonInicio.setForeground(new java.awt.Color(0, 0, 0));
         botonInicio.setText("Iniciar Simulacion");
+        botonInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInicioActionPerformed(evt);
+            }
+        });
 
         botonCreacionEdicion.setBackground(new java.awt.Color(0, 255, 255));
         botonCreacionEdicion.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonCreacionEdicion.setForeground(new java.awt.Color(0, 0, 0));
-        botonCreacionEdicion.setText("Crear o editar datos");
+        botonCreacionEdicion.setText("Crear Datos");
         botonCreacionEdicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCreacionEdicionActionPerformed(evt);
@@ -142,6 +147,12 @@ public class MenuInicial extends javax.swing.JPanel {
         // TODO add your handling code here:
         ventanaInicial.irAMenuDatos();
     }//GEN-LAST:event_botonCreacionEdicionActionPerformed
+
+    private void botonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInicioActionPerformed
+        // TODO add your handling code here:
+        
+        ventanaInicial.irASimulacion();
+    }//GEN-LAST:event_botonInicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

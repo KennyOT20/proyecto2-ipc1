@@ -6,7 +6,7 @@ package com.mycompany.Frontend.VentanaInicial;
 
 import com.mycompany.Frontend.FrontendMenus.MenuInicial;
 import com.mycompany.Frontend.PanelesContenedores.ContenedorDatos;
-import com.mycompany.Frontend.PanelesDeEdicion.PanelContenedorEdicion;
+import com.mycompany.Frontend.PanelesSimulacion.PanelContenedorSimulacion;
 import java.awt.CardLayout;
 
 
@@ -18,10 +18,11 @@ public class VentanaInicial extends javax.swing.JFrame {
     
     private final MenuInicial menuInicial;
     private final ContenedorDatos contenedorDeDatos;
-    private final PanelContenedorEdicion contenedorEdicion;
+    private final PanelContenedorSimulacion contenedorSimulacion;
+    
     private final String CONTENEDOR_DE_DATOS = "CONTENEDOR DE DATOS";
-    private final String CONTENEDOR_DE_EDICIONES = "CONTENEDOR DE EDICION";
     private final String MENU_INICIAL = "MENU INICIAL";
+    private final String CONTENEDOR_SIMULACION = "CONTENEDOR SIMULACION";
 
     /**
      * Creates new form VentanaInicial
@@ -29,7 +30,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     public VentanaInicial() {
         this.menuInicial = new MenuInicial(this);
         this.contenedorDeDatos = new ContenedorDatos(this);
-        this.contenedorEdicion = new PanelContenedorEdicion(this);
+        this.contenedorSimulacion = new PanelContenedorSimulacion(this);
         
         initComponents();
         agregarPanelesPrincipales();
@@ -42,7 +43,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     private void agregarPanelesPrincipales(){
         PanelContenedor.add(contenedorDeDatos, CONTENEDOR_DE_DATOS);
         PanelContenedor.add(menuInicial, MENU_INICIAL);
-        PanelContenedor.add(contenedorEdicion, CONTENEDOR_DE_EDICIONES);
+        PanelContenedor.add(contenedorSimulacion, CONTENEDOR_SIMULACION);
     }
     
     private void cambiarDePaneles(String panel){
@@ -58,9 +59,10 @@ public class VentanaInicial extends javax.swing.JFrame {
         cambiarDePaneles(MENU_INICIAL);
     }
     
-    public void irAEdicionDeDatos(){
-        cambiarDePaneles(CONTENEDOR_DE_EDICIONES);
+    public void irASimulacion(){
+        cambiarDePaneles(CONTENEDOR_SIMULACION);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,10 +106,7 @@ public class VentanaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public PanelContenedorEdicion getContenedorEdicion() {
-        return contenedorEdicion;
-    }
-
+  
     public ContenedorDatos getContenedorDeDatos() {
         return contenedorDeDatos;
     }
