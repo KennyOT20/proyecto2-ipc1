@@ -17,11 +17,13 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
     private final PanelEdicionDeArchivos panelEdicion;
     private final PanelMenuDeEdicion menuEdicion;
     private final PanelElegirRutaLog elegirRuta;
+    private final PanelSimulacion panelSimulacion;
     private final VentanaInicial ventanaInicial;
     
     private final String PANEL_EDICION = "PANEL EDICION";
     private final String MENU_EDICION = "MENU EDICION";
     private final String ELEGIR_RUTA = "RUTA DE LOGS";
+    private final String PANEL_SIMULACION = "PANEL SIMULACION";
     
     /**
      * Creates new form PanelContenedorSimulacion
@@ -31,6 +33,7 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.ventanaInicial = ventanaInicial;
         this.menuEdicion = new PanelMenuDeEdicion(ventanaInicial, this);
         this.elegirRuta = new PanelElegirRutaLog(this);
+        this.panelSimulacion = new PanelSimulacion(this);
         this.panelEdicion = new PanelEdicionDeArchivos();
         
         initComponents();
@@ -42,6 +45,7 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.add(panelEdicion, PANEL_EDICION);
         this.add(menuEdicion, MENU_EDICION);
         this.add(elegirRuta, ELEGIR_RUTA);
+        this.add(panelSimulacion, PANEL_SIMULACION);
     }
     
     public final void irAEleccionDeDatos(){
@@ -52,6 +56,9 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         cambiarDePaneles(ELEGIR_RUTA);
     }
     
+    public void irASimulacion(){
+        cambiarDePaneles(PANEL_SIMULACION);
+    }
     
     private void cambiarDePaneles(String panel){
         CardLayout cardLayout = (CardLayout) this.getLayout();

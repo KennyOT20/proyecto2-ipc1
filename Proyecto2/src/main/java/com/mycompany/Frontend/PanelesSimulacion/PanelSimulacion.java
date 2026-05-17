@@ -19,6 +19,7 @@ import java.awt.CardLayout;
  */
 public class PanelSimulacion extends javax.swing.JPanel {
     
+    private final PanelContenedorSimulacion panelContenedorSimulacion;
     private final PanelAterrizaje aterrizaje;
     private final PanelDeVuelo panelVuelo;
     private final PanelDespegue panelDespegue;
@@ -35,12 +36,11 @@ public class PanelSimulacion extends javax.swing.JPanel {
     private final String PANEL_DESBORDAJE = "PANEL DESBORDAJE";
     private final String PANEL_LOGS = "PANEL LOGS";
     
-    
-    
     /**
      * Creates new form PanelSimulacion
+     * @param panelContenedorSimulacion
      */
-    public PanelSimulacion() {
+    public PanelSimulacion(PanelContenedorSimulacion panelContenedorSimulacion) {
         this.aterrizaje = new PanelAterrizaje(this);
         this.panelVuelo = new PanelDeVuelo(this);
         this.panelDespegue = new PanelDespegue(this);
@@ -50,6 +50,10 @@ public class PanelSimulacion extends javax.swing.JPanel {
         this.panelLogs = new PanelLogs(this);
         initComponents();
         agregarPaneles();
+        this.panelContenedorSimulacion = panelContenedorSimulacion;
+        botonPausar.setEnabled(false);
+        botonGuardar.setEnabled(false);
+        botonFinalizar.setEnabled(false);
     }
 
     /**
@@ -74,6 +78,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
         botonVuelos = new javax.swing.JButton();
         botonLogs = new javax.swing.JButton();
         botonFinalizar = new javax.swing.JButton();
+        botonEdicion = new javax.swing.JButton();
         panelContenedorDatosSimulacion = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(102, 102, 255));
@@ -184,6 +189,10 @@ public class PanelSimulacion extends javax.swing.JPanel {
             }
         });
 
+        botonEdicion.setBackground(new java.awt.Color(102, 102, 255));
+        botonEdicion.setForeground(new java.awt.Color(0, 0, 0));
+        botonEdicion.setText("Editar/Crear");
+
         javax.swing.GroupLayout PanelContenedorBotonesLayout = new javax.swing.GroupLayout(PanelContenedorBotones);
         PanelContenedorBotones.setLayout(PanelContenedorBotonesLayout);
         PanelContenedorBotonesLayout.setHorizontalGroup(
@@ -208,7 +217,8 @@ public class PanelSimulacion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                    .addComponent(botonFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(botonEdicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelContenedorBotonesLayout.setVerticalGroup(
@@ -227,11 +237,16 @@ public class PanelSimulacion extends javax.swing.JPanel {
                     .addComponent(botonMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
                 .addGroup(PanelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonVuelos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelContenedorBotonesLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(PanelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonDesbordaje, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                            .addComponent(botonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonVuelos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(PanelContenedorBotonesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonEdicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -317,7 +332,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
     
     public void cambiarDePaneles(String nombreDePanel){
         CardLayout cardlayout = (CardLayout) panelContenedorDatosSimulacion.getLayout();
-        cardlayout.show(this, nombreDePanel);
+        cardlayout.show(panelContenedorDatosSimulacion, nombreDePanel);
     }
     
     public void irAterrizaje(){
@@ -354,6 +369,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
     private javax.swing.JButton botonControl;
     private javax.swing.JButton botonDesbordaje;
     private javax.swing.JButton botonDespegue;
+    private javax.swing.JButton botonEdicion;
     private javax.swing.JButton botonFinalizar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonIniciar;

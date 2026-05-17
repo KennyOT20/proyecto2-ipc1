@@ -17,7 +17,7 @@ public class GeneradorDeAviones extends Generadores {
     private int pasajerosMax;
     private int idAvion;
     
-    
+    // Aviones para datos
     public Avion crearAvionPequeño(int combustible){
         pasajerosMax = generarNumerosAleatorios(5, 10);
         idAvion = generarNumerosAleatorios(1000, 9999);
@@ -36,5 +36,12 @@ public class GeneradorDeAviones extends Generadores {
         return new AvionGrande("GRANDE", 30, pasajerosMax, idAvion, combustible);
     }
 
+    //Aviones con carga de datos
+    
+    public Avion crearGrande(int combustible, int minimaCapacidad, int capacidadMaxima, int idAvion, String tipo, int tiempoMantenimiento
+         , int tiempoDesbordaje, int tiempoDespegue, int tiempoAterrizaje, int tiempoDeConsumo){
+        return new AvionGrande(combustible, minimaCapacidad, capacidadMaxima, idAvion, tipo, tiempoMantenimiento,
+        tiempoDesbordaje, tiempoDespegue, tiempoAterrizaje, tiempoDeConsumo);
+    }
     
 }

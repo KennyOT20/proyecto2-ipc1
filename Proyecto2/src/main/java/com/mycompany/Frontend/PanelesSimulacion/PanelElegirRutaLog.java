@@ -93,6 +93,7 @@ public class PanelElegirRutaLog extends javax.swing.JPanel {
                 rutaDeLogs = rutaLogs;
 
                 JOptionPane.showMessageDialog(     this,"Ruta seleccionada: " + rutaLogs );
+                contenedorSimulacion.irASimulacion();
                 
             }
 

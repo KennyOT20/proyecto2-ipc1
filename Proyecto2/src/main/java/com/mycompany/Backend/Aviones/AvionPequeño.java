@@ -14,4 +14,10 @@ public class AvionPequeño extends Avion {
         super(tipo, capacidadMin, capacidadMax, idAvion, combustible);
     }
 
+    public AvionPequeño(int combustible, int minimaCapacidad, int capacidadMaxima, int idAvion, String tipo, int tiempoMantenimiento, int tiempoDesbordaje, int tiempoDespegue, int tiempoAterrizaje, int tiempoDeConsumo) {
+        super(combustible, minimaCapacidad, capacidadMaxima, idAvion, tipo, tiempoMantenimiento, tiempoDesbordaje, tiempoDespegue, tiempoAterrizaje, tiempoDeConsumo);
+    }
+    
+    
+
 }
