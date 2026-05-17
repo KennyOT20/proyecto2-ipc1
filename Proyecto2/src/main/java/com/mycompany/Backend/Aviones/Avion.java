@@ -13,10 +13,8 @@ import java.util.Random;
  */
 public abstract class Avion{
     
-    private final Random random ;
-    private final Vuelo vuelo;
     private boolean vueloFallado;
-    private final CabinaDeAvion controladorAvion;
+    private CabinaDeAvion controladorAvion;
     private String tipo;
     private int tiempoDeMantenimiento;
     private int tiempoDeDesbordaje;
@@ -30,17 +28,36 @@ public abstract class Avion{
     private boolean estaVivo;
     private int tiempoDeAterrizaje;
 
+    //Constructor para guardar un avion en datos
+
+    /**
+     *
+     * @param tipo
+     * @param capacidadMin
+     * @param capacidadMax
+     * @param idAvion
+     * @param combustible
+     */
     public Avion(String tipo, int capacidadMin, int capacidadMax, int idAvion, int combustible) {
-        this.vuelo = new Vuelo();
-        this.random = new Random();
-        this.controladorAvion = new CabinaDeAvion(this);
         this.tipo = tipo;
         this.capacidadMax = capacidadMax;
         this.capacidadMin = capacidadMin;
         this.idAvion = idAvion;
         this.combustible = combustible;
+    }
+    
+    // Constructor para crear un avion con datos ya guardados
+    public Avion(int combustible, int minimaCapacidad, int capacidadMaxima, int idAvion, String tipo, int tiempoMantenimiento
+         , int tiempoDesbordaje, int tiempoDespegue, int tiempoAterrizaje, int tiempoDeConsumo){
+        this.tiempoConsumo = tiempoDeConsumo;
+        this.tiempoDeDesbordaje = tiempoDesbordaje;
+        this.combustible = combustible;
+        this.capacidadMin = minimaCapacidad;
+        this.capacidadMax = capacidadMaxima;
+        this.idAvion = idAvion;
+        this.tipo = tipo;
         this.estaVivo = true;
-        this.vueloFallado = false;
+        this.controladorAvion = new CabinaDeAvion(this);
     }
     
     public void decrementarCombustible(){
@@ -143,10 +160,6 @@ public abstract class Avion{
         this.tiempoDeDesbordaje = tiempoDeDesbordaje;
     }
     
-    public Vuelo getVuelo() {
-        return vuelo;
-    }
-
     public String getTipo() {
         return tipo;
     }

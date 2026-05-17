@@ -4,17 +4,52 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion;
 
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelAterrizaje;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelDeVuelo;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelDespegue;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelEstacionesDeControl;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelEstacionesDeMantenimiento;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelEstacionesDesbordaje;
+import com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos.PanelLogs;
+import java.awt.CardLayout;
+
 /**
  *
  * @author Kenny
  */
 public class PanelSimulacion extends javax.swing.JPanel {
-
+    
+    private final PanelAterrizaje aterrizaje;
+    private final PanelDeVuelo panelVuelo;
+    private final PanelDespegue panelDespegue;
+    private final PanelEstacionesDeControl panelControl;
+    private final PanelEstacionesDeMantenimiento panelMantenimiento;
+    private final PanelEstacionesDesbordaje panelDesbordaje;
+    private final PanelLogs panelLogs;
+    
+    private final String PANEL_DE_ATERRIZAJE = "PANEL DE ATERRIZAJE";
+    private final String PANEL_DE_VUELO = "PANEL DE VUELO";
+    private final String PANEL_DESPEJE = "PANEL DESPEJE";
+    private final String PANEL_CONTROL = "PANEL CONTROL";
+    private final String PANEL_MANTENIMIENTO = "PANEL MANTENIMIENTO";
+    private final String PANEL_DESBORDAJE = "PANEL DESBORDAJE";
+    private final String PANEL_LOGS = "PANEL LOGS";
+    
+    
+    
     /**
      * Creates new form PanelSimulacion
      */
     public PanelSimulacion() {
+        this.aterrizaje = new PanelAterrizaje(this);
+        this.panelVuelo = new PanelDeVuelo(this);
+        this.panelDespegue = new PanelDespegue(this);
+        this.panelControl = new PanelEstacionesDeControl(this);
+        this.panelMantenimiento = new PanelEstacionesDeMantenimiento(this);
+        this.panelDesbordaje = new PanelEstacionesDesbordaje(this);
+        this.panelLogs = new PanelLogs(this);
         initComponents();
+        agregarPaneles();
     }
 
     /**
@@ -50,6 +85,8 @@ public class PanelSimulacion extends javax.swing.JPanel {
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("SIMULACION ");
 
+        botonIniciar.setBackground(new java.awt.Color(255, 204, 153));
+        botonIniciar.setForeground(new java.awt.Color(0, 0, 0));
         botonIniciar.setText("Iniciar");
         botonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,16 +94,53 @@ public class PanelSimulacion extends javax.swing.JPanel {
             }
         });
 
+        botonPausar.setBackground(new java.awt.Color(204, 255, 204));
+        botonPausar.setForeground(new java.awt.Color(0, 0, 0));
         botonPausar.setText("Pausar");
+        botonPausar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPausarActionPerformed(evt);
+            }
+        });
 
+        botonGuardar.setBackground(new java.awt.Color(51, 102, 255));
+        botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         botonGuardar.setText("Guardar Simulacion");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
+        botonControl.setBackground(new java.awt.Color(153, 255, 153));
+        botonControl.setForeground(new java.awt.Color(0, 0, 0));
         botonControl.setText("Estaciones de control");
+        botonControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonControlActionPerformed(evt);
+            }
+        });
 
+        botonMantenimiento.setBackground(new java.awt.Color(204, 255, 51));
+        botonMantenimiento.setForeground(new java.awt.Color(0, 0, 0));
         botonMantenimiento.setText("Estaciones de mantenimiento");
+        botonMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMantenimientoActionPerformed(evt);
+            }
+        });
 
+        botonDesbordaje.setBackground(new java.awt.Color(255, 153, 255));
+        botonDesbordaje.setForeground(new java.awt.Color(0, 0, 0));
         botonDesbordaje.setText("Estaciones de desbordaje");
+        botonDesbordaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDesbordajeActionPerformed(evt);
+            }
+        });
 
+        botonDespegue.setBackground(new java.awt.Color(153, 255, 153));
+        botonDespegue.setForeground(new java.awt.Color(0, 0, 0));
         botonDespegue.setText("Pistas de despegue");
         botonDespegue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,13 +148,41 @@ public class PanelSimulacion extends javax.swing.JPanel {
             }
         });
 
+        botonAterrizaje.setBackground(new java.awt.Color(102, 255, 153));
+        botonAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         botonAterrizaje.setText("Pistas de aterrizaje");
+        botonAterrizaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAterrizajeActionPerformed(evt);
+            }
+        });
 
+        botonVuelos.setBackground(new java.awt.Color(255, 153, 102));
+        botonVuelos.setForeground(new java.awt.Color(0, 0, 0));
         botonVuelos.setText("Aviones en vuelo");
+        botonVuelos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVuelosActionPerformed(evt);
+            }
+        });
 
+        botonLogs.setBackground(new java.awt.Color(102, 255, 204));
+        botonLogs.setForeground(new java.awt.Color(0, 0, 0));
         botonLogs.setText("Logs");
+        botonLogs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLogsActionPerformed(evt);
+            }
+        });
 
+        botonFinalizar.setBackground(new java.awt.Color(255, 51, 255));
+        botonFinalizar.setForeground(new java.awt.Color(0, 0, 0));
         botonFinalizar.setText("Finalizar");
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelContenedorBotonesLayout = new javax.swing.GroupLayout(PanelContenedorBotones);
         PanelContenedorBotones.setLayout(PanelContenedorBotonesLayout);
@@ -134,17 +236,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
         );
 
         panelContenedorDatosSimulacion.setBackground(new java.awt.Color(102, 255, 153));
-
-        javax.swing.GroupLayout panelContenedorDatosSimulacionLayout = new javax.swing.GroupLayout(panelContenedorDatosSimulacion);
-        panelContenedorDatosSimulacion.setLayout(panelContenedorDatosSimulacionLayout);
-        panelContenedorDatosSimulacionLayout.setHorizontalGroup(
-            panelContenedorDatosSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelContenedorDatosSimulacionLayout.setVerticalGroup(
-            panelContenedorDatosSimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
-        );
+        panelContenedorDatosSimulacion.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,7 +250,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedorDatosSimulacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelContenedorDatosSimulacion, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,8 +260,93 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonDespegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDespegueActionPerformed
         // TODO add your handling code here:
+        irADespeje();
     }//GEN-LAST:event_botonDespegueActionPerformed
 
+    private void botonPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPausarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonPausarActionPerformed
+
+    private void botonDesbordajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDesbordajeActionPerformed
+        // TODO add your handling code here:
+        irADesbordaje();
+    }//GEN-LAST:event_botonDesbordajeActionPerformed
+
+    private void botonVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVuelosActionPerformed
+        // TODO add your handling code here:
+        irAVuelos();
+    }//GEN-LAST:event_botonVuelosActionPerformed
+
+    private void botonAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAterrizajeActionPerformed
+        // TODO add your handling code here:
+        irAterrizaje();
+    }//GEN-LAST:event_botonAterrizajeActionPerformed
+
+    private void botonLogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogsActionPerformed
+        // TODO add your handling code here:
+        irALogs();
+    }//GEN-LAST:event_botonLogsActionPerformed
+
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonFinalizarActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonControlActionPerformed
+        // TODO add your handling code here:
+        irAControl();
+    }//GEN-LAST:event_botonControlActionPerformed
+
+    private void botonMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMantenimientoActionPerformed
+            // TODO add your handling code here:
+            irAMantenimiento();
+    }//GEN-LAST:event_botonMantenimientoActionPerformed
+
+    private void agregarPaneles(){
+        panelContenedorDatosSimulacion.add(aterrizaje, PANEL_DE_ATERRIZAJE);
+        panelContenedorDatosSimulacion.add(panelVuelo, PANEL_DE_VUELO);
+        panelContenedorDatosSimulacion.add(panelDespegue, PANEL_DESPEJE);
+        panelContenedorDatosSimulacion.add(panelControl, PANEL_CONTROL);
+        panelContenedorDatosSimulacion.add(panelMantenimiento, PANEL_MANTENIMIENTO);
+        panelContenedorDatosSimulacion.add(panelDesbordaje, PANEL_DESBORDAJE);
+        panelContenedorDatosSimulacion.add(panelLogs, PANEL_LOGS);
+    }
+    
+    public void cambiarDePaneles(String nombreDePanel){
+        CardLayout cardlayout = (CardLayout) panelContenedorDatosSimulacion.getLayout();
+        cardlayout.show(this, nombreDePanel);
+    }
+    
+    public void irAterrizaje(){
+        cambiarDePaneles(PANEL_DE_ATERRIZAJE);
+    }
+    
+    public void irAVuelos(){
+        cambiarDePaneles(PANEL_DE_VUELO);
+    }
+    
+    public void irADespeje(){
+        cambiarDePaneles(PANEL_DESPEJE);
+    }
+    
+    public void irAControl(){
+        cambiarDePaneles(PANEL_CONTROL);
+    }
+    
+    public void irAMantenimiento(){
+        cambiarDePaneles(PANEL_MANTENIMIENTO);
+    }
+    
+    public void irADesbordaje(){
+        cambiarDePaneles(PANEL_DESBORDAJE);
+    }
+    
+    public void irALogs(){
+        cambiarDePaneles(PANEL_LOGS);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelContenedorBotones;
