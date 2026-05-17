@@ -544,9 +544,6 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
        pistasDeAterrizaje.setText("");
    }
    
-   
-   
-
     public JTextField getAvionesGrande() {
         return avionesGrande;
     }

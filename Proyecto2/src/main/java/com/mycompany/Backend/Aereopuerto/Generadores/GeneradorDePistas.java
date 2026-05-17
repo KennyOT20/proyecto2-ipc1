@@ -18,12 +18,12 @@ public class GeneradorDePistas extends Generadores{
     
     public Pista crearPistaAterrizaje(int capacidad){
         idPista = generarNumerosAleatorios(100, 999);
-        return new PistaDeAterrizaje(idPista, "De aterrizaje", capacidad);
+        return new PistaDeAterrizaje(idPista, "DE ATERRIZAJE", capacidad);
     }
     
     public Pista crearPistaDespegue(int capacidad){
         idPista = generarNumerosAleatorios(100, 999);
-        return new PistaDespegue(idPista, "De despegue", capacidad);
+        return new PistaDespegue(idPista, "DE DESPEGUE", capacidad);
     }
     
 }

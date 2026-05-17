@@ -5,10 +5,12 @@
 package com.mycompany.Backend.Aereopuerto;
 
 import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Estaciones.Estacion;
 import com.mycompany.Backend.Estaciones.EstacionDeControl;
 import com.mycompany.Backend.Estaciones.EstacionDeMantenimiento;
 import com.mycompany.Backend.Estaciones.EstacionDesbordaje;
 import com.mycompany.Backend.ListaGenerica.ListaGenerica;
+import com.mycompany.Backend.Pistas.Pista;
 import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
 import com.mycompany.Backend.Pistas.PistaDespegue;
 import java.io.Serializable;
@@ -38,69 +40,79 @@ public class Aeropuerto implements Serializable {
         this.estacionDeMantenimiento = new ListaGenerica<>();
         this.estacionDeControl = new ListaGenerica<>();
     }
+    
+    public void agregarAvionSegunTipo(Avion avion) {
+        switch (avion.getTipo()) {
+            case "PEQUEÑO":
+                avionesPequeños.agregarContenidoAlFinal(avion);
+                break;
+
+            case "MEDIANO":
+                avionesMedianos.agregarContenidoAlFinal(avion);
+                break;
+
+            case "GRANDE":
+                avionesGrandes.agregarContenidoAlFinal(avion);
+                break;
+        }
+    }
+    
+    public void agregarEstacionPorTipo(Estacion estacionObtenida){
+        switch(estacionObtenida.getTipoDeArea()){
+            case "DE CONTROL" :
+                estacionDeControl.agregarContenidoAlFinal((EstacionDeControl) estacionObtenida);
+                break;
+            case "DE MANTENIMIENTO":
+                estacionDeMantenimiento.agregarContenidoAlFinal((EstacionDeMantenimiento) estacionObtenida);
+                break;
+            case "DE DESBORDAJE":
+                estacionDesborde.agregarContenidoAlFinal((EstacionDesbordaje) estacionObtenida);
+                break;
+        }
+    }
+    
+    public void agregarPistasPorTipo(Pista pistaObtenida){
+        switch(pistaObtenida.getTipoDeArea()){
+            case  "DE ATERRIZAJE" :
+                pistasDeAterrizaje.agregarContenidoAlFinal((PistaDeAterrizaje) pistaObtenida);
+                break;
+            case  "DE DESPEGUE" :
+                pistasDeDespegue.agregarContenidoAlFinal((PistaDespegue) pistaObtenida);
+             break;
+        }
+    }
 
     public ListaGenerica<Avion> getAvionesPequeños() {
         return avionesPequeños;
-    }
-
-    public void setAvionesPequeños(ListaGenerica<Avion> avionesPequeños) {
-        this.avionesPequeños = avionesPequeños;
     }
 
     public ListaGenerica<Avion> getAvionesGrandes() {
         return avionesGrandes;
     }
 
-    public void setAvionesGrandes(ListaGenerica<Avion> avionesGrandes) {
-        this.avionesGrandes = avionesGrandes;
-    }
-
     public ListaGenerica<Avion> getAvionesMedianos() {
         return avionesMedianos;
-    }
-
-    public void setAvionesMedianos(ListaGenerica<Avion> avionesMedianos) {
-        this.avionesMedianos = avionesMedianos;
     }
 
     public ListaGenerica<PistaDeAterrizaje> getPistasDeAterrizaje() {
         return pistasDeAterrizaje;
     }
 
-    public void setPistasDeAterrizaje(ListaGenerica<PistaDeAterrizaje> pistasDeAterrizaje) {
-        this.pistasDeAterrizaje = pistasDeAterrizaje;
-    }
-
     public ListaGenerica<PistaDespegue> getPistasDeDespegue() {
         return pistasDeDespegue;
-    }
-
-    public void setPistasDeDespegue(ListaGenerica<PistaDespegue> pistasDeDespegue) {
-        this.pistasDeDespegue = pistasDeDespegue;
     }
 
     public ListaGenerica<EstacionDesbordaje> getEstacionDesborde() {
         return estacionDesborde;
     }
 
-    public void setEstacionDesborde(ListaGenerica<EstacionDesbordaje> estacionDesborde) {
-        this.estacionDesborde = estacionDesborde;
-    }
-
     public ListaGenerica<EstacionDeMantenimiento> getEstacionDeMantenimiento() {
         return estacionDeMantenimiento;
-    }
-
-    public void setEstacionDeMantenimiento(ListaGenerica<EstacionDeMantenimiento> estacionDeMantenimiento) {
-        this.estacionDeMantenimiento = estacionDeMantenimiento;
     }
 
     public ListaGenerica<EstacionDeControl> getEstacionDeControl() {
         return estacionDeControl;
     }
 
-    public void setEstacionDeControl(ListaGenerica<EstacionDeControl> estacionDeControl) {
-        this.estacionDeControl = estacionDeControl;
-    }
     
 }

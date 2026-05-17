@@ -21,17 +21,17 @@ public class GeneradorDeEstaciones extends Generadores {
     
    public Estacion crearEstacionDeContro(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeControl(idEstacion, "De control", capacidad);
+       return new EstacionDeControl(idEstacion, "DE CONTROL", capacidad);
    }
     
    public Estacion crearEstacionDeMantenimiento(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeMantenimiento(idEstacion, "De mantenimiento", capacidad);
+       return new EstacionDeMantenimiento(idEstacion, "DE MANTENIMIENTO", capacidad);
    }
    
    public Estacion crearEstacionDeDesborde(int capacidad){
        idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDesbordaje(idEstacion, "De desbordaje", capacidad);
+       return new EstacionDesbordaje(idEstacion, "DE DESBORDAJE", capacidad);
    }
     
     
