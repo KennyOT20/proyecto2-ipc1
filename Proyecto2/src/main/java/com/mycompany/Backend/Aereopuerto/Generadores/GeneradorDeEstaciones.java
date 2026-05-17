@@ -19,20 +19,35 @@ public class GeneradorDeEstaciones extends Generadores {
     
     private int idEstacion;
     
-   public Estacion crearEstacionDeContro(int capacidad){
-       idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeControl(idEstacion, "DE CONTROL", capacidad);
-   }
+    //Metodos creadores de estaciones para crear datos
+    public Estacion crearEstacionDeContro(int capacidad){
+        idEstacion = generarNumerosAleatorios(10000, 19999);
+        return new EstacionDeControl(idEstacion, "DE CONTROL", capacidad);
+    }
+
+    public Estacion crearEstacionDeMantenimiento(int capacidad){
+        idEstacion = generarNumerosAleatorios(10000, 19999);
+        return new EstacionDeMantenimiento(idEstacion, "DE MANTENIMIENTO", capacidad);
+    }
+
+    public Estacion crearEstacionDeDesborde(int capacidad){
+        idEstacion = generarNumerosAleatorios(10000, 19999);
+        return new EstacionDesbordaje(idEstacion, "DE DESBORDAJE", capacidad);
+    }
     
-   public Estacion crearEstacionDeMantenimiento(int capacidad){
-       idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDeMantenimiento(idEstacion, "DE MANTENIMIENTO", capacidad);
-   }
-   
-   public Estacion crearEstacionDeDesborde(int capacidad){
-       idEstacion = generarNumerosAleatorios(10000, 19999);
-       return new EstacionDesbordaje(idEstacion, "DE DESBORDAJE", capacidad);
-   }
+    //Metodos creadores para cargar datos
+    
+    public Estacion crearDeControl(int idEstacion, String tipo, int capacidad){
+        return new EstacionDeControl(idEstacion, tipo, capacidad);
+    }
+    
+    public Estacion crearDeMantenimiento(int idEstacion, String tipo, int capacidad){
+        return new EstacionDeMantenimiento(idEstacion, tipo, capacidad);
+    }
+    
+    public Estacion crearDeDesborde(int idEstacion, String tipo, int capacidad){
+        return new EstacionDesbordaje(idEstacion, tipo, capacidad);
+    }
     
     
 }

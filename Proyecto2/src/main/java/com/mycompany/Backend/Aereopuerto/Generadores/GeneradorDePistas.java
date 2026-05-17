@@ -26,4 +26,14 @@ public class GeneradorDePistas extends Generadores{
         return new PistaDespegue(idPista, "DE DESPEGUE", capacidad);
     }
     
+    //Para crear una pista mediante una carga de datos
+    
+    public Pista deAterrizaje(int capacidad, int id, String tipo){
+        return new PistaDeAterrizaje(id, tipo, capacidad);
+    }
+    
+    public Pista deDespeuge(int capacidad, int id, String tipo){
+        return new PistaDespegue(id, tipo, capacidad);
+    }
+    
 }
