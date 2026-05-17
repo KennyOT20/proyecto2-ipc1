@@ -26,7 +26,7 @@ public class ConstructorPartida {
     private final Aeropuerto aeropuerto;
     private final String carpetaALeer;
     
-    private int cantidadCombustible;
+    private int tiempoDeAterrizaje;
     private int tiempoDeMantenimiento;
     private int tiempoDeDesbordaje;
     private int tiempoDeDespegue;
@@ -62,13 +62,32 @@ public class ConstructorPartida {
             int capacidadMax = Integer.parseInt(fila[3].trim());
             String tipo = fila[4].trim();
 
-            Avion avion = generarAvion.crearGrande(combustible, capacidadMin, capacidadMax, id, tipo,
-                    tiempoDeMantenimiento, tiempoDeDesbordaje, tiempoDeDespegue, tiempoDeDesbordaje, tiempoDeConsumo);
+            Avion avion = construirAvion(id, combustible, capacidadMin, capacidadMax, tipo);
             
             aeropuerto.agregarAvionSegunTipo(avion);
         }
 
     }
+    
+    private Avion construirAvion(int id, int combustible, int capacidadMin, int capacidadMax, String tipo) {
+        /*
+        int combustible, int minimaCapacidad, int capacidadMaxima, int idAvion, String tipo, int tiempoMantenimiento
+         , int tiempoDesbordaje, int tiempoDespegue, int tiempoAterrizaje, int tiempoDeConsumo)
+        */
+    switch (tipo) {
+        case "PEQUEÑO":
+          return generarAvion.crearPequeño(combustible, capacidadMin, capacidadMax, id, tipo, tiempoDeMantenimiento,
+                  tiempoDeDesbordaje, tiempoDeDespegue, tiempoDeAterrizaje, tiempoDeConsumo );
+        case "MEDIANO":
+            return generarAvion.crearMediano(combustible, capacidadMin, capacidadMax, id, tipo, tiempoDeMantenimiento,
+                  tiempoDeDesbordaje, tiempoDeDespegue, tiempoDeAterrizaje, tiempoDeConsumo );
+        case "GRANDE":
+            return generarAvion.crearGrande(combustible, capacidadMin, capacidadMax, id, tipo, tiempoDeMantenimiento,
+                  tiempoDeDesbordaje, tiempoDeDespegue, tiempoDeAterrizaje, tiempoDeConsumo );
+        default:
+            throw new IllegalArgumentException("Tipo invalido: " + tipo);
+    }
+}
     
     private void obtenerPistas() {
 
@@ -107,6 +126,15 @@ public class ConstructorPartida {
         }
     }
    
+   private void obtenerEstaciones() {
+
+        cargarEstaciones( leerArchivo.leerArchivo(ARCHIVO_ESTACIONES_DE_CONTROL) );
+
+        cargarEstaciones(leerArchivo.leerArchivo(ARCHIVO_ESTACIONES_DE_MANTENIMIENTO) );
+
+        cargarEstaciones(leerArchivo.leerArchivo(ARCHIVO_ESTACIONES_DESBORDAJE));
+    }
+   
    private void cargarEstaciones(String[][] datos) {
 
         for (int i = 0; i < datos.length; i++) {
@@ -138,9 +166,11 @@ public class ConstructorPartida {
         }
     }
 
-    public void setCantidadCombustible(int cantidadCombustible) {
-        this.cantidadCombustible = cantidadCombustible;
+    public void setTiempoDeAterrizaje(int tiempoDeAterrizaje) {
+        this.tiempoDeAterrizaje = tiempoDeAterrizaje;
     }
+   
+   
 
     public void setTiempoDeMantenimiento(int tiempoDeMantenimiento) {
         this.tiempoDeMantenimiento = tiempoDeMantenimiento;

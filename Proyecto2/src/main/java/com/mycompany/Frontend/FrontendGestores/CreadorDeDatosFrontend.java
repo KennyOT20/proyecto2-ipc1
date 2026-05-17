@@ -523,6 +523,8 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         
         reiniciarTextos();
         
+        contenedorDatos.getVentanaPrincipal().irAMenuInicial();
+        
     }
    
    private void reiniciarTextos(){
