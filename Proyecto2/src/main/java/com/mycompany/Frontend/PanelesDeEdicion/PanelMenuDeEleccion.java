@@ -13,12 +13,12 @@ import javax.swing.DefaultListModel;
  *
  * @author Kenny
  */
-public class PanelMenuDeEdicion extends javax.swing.JPanel {
+public class PanelMenuDeEleccion extends javax.swing.JPanel {
 
     private final PanelContenedorSimulacion contenedorSimulacion;
     private final VentanaInicial ventanaInicial;
     
-    public PanelMenuDeEdicion(VentanaInicial ventanaInicial, PanelContenedorSimulacion contenedorSimulacion) {
+    public PanelMenuDeEleccion(VentanaInicial ventanaInicial, PanelContenedorSimulacion contenedorSimulacion) {
         initComponents();
         this.ventanaInicial = ventanaInicial;
         this.contenedorSimulacion = contenedorSimulacion;
@@ -139,7 +139,7 @@ public class PanelMenuDeEdicion extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(panelDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150))
         );

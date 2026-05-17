@@ -10,10 +10,13 @@ package com.mycompany.Frontend.PanelesSimulacion;
  */
 public class PanelConfiguracionTiempos extends javax.swing.JPanel {
 
+    private final PanelContenedorSimulacion panelSimulacion;
     /**
      * Creates new form PanelConfiguracionTiempos
+     * @param panelSimulacion
      */
-    public PanelConfiguracionTiempos() {
+    public PanelConfiguracionTiempos(PanelContenedorSimulacion panelSimulacion) {
+        this.panelSimulacion = panelSimulacion;
         initComponents();
     }
 
@@ -93,11 +96,21 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
         botonIniciarSimulacion.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonIniciarSimulacion.setForeground(new java.awt.Color(0, 0, 0));
         botonIniciarSimulacion.setText("Ir a simulacion");
+        botonIniciarSimulacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIniciarSimulacionActionPerformed(evt);
+            }
+        });
 
         botonVolver.setBackground(new java.awt.Color(102, 255, 102));
         botonVolver.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonVolver.setForeground(new java.awt.Color(0, 0, 0));
         botonVolver.setText("Volver al menu anterior");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,7 +194,7 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelDeTiempos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +205,16 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
                 .addGap(0, 30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        // TODO add your handling code here:
+        panelSimulacion.irAEleccionDeRuta();
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void botonIniciarSimulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSimulacionActionPerformed
+        // TODO add your handling code here:
+        panelSimulacion.irASimulacion();
+    }//GEN-LAST:event_botonIniciarSimulacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

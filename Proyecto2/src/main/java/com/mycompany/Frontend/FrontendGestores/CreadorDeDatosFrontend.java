@@ -245,7 +245,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
         panelTituloEstacionesLayout.setHorizontalGroup(
             panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
         );
         panelTituloEstacionesLayout.setVerticalGroup(
             panelTituloEstacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +311,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                     .addComponent(capacidadDeAterrizaje)
                     .addComponent(capacidadDeDespliegue, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
             .addComponent(labelNombreDeDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelEscionesPistasLayout.createSequentialGroup()
                 .addGroup(panelEscionesPistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -406,7 +406,7 @@ public class CreadorDeDatosFrontend extends javax.swing.JPanel {
                 .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 47, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

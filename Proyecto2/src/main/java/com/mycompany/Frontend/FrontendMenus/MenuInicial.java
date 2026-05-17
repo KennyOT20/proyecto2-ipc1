@@ -136,7 +136,7 @@ public class MenuInicial extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(349, 349, 349)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

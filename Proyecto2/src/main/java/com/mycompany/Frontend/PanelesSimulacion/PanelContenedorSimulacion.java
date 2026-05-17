@@ -4,7 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion;
 
-import com.mycompany.Frontend.PanelesDeEdicion.PanelMenuDeEdicion;
+import com.mycompany.Frontend.PanelesDeEdicion.PanelMenuDeEleccion;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.awt.CardLayout;
 
@@ -15,15 +15,17 @@ import java.awt.CardLayout;
 public class PanelContenedorSimulacion extends javax.swing.JPanel {
 
     private final PanelEdicionDeArchivos panelEdicion;
-    private final PanelMenuDeEdicion menuEdicion;
+    private final PanelMenuDeEleccion menuEdicion;
     private final PanelElegirRutaLog elegirRuta;
     private final PanelSimulacion panelSimulacion;
+    private final PanelConfiguracionTiempos panelConfiguracion;
     private final VentanaInicial ventanaInicial;
     
     private final String PANEL_EDICION = "PANEL EDICION";
     private final String MENU_EDICION = "MENU EDICION";
     private final String ELEGIR_RUTA = "RUTA DE LOGS";
     private final String PANEL_SIMULACION = "PANEL SIMULACION";
+    private final String PANEL_CONFIGURACION ="PANEL CONFIGURACION";
     
     /**
      * Creates new form PanelContenedorSimulacion
@@ -31,9 +33,10 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
      */
     public PanelContenedorSimulacion(VentanaInicial ventanaInicial) {
         this.ventanaInicial = ventanaInicial;
-        this.menuEdicion = new PanelMenuDeEdicion(ventanaInicial, this);
+        this.menuEdicion = new PanelMenuDeEleccion(ventanaInicial, this);
         this.elegirRuta = new PanelElegirRutaLog(this);
         this.panelSimulacion = new PanelSimulacion(this);
+        this.panelConfiguracion = new PanelConfiguracionTiempos(this);
         this.panelEdicion = new PanelEdicionDeArchivos();
         
         initComponents();
@@ -46,6 +49,7 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.add(menuEdicion, MENU_EDICION);
         this.add(elegirRuta, ELEGIR_RUTA);
         this.add(panelSimulacion, PANEL_SIMULACION);
+        this.add(panelConfiguracion, PANEL_CONFIGURACION);
     }
     
     public final void irAEleccionDeDatos(){
@@ -63,6 +67,10 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
     private void cambiarDePaneles(String panel){
         CardLayout cardLayout = (CardLayout) this.getLayout();
         cardLayout.show(this, panel);
+    }
+    
+    public void irAConfiguracionTiempos(){
+        cambiarDePaneles(PANEL_CONFIGURACION);
     }
 
     /**

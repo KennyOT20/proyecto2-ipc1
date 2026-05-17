@@ -5,6 +5,15 @@
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -21,6 +30,8 @@ public class PanelDespegue extends javax.swing.JPanel {
     public PanelDespegue(PanelSimulacion panelSimulacion) {
         this.panelSimulacion = panelSimulacion;
         initComponents();
+        forzarScroll();
+        cargarCuadricula(15);
     }
 
     /**
@@ -32,21 +43,112 @@ public class PanelDespegue extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelTitulo = new javax.swing.JPanel();
+        labelTitulo = new javax.swing.JLabel();
+        scrollInicial = new javax.swing.JScrollPane();
+        panelCuadricula = new javax.swing.JPanel();
+
         setBackground(new java.awt.Color(0, 204, 204));
+
+        panelTitulo.setBackground(new java.awt.Color(255, 102, 102));
+
+        labelTitulo.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitulo.setText("PISTAS DE DESPEGUE");
+
+        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
+        panelTitulo.setLayout(panelTituloLayout);
+        panelTituloLayout.setHorizontalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelTituloLayout.setVerticalGroup(
+            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        );
+
+        panelCuadricula.setBackground(new java.awt.Color(255, 255, 153));
+
+        javax.swing.GroupLayout panelCuadriculaLayout = new javax.swing.GroupLayout(panelCuadricula);
+        panelCuadricula.setLayout(panelCuadriculaLayout);
+        panelCuadriculaLayout.setHorizontalGroup(
+            panelCuadriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 958, Short.MAX_VALUE)
+        );
+        panelCuadriculaLayout.setVerticalGroup(
+            panelCuadriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 475, Short.MAX_VALUE)
+        );
+
+        scrollInicial.setViewportView(panelCuadricula);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 952, Short.MAX_VALUE)
+            .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(scrollInicial)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollInicial))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void forzarScroll(){
+        scrollInicial.setHorizontalScrollBarPolicy(    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+
+         scrollInicial.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+         
+         scrollInicial.getVerticalScrollBar().setUnitIncrement(20);
+        }
+    
+    private JPanel crearCelda(String texto) {
+        JPanel celda = new JPanel();
+
+        celda.setPreferredSize(new Dimension(300, 300));
+        celda.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        celda.setLayout(new BorderLayout());
+
+        JLabel label = new JLabel(texto, SwingConstants.CENTER);
+        celda.add(label, BorderLayout.CENTER);
+
+        return celda;
+    }
+
+   private void cargarCuadricula(int cantidadPistas) {
+
+        panelCuadricula.removeAll();
+        panelCuadricula.setLayout(new FlowLayout( FlowLayout.LEFT, 15, 15
+        ));
+
+        for (int i = 0; i < cantidadPistas; i++) {
+            panelCuadricula.add(crearCelda("Pista " + (i + 1)));
+        }
+
+        int columnas = 3;
+        int filas = (int) Math.ceil(cantidadPistas / (double) columnas);
+
+        int alturaCelda = 300;
+        int separacion = 15;
+
+        int alturaTotal = filas * (alturaCelda + separacion * 2);
+
+        panelCuadricula.setPreferredSize(new Dimension(1000, alturaTotal) );
+
+        panelCuadricula.revalidate();
+        panelCuadricula.repaint();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JPanel panelCuadricula;
+    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JScrollPane scrollInicial;
     // End of variables declaration//GEN-END:variables
 }

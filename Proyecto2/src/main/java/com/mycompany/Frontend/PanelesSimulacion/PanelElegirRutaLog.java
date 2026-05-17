@@ -65,7 +65,7 @@ public class PanelElegirRutaLog extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(eleccionParaLogs, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+            .addComponent(eleccionParaLogs, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
             .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -93,7 +93,7 @@ public class PanelElegirRutaLog extends javax.swing.JPanel {
                 rutaDeLogs = rutaLogs;
 
                 JOptionPane.showMessageDialog(     this,"Ruta seleccionada: " + rutaLogs );
-                contenedorSimulacion.irASimulacion();
+                contenedorSimulacion.irAConfiguracionTiempos();
                 
             }
 

@@ -358,7 +358,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jLabel2" max="32767" attributes="0"/>
-              <Component id="jLabel3" alignment="0" pref="428" max="32767" attributes="0"/>
+              <Component id="jLabel3" alignment="0" pref="436" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -426,7 +426,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="jLabel5" alignment="0" pref="428" max="32767" attributes="0"/>
+              <Component id="jLabel5" alignment="0" pref="436" max="32767" attributes="0"/>
               <Component id="labelNombreDeDatos" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -636,7 +636,7 @@
                   <Component id="botonGuardar" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="botonVolver" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
