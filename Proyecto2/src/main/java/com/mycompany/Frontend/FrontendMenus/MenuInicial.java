@@ -39,6 +39,7 @@ public class MenuInicial extends javax.swing.JPanel {
         botonCreacionEdicion = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        cargarSimulacion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -65,7 +66,7 @@ public class MenuInicial extends javax.swing.JPanel {
         botonInicio.setBackground(new java.awt.Color(255, 204, 51));
         botonInicio.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         botonInicio.setForeground(new java.awt.Color(0, 0, 0));
-        botonInicio.setText("Iniciar Simulacion");
+        botonInicio.setText("Iniciar nueva simulacion");
         botonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonInicioActionPerformed(evt);
@@ -97,26 +98,34 @@ public class MenuInicial extends javax.swing.JPanel {
             }
         });
 
+        cargarSimulacion.setBackground(new java.awt.Color(255, 204, 102));
+        cargarSimulacion.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        cargarSimulacion.setForeground(new java.awt.Color(0, 0, 0));
+        cargarSimulacion.setText("Cargar Simulacion");
+
         javax.swing.GroupLayout panelContenedorBotonesLayout = new javax.swing.GroupLayout(panelContenedorBotones);
         panelContenedorBotones.setLayout(panelContenedorBotonesLayout);
         panelContenedorBotonesLayout.setHorizontalGroup(
             panelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(botonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonCreacionEdicion, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+            .addComponent(botonCreacionEdicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cargarSimulacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelContenedorBotonesLayout.setVerticalGroup(
             panelContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContenedorBotonesLayout.createSequentialGroup()
                 .addComponent(botonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(cargarSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(botonCreacionEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -127,7 +136,7 @@ public class MenuInicial extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(349, 349, 349)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +144,7 @@ public class MenuInicial extends javax.swing.JPanel {
                 .addComponent(PanelContenedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93)
                 .addComponent(panelContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 216, Short.MAX_VALUE))
+                .addGap(0, 91, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,6 +168,7 @@ public class MenuInicial extends javax.swing.JPanel {
     private javax.swing.JPanel PanelContenedorTitulo;
     private javax.swing.JButton botonCreacionEdicion;
     private javax.swing.JButton botonInicio;
+    private javax.swing.JButton cargarSimulacion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel labelTitulo;

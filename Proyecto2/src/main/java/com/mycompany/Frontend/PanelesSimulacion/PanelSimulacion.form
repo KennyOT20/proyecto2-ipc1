@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="66" red="66" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="PanelContenedorBotones" max="32767" attributes="0"/>
+          <Component id="panelContenedorDatosSimulacion" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="PanelContenedorBotones" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelContenedorDatosSimulacion" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="PanelContenedorBotones">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="labelTitulo" min="-2" pref="266" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonPausar" min="-2" pref="147" max="-2" attributes="0"/>
+                      <Component id="botonIniciar" min="-2" pref="147" max="-2" attributes="0"/>
+                      <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonMantenimiento" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonControl" min="-2" pref="207" max="-2" attributes="0"/>
+                      <Component id="botonDesbordaje" min="-2" pref="207" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="botonAterrizaje" max="32767" attributes="0"/>
+                      <Component id="botonDespegue" alignment="0" pref="169" max="32767" attributes="0"/>
+                      <Component id="botonVuelos" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonLogs" max="32767" attributes="0"/>
+                      <Component id="botonFinalizar" pref="109" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="labelTitulo" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="botonControl" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="botonIniciar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="botonDespegue" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="botonLogs" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="botonPausar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="botonMantenimiento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="botonAterrizaje" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="botonFinalizar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonDesbordaje" alignment="0" pref="37" max="32767" attributes="0"/>
+                      <Component id="botonGuardar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botonVuelos" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="labelTitulo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="36" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="SIMULACION "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonIniciar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Iniciar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIniciarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonPausar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pausar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonGuardar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar Simulacion"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonControl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estaciones de control"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonMantenimiento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estaciones de mantenimiento"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonDesbordaje">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estaciones de desbordaje"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonDespegue">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pistas de despegue"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDespegueActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonAterrizaje">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pistas de aterrizaje"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonVuelos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aviones en vuelo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonLogs">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Logs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonFinalizar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Finalizar"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="panelContenedorDatosSimulacion">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="ff" red="66" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="559" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </SubComponents>
+</Form>

@@ -25,7 +25,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
               <Component id="panelContenedorBotones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="362" max="32767" attributes="0"/>
+              <EmptySpace pref="342" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,7 +35,7 @@
               <Component id="PanelContenedorTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
               <Component id="panelContenedorBotones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="216" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,22 +86,25 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="botonInicio" max="32767" attributes="0"/>
-              <Component id="botonCreacionEdicion" alignment="0" pref="241" max="32767" attributes="0"/>
+              <Component id="botonCreacionEdicion" alignment="0" max="32767" attributes="0"/>
               <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
               <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+              <Component id="cargarSimulacion" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="botonInicio" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="cargarSimulacion" min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Component id="botonCreacionEdicion" min="-2" pref="68" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="58" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,7 +121,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Iniciar Simulacion"/>
+            <Property name="text" type="java.lang.String" value="Iniciar nueva simulacion"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonInicioActionPerformed"/>
@@ -171,6 +174,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cargarSimulacion">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="cc" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="18" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cargar Simulacion"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
