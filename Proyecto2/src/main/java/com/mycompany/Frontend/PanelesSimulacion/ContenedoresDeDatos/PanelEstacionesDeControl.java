@@ -111,7 +111,7 @@ public class PanelEstacionesDeControl extends javax.swing.JPanel {
     private JPanel crearCelda(String texto) {
         JPanel celda = new JPanel();
 
-        celda.setPreferredSize(new Dimension(300, 300));
+        celda.setPreferredSize(new Dimension(400, 400));
         celda.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         celda.setLayout(new BorderLayout());
 
@@ -124,22 +124,28 @@ public class PanelEstacionesDeControl extends javax.swing.JPanel {
    private void cargarCuadricula(int cantidadPistas) {
 
         panelCuadricula.removeAll();
-        panelCuadricula.setLayout(new FlowLayout( FlowLayout.LEFT, 15, 15
+        panelCuadricula.setLayout(new FlowLayout(
+                FlowLayout.LEFT, 15, 15
         ));
 
         for (int i = 0; i < cantidadPistas; i++) {
             panelCuadricula.add(crearCelda("Estacion " + (i + 1)));
         }
 
-        int columnas = 3;
+        int columnas = 2;
         int filas = (int) Math.ceil(cantidadPistas / (double) columnas);
 
-        int alturaCelda = 300;
+        int alturaCelda = 400;
+        int anchoCelda = 400;
         int separacion = 15;
 
         int alturaTotal = filas * (alturaCelda + separacion * 2);
 
-        panelCuadricula.setPreferredSize(new Dimension(1000, alturaTotal) );
+        int anchoTotal = columnas * (anchoCelda + separacion * 2);
+
+        panelCuadricula.setPreferredSize(
+                new Dimension(anchoTotal, alturaTotal)
+        );
 
         panelCuadricula.revalidate();
         panelCuadricula.repaint();

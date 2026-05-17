@@ -33,7 +33,10 @@ public class PanelDeControl extends javax.swing.JPanel {
         avionesColaAterrizaje = new javax.swing.JComboBox<>();
         avionesColaDespeuge = new javax.swing.JComboBox<>();
         listaPistasDespegue = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        labelAterrizaje = new javax.swing.JLabel();
+        labelDespegue = new javax.swing.JLabel();
+        botonAterrizaje = new javax.swing.JButton();
+        botonDespeuge = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 102, 204));
 
@@ -44,24 +47,52 @@ public class PanelDeControl extends javax.swing.JPanel {
 
         labelId.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelId.setForeground(new java.awt.Color(0, 0, 0));
-        labelId.setText("ID: ");
+        labelId.setText("ID ESTACION: ");
 
         labelCapacidad.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelCapacidad.setForeground(new java.awt.Color(0, 0, 0));
         labelCapacidad.setText("Capacidad: ");
 
+        listaPistasAterrizaje.setBackground(new java.awt.Color(153, 255, 153));
+        listaPistasAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         listaPistasAterrizaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        avionesColaAterrizaje.setBackground(new java.awt.Color(204, 204, 255));
+        avionesColaAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         avionesColaAterrizaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        avionesColaDespeuge.setBackground(new java.awt.Color(102, 102, 255));
+        avionesColaDespeuge.setForeground(new java.awt.Color(0, 0, 0));
         avionesColaDespeuge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        avionesColaDespeuge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avionesColaDespeugeActionPerformed(evt);
+            }
+        });
 
+        listaPistasDespegue.setBackground(new java.awt.Color(255, 153, 153));
+        listaPistasDespegue.setForeground(new java.awt.Color(0, 0, 0));
         listaPistasDespegue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel1.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Avion para Aterrizaje     Pistas de Aterrizaje");
+        labelAterrizaje.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
+        labelAterrizaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAterrizaje.setText("Avion para Aterrizaje     Pistas de Aterrizaje");
+
+        labelDespegue.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        labelDespegue.setForeground(new java.awt.Color(0, 0, 0));
+        labelDespegue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelDespegue.setText("Avion para despegue    Pistas de despegue");
+
+        botonAterrizaje.setBackground(new java.awt.Color(102, 255, 255));
+        botonAterrizaje.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        botonAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
+        botonAterrizaje.setText("Aterrizar");
+
+        botonDespeuge.setBackground(new java.awt.Color(102, 255, 153));
+        botonDespeuge.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        botonDespeuge.setForeground(new java.awt.Color(0, 0, 0));
+        botonDespeuge.setText("Despegar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,17 +101,29 @@ public class PanelDeControl extends javax.swing.JPanel {
             .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(labelId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(labelCapacidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelAterrizaje, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(avionesColaAterrizaje, 0, 144, Short.MAX_VALUE)
-                    .addComponent(avionesColaDespeuge, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(listaPistasAterrizaje, 0, 143, Short.MAX_VALUE)
-                    .addComponent(listaPistasDespegue, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(avionesColaAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(avionesColaDespeuge, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(listaPistasAterrizaje, 0, 143, Short.MAX_VALUE)
+                            .addComponent(listaPistasDespegue, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(botonDespeuge, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(labelDespegue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,25 +134,38 @@ public class PanelDeControl extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avionesColaAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(listaPistasAterrizaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelDespegue, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avionesColaDespeuge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(listaPistasDespegue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonAterrizaje, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(botonDespeuge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void avionesColaDespeugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avionesColaDespeugeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_avionesColaDespeugeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> avionesColaAterrizaje;
     private javax.swing.JComboBox<String> avionesColaDespeuge;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton botonAterrizaje;
+    private javax.swing.JButton botonDespeuge;
+    private javax.swing.JLabel labelAterrizaje;
     private javax.swing.JLabel labelCapacidad;
+    private javax.swing.JLabel labelDespegue;
     private javax.swing.JLabel labelId;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JComboBox<String> listaPistasAterrizaje;
