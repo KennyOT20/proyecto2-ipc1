@@ -4,6 +4,8 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kenny
@@ -45,6 +47,7 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         botonIniciarSimulacion = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
+        labelInfo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 204, 102));
         setForeground(new java.awt.Color(153, 255, 153));
@@ -133,6 +136,10 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        labelInfo.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        labelInfo.setForeground(new java.awt.Color(0, 0, 0));
+        labelInfo.setText("NOTA: Todos los tiempos son en milisegundos");
+
         javax.swing.GroupLayout panelDeTiemposLayout = new javax.swing.GroupLayout(panelDeTiempos);
         panelDeTiempos.setLayout(panelDeTiemposLayout);
         panelDeTiemposLayout.setHorizontalGroup(
@@ -154,8 +161,13 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
                     .addComponent(tiempoDesbordaje))
                 .addGap(63, 63, 63))
             .addGroup(panelDeTiemposLayout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelDeTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDeTiemposLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDeTiemposLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDeTiemposLayout.setVerticalGroup(
@@ -181,7 +193,9 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
                 .addGroup(panelDeTiemposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDespegue, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tiempoDeDespegue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
@@ -208,14 +222,96 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
         panelSimulacion.irAEleccionDeRuta();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     private void botonIniciarSimulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSimulacionActionPerformed
         // TODO add your handling code here:
+        if (!validarTiempoCombustible()) {
+            JOptionPane.showMessageDialog( this,"Tiempo de combustible invalido."  );
+            return;
+        }
+
+        if (!validarTiempoAterrizaje()) {
+            JOptionPane.showMessageDialog(
+                    this,  "Tiempo de aterrizaje invalido." );
+            return;
+        }
+
+        if (!validarTiempoDespegue()) {
+            JOptionPane.showMessageDialog( this,  "Tiempo de despegue invalido."  );
+            return;
+        }
+
+        if (!validarTiempoMantenimiento()) {
+            JOptionPane.showMessageDialog( this,"Tiempo de mantenimiento invalido.");
+            return;
+        }
+
+        if (!validarTiempoDesbordaje()) {
+            JOptionPane.showMessageDialog(this, "Tiempo de desbordaje invalido." );
+            return;
+        }
+
+        mandarDatos();
+        panelSimulacion.getConstruirPartida().generarAeropuerto();
         panelSimulacion.irASimulacion();
     }//GEN-LAST:event_botonIniciarSimulacionActionPerformed
 
+    private boolean validarEnteroPositivo(String texto) {
+
+        try {
+            int numero = Integer.parseInt(texto.trim());
+            return numero > 0;
+
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    private boolean validarTiempoCombustible() {
+        return validarEnteroPositivo(  tiempoCombustible.getText());
+    }
+
+    private boolean validarTiempoAterrizaje() {
+        return validarEnteroPositivo(tiempoDeAterrizaje.getText() );
+    }
+
+    private boolean validarTiempoDespegue() {
+        return validarEnteroPositivo( tiempoDeDespegue.getText());
+    }
+
+    private boolean validarTiempoMantenimiento() {
+        return validarEnteroPositivo( tiempoDeMantenimiento.getText() );
+    }
+
+    private boolean validarTiempoDesbordaje() {
+        return validarEnteroPositivo(tiempoDesbordaje.getText());
+    }
+    
+    private void limpiarCampos() {
+        tiempoCombustible.setText("");
+        tiempoDeAterrizaje.setText("");
+        tiempoDeDespegue.setText("");
+        tiempoDeMantenimiento.setText("");
+        tiempoDesbordaje.setText("");
+    }
+    
+    private void mandarDatos(){
+        int tiempoDeGastoCombustible = Integer.parseInt(tiempoCombustible.getText());
+        int tiempoAterrizaje = Integer.parseInt(tiempoDeAterrizaje.getText());
+        int tiempoDespegue = Integer.parseInt(tiempoDeDespegue.getText());
+        int tiempoMantenimiento = Integer.parseInt(tiempoDeMantenimiento.getText());
+        int tiempoDeDesborde = Integer.parseInt(tiempoDesbordaje.getText());
+        
+        panelSimulacion.getConstruirPartida().setTiempoDeAterrizaje(tiempoAterrizaje);
+        panelSimulacion.getConstruirPartida().setTiempoDeConsumo(tiempoDeGastoCombustible);
+        panelSimulacion.getConstruirPartida().setTiempoDeDesbordaje(tiempoDeDesborde);
+        panelSimulacion.getConstruirPartida().setTiempoDeDespegue(tiempoDespegue);
+        panelSimulacion.getConstruirPartida().setTiempoDeMantenimiento(tiempoMantenimiento);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonIniciarSimulacion;
@@ -225,6 +321,7 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
     private javax.swing.JLabel labelCombustible;
     private javax.swing.JLabel labelDesbordaje;
     private javax.swing.JLabel labelDespegue;
+    private javax.swing.JLabel labelInfo;
     private javax.swing.JLabel labelMantenimiento;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel panelDeTiempos;

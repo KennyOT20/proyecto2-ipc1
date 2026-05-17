@@ -4,6 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesDeEdicion;
 
+import com.mycompany.Backend.Constructores.ConstructorPartida;
 import com.mycompany.Frontend.PanelesSimulacion.PanelContenedorSimulacion;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.io.File;
@@ -183,7 +184,9 @@ public class PanelMenuDeEleccion extends javax.swing.JPanel {
         // TODO add your handling code here:
         
        String simulacionSeleccionada = listaDeArchivos.getSelectedValue();
-       
+       ConstructorPartida construirNuevaSimulacion;
+       construirNuevaSimulacion = new ConstructorPartida(simulacionSeleccionada);
+       contenedorSimulacion.setConstruirPartida(construirNuevaSimulacion);
        contenedorSimulacion.irAEleccionDeRuta();
         
     }//GEN-LAST:event_botonElegirDatosActionPerformed

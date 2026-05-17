@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 public class PanelElegirRutaLog extends javax.swing.JPanel {
 
     private final PanelContenedorSimulacion contenedorSimulacion;
-    private String rutaDeLogs;
     
     /**
      * Creates new form PanelElegirRutaLog
@@ -90,9 +89,10 @@ public class PanelElegirRutaLog extends javax.swing.JPanel {
 
                 File carpeta = eleccionParaLogs.getSelectedFile();
                 String rutaLogs = carpeta.getAbsolutePath();
-                rutaDeLogs = rutaLogs;
+                
 
                 JOptionPane.showMessageDialog(     this,"Ruta seleccionada: " + rutaLogs );
+                contenedorSimulacion.getConstruirPartida().setPathHTML(rutaLogs);
                 contenedorSimulacion.irAConfiguracionTiempos();
                 
             }

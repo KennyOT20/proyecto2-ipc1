@@ -4,6 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion;
 
+import com.mycompany.Backend.Constructores.ConstructorPartida;
 import com.mycompany.Frontend.PanelesDeEdicion.PanelMenuDeEleccion;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.awt.CardLayout;
@@ -14,6 +15,7 @@ import java.awt.CardLayout;
  */
 public class PanelContenedorSimulacion extends javax.swing.JPanel {
 
+    private ConstructorPartida construirPartida;
     private final PanelEdicionDeArchivos panelEdicion;
     private final PanelMenuDeEleccion menuEdicion;
     private final PanelElegirRutaLog elegirRuta;
@@ -38,7 +40,7 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.panelSimulacion = new PanelSimulacion(this);
         this.panelConfiguracion = new PanelConfiguracionTiempos(this);
         this.panelEdicion = new PanelEdicionDeArchivos();
-        
+        this.construirPartida = null;
         initComponents();
         agregarPaneles();
         irAEleccionDeDatos();
@@ -85,6 +87,15 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         setLayout(new java.awt.CardLayout());
     }// </editor-fold>//GEN-END:initComponents
 
+    public ConstructorPartida getConstruirPartida() {
+        return construirPartida;
+    }
+
+    public void setConstruirPartida(ConstructorPartida construirPartida) {
+        this.construirPartida = construirPartida;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

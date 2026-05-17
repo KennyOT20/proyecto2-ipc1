@@ -25,6 +25,7 @@ public class ConstructorPartida {
     private final GeneradorDePistas generarPista;
     private final Aeropuerto aeropuerto;
     private final String carpetaALeer;
+    private String pathHTML;
     
     private int tiempoDeAterrizaje;
     private int tiempoDeMantenimiento;
@@ -99,6 +100,12 @@ public class ConstructorPartida {
         cargarPistas(despegues);
     }
 
+    public void generarAeropuerto(){
+        obtenerPistas();
+        obtenerAviones();
+        obtenerEstaciones();
+    }
+    
    private void cargarPistas(String[][] datos) {
 
         for (int i = 0; i < datos.length; i++) {
@@ -186,6 +193,10 @@ public class ConstructorPartida {
 
     public void setTiempoDeConsumo(int tiempoDeConsumo) {
         this.tiempoDeConsumo = tiempoDeConsumo;
+    }
+
+    public void setPathHTML(String pathHTML) {
+        this.pathHTML = pathHTML;
     }
     
     
