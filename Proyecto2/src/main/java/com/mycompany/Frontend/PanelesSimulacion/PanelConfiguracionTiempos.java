@@ -4,6 +4,7 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion;
 
+import com.mycompany.Backend.Simulacion.Simulacion;
 import javax.swing.JOptionPane;
 
 /**
@@ -256,7 +257,10 @@ public class PanelConfiguracionTiempos extends javax.swing.JPanel {
 
         mandarDatos();
         panelSimulacion.getConstruirPartida().generarAeropuerto();
+        Simulacion simulacionConfigurada = new Simulacion(panelSimulacion.getConstruirPartida().getAeropuerto());
+        panelSimulacion.setSimulacion(simulacionConfigurada);
         panelSimulacion.irASimulacion();
+        limpiarCampos();
     }//GEN-LAST:event_botonIniciarSimulacionActionPerformed
 
     private boolean validarEnteroPositivo(String texto) {

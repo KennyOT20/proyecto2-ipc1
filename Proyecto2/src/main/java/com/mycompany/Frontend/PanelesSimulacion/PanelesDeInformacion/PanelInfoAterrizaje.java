@@ -10,10 +10,13 @@ package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
  */
 public class PanelInfoAterrizaje extends javax.swing.JPanel {
 
+    private boolean panelLLeno;
+    
     /**
      * Creates new form PanelInfoAterrizaje
      */
     public PanelInfoAterrizaje() {
+        this.panelLLeno = false; 
         initComponents();
     }
 
@@ -94,7 +97,11 @@ public class PanelInfoAterrizaje extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public boolean isPanelLLeno() {
+        return panelLLeno;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelAvionesEnTurno;

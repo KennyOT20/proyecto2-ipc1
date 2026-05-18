@@ -41,6 +41,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
      * @param panelContenedorSimulacion
      */
     public PanelSimulacion(PanelContenedorSimulacion panelContenedorSimulacion) {
+        this.panelContenedorSimulacion = panelContenedorSimulacion;
         this.aterrizaje = new PanelAterrizaje(this);
         this.panelVuelo = new PanelDeVuelo(this);
         this.panelDespegue = new PanelDespegue(this);
@@ -50,7 +51,6 @@ public class PanelSimulacion extends javax.swing.JPanel {
         this.panelLogs = new PanelLogs(this);
         initComponents();
         agregarPaneles();
-        this.panelContenedorSimulacion = panelContenedorSimulacion;
         botonPausar.setEnabled(false);
         botonGuardar.setEnabled(false);
         botonFinalizar.setEnabled(false);
@@ -289,6 +289,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVuelosActionPerformed
         // TODO add your handling code here:
+        panelVuelo.mostrarDatosTabla();
         irAVuelos();
     }//GEN-LAST:event_botonVuelosActionPerformed
 
@@ -362,6 +363,12 @@ public class PanelSimulacion extends javax.swing.JPanel {
     public void irALogs(){
         cambiarDePaneles(PANEL_LOGS);
     }
+
+    public PanelContenedorSimulacion getPanelContenedorSimulacion() {
+        return panelContenedorSimulacion;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelContenedorBotones;

@@ -5,6 +5,7 @@
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
+import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoAterrizaje;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,7 +32,6 @@ public class PanelAterrizaje extends javax.swing.JPanel {
         this.panelSimulacion = panelSimulacion;
         initComponents();
         forzarScroll();
-        cargarCuadricula(15);
     }
 
     /**
@@ -108,14 +108,21 @@ public class PanelAterrizaje extends javax.swing.JPanel {
         return celda;
     }
 
-   private void cargarCuadricula(int cantidadPistas) {
+   public void cargarCuadricula(int cantidadPistas) {
 
         panelContenedor.removeAll();
         panelContenedor.setLayout(new FlowLayout( FlowLayout.LEFT, 15, 15
         ));
 
         for (int i = 0; i < cantidadPistas; i++) {
-            panelContenedor.add(crearCelda("Pista " + (i + 1)));
+            PanelInfoAterrizaje panel = new PanelInfoAterrizaje();
+            
+            if(panel.isPanelLLeno()){
+                panelContenedor.add(panel);
+            }
+            else {
+                 panelContenedor.add(crearCelda("Pista " + (i + 1)));
+            }
         }
 
         int columnas = 3;

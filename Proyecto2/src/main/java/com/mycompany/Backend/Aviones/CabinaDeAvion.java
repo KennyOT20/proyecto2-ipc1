@@ -24,6 +24,7 @@ public class CabinaDeAvion implements Runnable{
     public CabinaDeAvion(Avion avion){
         this.avion = avion;
         this.simulacionPausada = false;
+        this.estadoDeAvion = VOLANDO;
     }
     
     @Override

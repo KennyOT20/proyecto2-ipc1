@@ -198,7 +198,8 @@ public class ConstructorPartida {
     public void setPathHTML(String pathHTML) {
         this.pathHTML = pathHTML;
     }
-    
-    
-  
+
+    public Aeropuerto getAeropuerto() {
+        return aeropuerto;
+    }
 }

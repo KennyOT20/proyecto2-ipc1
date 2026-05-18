@@ -21,14 +21,14 @@ import java.io.Serializable;
  */
 public class Aeropuerto implements Serializable {
     
-    private  ListaGenerica <Avion> avionesPequeños;
-    private  ListaGenerica <Avion> avionesGrandes;
-    private  ListaGenerica <Avion>  avionesMedianos;
-    private  ListaGenerica <PistaDeAterrizaje> pistasDeAterrizaje;
-    private  ListaGenerica <PistaDespegue> pistasDeDespegue;
-    private  ListaGenerica <EstacionDesbordaje> estacionDesborde;
-    private  ListaGenerica <EstacionDeMantenimiento> estacionDeMantenimiento;
-    private  ListaGenerica <EstacionDeControl> estacionDeControl;
+    private final  ListaGenerica <Avion> avionesPequeños;
+    private final  ListaGenerica <Avion> avionesGrandes;
+    private final  ListaGenerica <Avion>  avionesMedianos;
+    private final  ListaGenerica <PistaDeAterrizaje> pistasDeAterrizaje;
+    private final  ListaGenerica <PistaDespegue> pistasDeDespegue;
+    private final  ListaGenerica <EstacionDesbordaje> estacionDesborde;
+    private final  ListaGenerica <EstacionDeMantenimiento> estacionDeMantenimiento;
+    private final  ListaGenerica <EstacionDeControl> estacionDeControl;
     
     public Aeropuerto(){
         this.avionesGrandes = new ListaGenerica<>();

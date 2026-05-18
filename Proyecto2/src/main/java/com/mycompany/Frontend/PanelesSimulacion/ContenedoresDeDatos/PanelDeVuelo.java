@@ -4,7 +4,13 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
+import com.mycompany.Backend.Aereopuerto.Aeropuerto;
+import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +24,7 @@ public class PanelDeVuelo extends javax.swing.JPanel {
      * Creates new form PanelDeVuelo
      * @param panelSimulacion
      */
-    public PanelDeVuelo(PanelSimulacion panelSimulacion) {
+    public PanelDeVuelo(PanelSimulacion panelSimulacion){
         this.panelSimulacion = panelSimulacion;
         initComponents();
     }
@@ -90,6 +96,50 @@ public class PanelDeVuelo extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public final void mostrarDatosTabla() {
+
+        try {
+            Aeropuerto aeropuerto = panelSimulacion .getPanelContenedorSimulacion() .getSimulacion()   .getAeropuerto();
+
+            DefaultTableModel modelo = new DefaultTableModel(
+                    new String[]{"Tipo", "ID", "Combustible", "Estado"},
+                    0
+            );
+
+            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesPequeños());
+            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesMedianos());
+            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesGrandes());
+
+            TablaEstadoDeAviones.setModel(modelo);
+
+        } catch (ListaEnlazadaExcepcion e) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Error cargando datos de aviones."
+            );
+
+            e.printStackTrace();
+        }
+    }
+    
+   private void cargarAvionesEnTabla(  DefaultTableModel modelo, ListaGenerica<Avion> listaAviones) throws ListaEnlazadaExcepcion {
+
+        for (int i = 0; i < listaAviones.getTamañoDeLista(); i++) {
+
+            Avion avion = listaAviones.obtenerContenido(i);
+
+            Object[] fila = {
+                avion.getTipo(),
+                avion.getIdAvion(),
+                avion.getCombustible(),
+                avion.getControladorAvion().getEstadoDeAvion()
+            };
+
+            modelo.addRow(fila);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -43,17 +43,19 @@ public class ListaGenerica <T> {
         return (T) nodoBuscado.getContenidoDeLista();
     }
     
-    private NodoGenerico <T> obtenerContenidoNodo(int indiceObtenido) throws ListaEnlazadaExcepcion{
-        if(indiceObtenido < 0 || indiceObtenido >= tamañoDeLista){
-            throw new ListaEnlazadaExcepcion ("El indice no existe.");
+   private NodoGenerico<T> obtenerContenidoNodo(int indiceObtenido)
+        throws ListaEnlazadaExcepcion {
+
+        if (indiceObtenido < 0 || indiceObtenido >= tamañoDeLista) {
+            throw new ListaEnlazadaExcepcion("El indice no existe.");
         }
-        
+
         NodoGenerico<T> nodoActual = nodoInicial;
-        
+
         for (int i = 0; i < indiceObtenido; i++) {
-            nodoActual.getSiguienteNodo();
+            nodoActual = nodoActual.getSiguienteNodo();
         }
-        
+
         return nodoActual;
     }
     
@@ -79,5 +81,11 @@ public class ListaGenerica <T> {
 
         return contenido;
     }
+
+    public int getTamañoDeLista() {
+        return tamañoDeLista;
+    }
+     
+     
     
 }

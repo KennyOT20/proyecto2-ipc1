@@ -5,6 +5,7 @@
 package com.mycompany.Frontend.PanelesSimulacion;
 
 import com.mycompany.Backend.Constructores.ConstructorPartida;
+import com.mycompany.Backend.Simulacion.Simulacion;
 import com.mycompany.Frontend.PanelesDeEdicion.PanelMenuDeEleccion;
 import com.mycompany.Frontend.VentanaInicial.VentanaInicial;
 import java.awt.CardLayout;
@@ -16,6 +17,7 @@ import java.awt.CardLayout;
 public class PanelContenedorSimulacion extends javax.swing.JPanel {
 
     private ConstructorPartida construirPartida;
+    private Simulacion simulacion;
     private final PanelEdicionDeArchivos panelEdicion;
     private final PanelMenuDeEleccion menuEdicion;
     private final PanelElegirRutaLog elegirRuta;
@@ -40,7 +42,7 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.panelSimulacion = new PanelSimulacion(this);
         this.panelConfiguracion = new PanelConfiguracionTiempos(this);
         this.panelEdicion = new PanelEdicionDeArchivos();
-        this.construirPartida = null;
+
         initComponents();
         agregarPaneles();
         irAEleccionDeDatos();
@@ -95,6 +97,15 @@ public class PanelContenedorSimulacion extends javax.swing.JPanel {
         this.construirPartida = construirPartida;
     }
 
+    public Simulacion getSimulacion() {
+        return simulacion;
+    }
+
+    public void setSimulacion(Simulacion simulacion) {
+        this.simulacion = simulacion;
+    }
+
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
