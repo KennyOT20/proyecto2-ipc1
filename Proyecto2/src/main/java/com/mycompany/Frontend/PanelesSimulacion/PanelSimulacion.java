@@ -275,6 +275,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonDespegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDespegueActionPerformed
         // TODO add your handling code here:
+        panelDespegue.cargarCuadricula();
         irADespeje();
     }//GEN-LAST:event_botonDespegueActionPerformed
 
@@ -284,6 +285,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonDesbordajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDesbordajeActionPerformed
         // TODO add your handling code here:
+        panelDesbordaje.cargarCuadricula();
         irADesbordaje();
     }//GEN-LAST:event_botonDesbordajeActionPerformed
 
@@ -295,6 +297,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAterrizajeActionPerformed
         // TODO add your handling code here:
+        aterrizaje.cargarCuadricula();
         irAterrizaje();
     }//GEN-LAST:event_botonAterrizajeActionPerformed
 
@@ -318,6 +321,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMantenimientoActionPerformed
             // TODO add your handling code here:
+            panelMantenimiento.cargarCuadricula();
             irAMantenimiento();
     }//GEN-LAST:event_botonMantenimientoActionPerformed
 

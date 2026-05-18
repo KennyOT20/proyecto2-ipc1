@@ -4,13 +4,21 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
+import com.mycompany.Backend.Aereopuerto.Aeropuerto;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
+import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
+import com.mycompany.Backend.Pistas.PistaDespegue;
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
+import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoAterrizaje;
+import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoDespegue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -31,7 +39,6 @@ public class PanelDespegue extends javax.swing.JPanel {
         this.panelSimulacion = panelSimulacion;
         initComponents();
         forzarScroll();
-        cargarCuadricula(15);
     }
 
     /**
@@ -107,41 +114,50 @@ public class PanelDespegue extends javax.swing.JPanel {
          scrollInicial.getVerticalScrollBar().setUnitIncrement(20);
         }
     
-    private JPanel crearCelda(String texto) {
-        JPanel celda = new JPanel();
 
-        celda.setPreferredSize(new Dimension(300, 300));
-        celda.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        celda.setLayout(new BorderLayout());
 
-        JLabel label = new JLabel(texto, SwingConstants.CENTER);
-        celda.add(label, BorderLayout.CENTER);
+   public void cargarCuadricula() {
+        try {
+            panelCuadricula.removeAll();
+            panelCuadricula.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 15));
 
-        return celda;
-    }
+            Aeropuerto aeropuerto = panelSimulacion
+                    .getPanelContenedorSimulacion()
+                    .getSimulacion()
+                    .getAeropuerto();
 
-   private void cargarCuadricula(int cantidadPistas) {
+            ListaGenerica<PistaDespegue> pistas =
+                    aeropuerto.getPistasDeDespegue();
 
-        panelCuadricula.removeAll();
-        panelCuadricula.setLayout(new FlowLayout( FlowLayout.LEFT, 15, 15
-        ));
+            for (int i = 0; i < pistas.getTamañoDeLista(); i++) {
+                PistaDespegue pista = pistas.obtenerContenido(i);
 
-        for (int i = 0; i < cantidadPistas; i++) {
-            panelCuadricula.add(crearCelda("Pista " + (i + 1)));
-        }
+                PanelInfoDespegue panel = new PanelInfoDespegue(pista);
+                panelCuadricula.add(panel);
+            }
 
-        int columnas = 3;
-        int filas = (int) Math.ceil(cantidadPistas / (double) columnas);
+            int columnas = 3;
+            int filas = (int) Math.ceil(
+                    pistas.getTamañoDeLista() / (double) columnas
+            );
 
-        int alturaCelda = 300;
-        int separacion = 15;
+            int alturaCelda = 300;
+            int separacion = 15;
+            int alturaTotal = filas * (alturaCelda + separacion * 2);
 
-        int alturaTotal = filas * (alturaCelda + separacion * 2);
+            panelCuadricula.setPreferredSize(
+                    new Dimension(1000, alturaTotal)
+            );
 
-        panelCuadricula.setPreferredSize(new Dimension(1000, alturaTotal) );
+            panelCuadricula.revalidate();
+            panelCuadricula.repaint();
 
-        panelCuadricula.revalidate();
-        panelCuadricula.repaint();
+        } catch (ListaEnlazadaExcepcion e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Error al cargar pistas: " + e.getMessage()
+                );
+            }
     }
 
 

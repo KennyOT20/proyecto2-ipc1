@@ -4,17 +4,25 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Pistas.PistaDespegue;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny
  */
 public class PanelInfoDespegue extends javax.swing.JPanel {
 
+    private final PistaDespegue pista;
+    
     /**
      * Creates new form PanelInfoDespegue
+     * @param pista
      */
-    public PanelInfoDespegue() {
+    public PanelInfoDespegue(PistaDespegue pista) {
+        this.pista = pista;
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -93,6 +101,24 @@ public class PanelInfoDespegue extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        private void cargarDatos() {
+        labelID.setText("ID PISTA: " + pista.getIdDeArea());
+        labelCapacidad.setText("Capacidad: " + pista.getCapacidadMaxima());
+        
+        labelAvionDespejando.setText("Avion aterrizando: Ninguno");
+
+        cargarTablaCola();
+    }
+    
+    private void cargarTablaCola() {
+
+        DefaultTableModel modelo = new DefaultTableModel(
+            new String[]{"ID", "Tipo", "Combustible"},
+            0
+        );
+
+        tablaDespegue.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

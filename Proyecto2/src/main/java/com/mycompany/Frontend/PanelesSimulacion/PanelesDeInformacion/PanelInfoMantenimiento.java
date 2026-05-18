@@ -4,17 +4,24 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Estaciones.EstacionDeMantenimiento;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny
  */
 public class PanelInfoMantenimiento extends javax.swing.JPanel {
-
+    
+    private final EstacionDeMantenimiento estacion;
     /**
      * Creates new form PanelInfoMantenimiento
+     * @param estacion
      */
-    public PanelInfoMantenimiento() {
+    public PanelInfoMantenimiento(EstacionDeMantenimiento estacion) {
+        this.estacion = estacion;
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -96,6 +103,24 @@ public class PanelInfoMantenimiento extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+      public  final void cargarDatos() {
+        labelId.setText("ID PISTA: " + estacion.getIdDeArea());
+        labelCapacidad.setText("Capacidad: " + estacion.getCapacidadMaxima());
+        
+        labelAvionTurno.setText("Avion aterrizando: Ninguno");
+
+        cargarTablaCola();
+    }
+    
+    private void cargarTablaCola() {
+
+        DefaultTableModel modelo = new DefaultTableModel(
+            new String[]{"ID", "Tipo", "Combustible"},
+            0
+        );
+
+        tablaAvionEnEstacion.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

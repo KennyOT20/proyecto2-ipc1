@@ -4,20 +4,25 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny
  */
 public class PanelInfoAterrizaje extends javax.swing.JPanel {
 
-    private boolean panelLLeno;
+    private final PistaDeAterrizaje pista;
     
     /**
      * Creates new form PanelInfoAterrizaje
+     * @param pista
      */
-    public PanelInfoAterrizaje() {
-        this.panelLLeno = false; 
+    public PanelInfoAterrizaje(PistaDeAterrizaje pista) {
+        this.pista = pista;
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -97,10 +102,24 @@ public class PanelInfoAterrizaje extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean isPanelLLeno() {
-        return panelLLeno;
+    private void cargarDatos() {
+        labelID.setText("ID PISTA: " + pista.getIdDeArea());
+        labelCapacidad.setText("Capacidad: " + pista.getCapacidadMaxima());
+        
+        labelAvionesEnTurno.setText("Avion aterrizando: Ninguno");
+
+        cargarTablaCola();
     }
     
+    private void cargarTablaCola() {
+
+        DefaultTableModel modelo = new DefaultTableModel(
+            new String[]{"ID", "Tipo", "Combustible"},
+            0
+        );
+
+        tablaAvionesEnCola.setModel(modelo);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

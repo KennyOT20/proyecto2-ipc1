@@ -4,6 +4,10 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
+import com.mycompany.Backend.Aereopuerto.Aeropuerto;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
+import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
 import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoAterrizaje;
 import java.awt.BorderLayout;
@@ -12,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -95,48 +100,50 @@ public class PanelAterrizaje extends javax.swing.JPanel {
          jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         }
     
-    private JPanel crearCelda(String texto) {
-        JPanel celda = new JPanel();
+  
 
-        celda.setPreferredSize(new Dimension(300, 300));
-        celda.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        celda.setLayout(new BorderLayout());
+   public void cargarCuadricula() {
+        try {
+            panelContenedor.removeAll();
+            panelContenedor.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 15));
 
-        JLabel label = new JLabel(texto, SwingConstants.CENTER);
-        celda.add(label, BorderLayout.CENTER);
+            Aeropuerto aeropuerto = panelSimulacion
+                    .getPanelContenedorSimulacion()
+                    .getSimulacion()
+                    .getAeropuerto();
 
-        return celda;
-    }
+            ListaGenerica<PistaDeAterrizaje> pistas =
+                    aeropuerto.getPistasDeAterrizaje();
 
-   public void cargarCuadricula(int cantidadPistas) {
+            for (int i = 0; i < pistas.getTamañoDeLista(); i++) {
+                PistaDeAterrizaje pista = pistas.obtenerContenido(i);
 
-        panelContenedor.removeAll();
-        panelContenedor.setLayout(new FlowLayout( FlowLayout.LEFT, 15, 15
-        ));
-
-        for (int i = 0; i < cantidadPistas; i++) {
-            PanelInfoAterrizaje panel = new PanelInfoAterrizaje();
-            
-            if(panel.isPanelLLeno()){
+                PanelInfoAterrizaje panel = new PanelInfoAterrizaje(pista);
                 panelContenedor.add(panel);
             }
-            else {
-                 panelContenedor.add(crearCelda("Pista " + (i + 1)));
+
+            int columnas = 3;
+            int filas = (int) Math.ceil(
+                    pistas.getTamañoDeLista() / (double) columnas
+            );
+
+            int alturaCelda = 300;
+            int separacion = 15;
+            int alturaTotal = filas * (alturaCelda + separacion * 2);
+
+            panelContenedor.setPreferredSize(
+                    new Dimension(1000, alturaTotal)
+            );
+
+            panelContenedor.revalidate();
+            panelContenedor.repaint();
+
+        } catch (ListaEnlazadaExcepcion e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Error al cargar pistas: " + e.getMessage()
+                );
             }
-        }
-
-        int columnas = 3;
-        int filas = (int) Math.ceil(cantidadPistas / (double) columnas);
-
-        int alturaCelda = 300;
-        int separacion = 15;
-
-        int alturaTotal = filas * (alturaCelda + separacion * 2);
-
-        panelContenedor.setPreferredSize(new Dimension(1000, alturaTotal) );
-
-        panelContenedor.revalidate();
-        panelContenedor.repaint();
     }
 
     

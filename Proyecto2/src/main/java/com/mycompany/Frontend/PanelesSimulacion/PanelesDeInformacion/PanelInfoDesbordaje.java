@@ -4,17 +4,25 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Estaciones.EstacionDesbordaje;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny
  */
 public class PanelInfoDesbordaje extends javax.swing.JPanel {
 
+    private final EstacionDesbordaje estacionDesbordaje;
     /**
      * Creates new form PanelInfoDesbordaje
+     * @param estacionDesbordaje
      */
-    public PanelInfoDesbordaje() {
+    public PanelInfoDesbordaje(EstacionDesbordaje estacionDesbordaje) {
+        this.estacionDesbordaje = estacionDesbordaje;
+        
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -31,7 +39,7 @@ public class PanelInfoDesbordaje extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         labelID = new javax.swing.JLabel();
         labelCapacidad = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelAvionEnTurno = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 255, 153));
 
@@ -63,9 +71,9 @@ public class PanelInfoDesbordaje extends javax.swing.JPanel {
         labelCapacidad.setForeground(new java.awt.Color(0, 0, 0));
         labelCapacidad.setText("CAPACIDAD: ");
 
-        jLabel2.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("AVION EN TURNO: ");
+        labelAvionEnTurno.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        labelAvionEnTurno.setForeground(new java.awt.Color(0, 0, 0));
+        labelAvionEnTurno.setText("AVION EN TURNO: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,7 +87,7 @@ public class PanelInfoDesbordaje extends javax.swing.JPanel {
                     .addComponent(labelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(labelCapacidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                    .addComponent(labelAvionEnTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,17 +99,35 @@ public class PanelInfoDesbordaje extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAvionEnTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarDatos() {
+        labelID.setText("ID PISTA: " + estacionDesbordaje.getIdDeArea());
+        labelCapacidad.setText("Capacidad: " + estacionDesbordaje.getCapacidadMaxima());
+        
+        labelAvionEnTurno.setText("Avion aterrizando: Ninguno");
+
+        cargarTablaCola();
+    }
+    
+    private void cargarTablaCola() {
+
+        DefaultTableModel modelo = new DefaultTableModel(
+            new String[]{"ID", "Tipo", "Combustible"},
+            0
+        );
+
+        tablaAvionesDesbordaje.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAvionEnTurno;
     private javax.swing.JLabel labelCapacidad;
     private javax.swing.JLabel labelID;
     private javax.swing.JTable tablaAvionesDesbordaje;
