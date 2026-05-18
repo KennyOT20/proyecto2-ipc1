@@ -13,20 +13,20 @@ import com.mycompany.Backend.ListaGenerica.ListaGenerica;
  */
 public class GestorDeAviones {
     
-    private final ListaGenerica <Avion> avionesEnAeropuerto;
+    private final ListaGenerica <Avion> avionesEnEstaciones;
     private int contadorDeAviones;
     private boolean listaLLena;
     private int limiteDeAviones;
     
     public GestorDeAviones(){
-        this.avionesEnAeropuerto = new ListaGenerica<>();
+        this.avionesEnEstaciones = new ListaGenerica<>();
         this.contadorDeAviones = 0;
         this.listaLLena = false;
     }
     
     
     public void agregarAvionEnLista(Avion avion){
-        avionesEnAeropuerto.agregarContenidoAlFinal(avion);
+        avionesEnEstaciones.agregarContenidoAlFinal(avion);
         contadorDeAviones ++;
         
         if(contadorDeAviones >= limiteDeAviones){
@@ -35,6 +35,11 @@ public class GestorDeAviones {
         
         
     }
+
+    public int getContadorDeAviones() {
+        return contadorDeAviones;
+    }
+    
     
 
     public int getLimiteDeAviones() {

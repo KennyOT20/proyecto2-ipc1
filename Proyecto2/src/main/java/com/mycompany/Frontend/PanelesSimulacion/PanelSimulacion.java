@@ -316,6 +316,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonControlActionPerformed
         // TODO add your handling code here:
+        panelControl.cargarCuadricula();
         irAControl();
     }//GEN-LAST:event_botonControlActionPerformed
 

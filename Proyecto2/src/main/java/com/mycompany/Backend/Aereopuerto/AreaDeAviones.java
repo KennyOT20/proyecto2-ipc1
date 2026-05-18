@@ -17,7 +17,7 @@ public abstract class AreaDeAviones {
     private final ListaGenerica <Avion> avionesEnLista;
     private String tipoDeArea;
     private int capacidad;
-    private final int capacidadMaxima;
+    private int capacidadMaxima;
     private final int idDeArea;
     
     public AreaDeAviones(int idDeArea, String tipoDeArea, int capacidadMaxima){
@@ -49,6 +49,11 @@ public abstract class AreaDeAviones {
     public int getCapacidadMaxima() {
         return capacidadMaxima;
     }
+
+    public void setCapacidadMaxima(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+    }
+    
     
     
     

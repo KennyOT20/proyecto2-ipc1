@@ -4,13 +4,21 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.ContenedoresDeDatos;
 
+import com.mycompany.Backend.Aereopuerto.Aeropuerto;
+import com.mycompany.Backend.Estaciones.EstacionDeControl;
+import com.mycompany.Backend.Estaciones.EstacionDeMantenimiento;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
+import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelDeControl;
+import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoMantenimiento;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -31,7 +39,6 @@ public class PanelEstacionesDeControl extends javax.swing.JPanel {
         this.panelSimulacion = panelSimulacion;
         initComponents();
         forzarScroll();
-        cargarCuadricula(15);
     }
 
     /**
@@ -108,39 +115,45 @@ public class PanelEstacionesDeControl extends javax.swing.JPanel {
          scrollContenedor.getVerticalScrollBar().setUnitIncrement(20);
         }
     
-    private JPanel crearCelda(String texto) {
-        JPanel celda = new JPanel();
-
-        celda.setPreferredSize(new Dimension(400, 400));
-        celda.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        celda.setLayout(new BorderLayout());
-
-        JLabel label = new JLabel(texto, SwingConstants.CENTER);
-        celda.add(label, BorderLayout.CENTER);
-
-        return celda;
-    }
-
-   private void cargarCuadricula(int cantidadPistas) {
-
+    
+    public void cargarCuadricula() {
+    try {
         panelCuadricula.removeAll();
-        panelCuadricula.setLayout(new FlowLayout(
-                FlowLayout.LEFT, 15, 15
-        ));
 
-        for (int i = 0; i < cantidadPistas; i++) {
-            panelCuadricula.add(crearCelda("Estacion " + (i + 1)));
+        panelCuadricula.setLayout(
+                new FlowLayout(FlowLayout.LEFT, 15, 15)
+        );
+
+        Aeropuerto aeropuerto = panelSimulacion
+                .getPanelContenedorSimulacion()
+                .getSimulacion()
+                .getAeropuerto();
+
+        ListaGenerica<EstacionDeControl> estaciones =
+                aeropuerto.getEstacionDeControl();
+
+        for (int i = 0; i < estaciones.getTamañoDeLista(); i++) {
+
+            EstacionDeControl estacion =
+                    estaciones.obtenerContenido(i);
+
+            PanelDeControl panel = new PanelDeControl(estacion);
+
+            panelCuadricula.add(panel);
         }
 
+        int cantidadEstaciones = estaciones.getTamañoDeLista();
+
         int columnas = 2;
-        int filas = (int) Math.ceil(cantidadPistas / (double) columnas);
+        int filas = (int) Math.ceil(
+                cantidadEstaciones / (double) columnas
+        );
 
         int alturaCelda = 400;
         int anchoCelda = 400;
         int separacion = 15;
 
         int alturaTotal = filas * (alturaCelda + separacion * 2);
-
         int anchoTotal = columnas * (anchoCelda + separacion * 2);
 
         panelCuadricula.setPreferredSize(
@@ -149,7 +162,14 @@ public class PanelEstacionesDeControl extends javax.swing.JPanel {
 
         panelCuadricula.revalidate();
         panelCuadricula.repaint();
+
+    } catch (ListaEnlazadaExcepcion e) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Error al cargar estaciones: " + e.getMessage()
+        );
     }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

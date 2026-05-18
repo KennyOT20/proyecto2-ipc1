@@ -100,8 +100,7 @@ public class PanelInfoDespegue extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-        private void cargarDatos() {
+     private void cargarDatos() {
         labelID.setText("ID PISTA: " + pista.getIdDeArea());
         labelCapacidad.setText("Capacidad: " + pista.getCapacidadMaxima());
         

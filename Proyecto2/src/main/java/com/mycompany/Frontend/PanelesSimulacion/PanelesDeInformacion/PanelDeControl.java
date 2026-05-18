@@ -4,16 +4,20 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Estaciones.EstacionDeControl;
+
 /**
  *
  * @author Kenny
  */
 public class PanelDeControl extends javax.swing.JPanel {
 
+    private final EstacionDeControl estacionDeControl;
     /**
      * Creates new form PanelDeControl
      */
-    public PanelDeControl() {
+    public PanelDeControl(EstacionDeControl estacionDeControl) {
+        this.estacionDeControl = estacionDeControl;
         initComponents();
     }
 
