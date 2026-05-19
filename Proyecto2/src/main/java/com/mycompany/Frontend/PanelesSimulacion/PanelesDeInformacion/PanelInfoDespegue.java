@@ -4,6 +4,9 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 import com.mycompany.Backend.Pistas.PistaDespegue;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PanelInfoDespegue extends javax.swing.JPanel {
 
+    private DefaultTableModel modelo;
     private final PistaDespegue pista;
     
     /**
@@ -22,7 +26,7 @@ public class PanelInfoDespegue extends javax.swing.JPanel {
     public PanelInfoDespegue(PistaDespegue pista) {
         this.pista = pista;
         initComponents();
-        cargarDatos();
+        inicializarTabla();
     }
 
     /**
@@ -100,23 +104,53 @@ public class PanelInfoDespegue extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-     private void cargarDatos() {
-        labelID.setText("ID PISTA: " + pista.getIdDeArea());
-        labelCapacidad.setText("Capacidad: " + pista.getCapacidadMaxima());
-        
-        labelAvionDespejando.setText("Avion aterrizando: Ninguno");
+     private void inicializarTabla() {
+
+        modelo = new DefaultTableModel(
+                new String[]{"ID", "Tipo", "Combustible"},
+                0
+        );
+
+        tablaDespegue.setModel(modelo);
+    }
+    
+    public final void cargarDatos() {
+
+        labelID.setText("ID pista: " + pista.getIdDeArea());
+
+        labelCapacidad.setText(   "Capacidad: "+ pista.getCapacidadActual()     + "/" + pista.getCapacidadMaxima());
+
+        if (pista.estaLLena()) {
+            labelAvionDespejando.setText("Avion aterrizando: Ocupada");
+        } else {
+            labelAvionDespejando.setText("Avion aterrizando: Libre");
+        }
 
         cargarTablaCola();
     }
     
     private void cargarTablaCola() {
 
-        DefaultTableModel modelo = new DefaultTableModel(
-            new String[]{"ID", "Tipo", "Combustible"},
-            0
-        );
+        modelo.setRowCount(0);
 
-        tablaDespegue.setModel(modelo);
+        try {
+
+            ListaGenerica<Avion> cola = pista.getAvionesEnLista();
+
+            for (int i = 0; i < cola.getTamañoDeLista(); i++) {
+
+                Avion avion = cola.obtenerContenido(i);
+
+                modelo.addRow(new Object[]{
+                    avion.getIdAvion(),
+                    avion.getTipo(),
+                    avion.getCombustible()
+                });
+            }
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

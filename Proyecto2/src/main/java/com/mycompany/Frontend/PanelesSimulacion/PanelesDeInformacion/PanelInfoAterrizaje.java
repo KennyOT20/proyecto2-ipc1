@@ -63,8 +63,8 @@ public class PanelInfoAterrizaje extends javax.swing.JPanel {
         labelAvionesEnTurno.setForeground(new java.awt.Color(0, 0, 0));
         labelAvionesEnTurno.setText("Avion aterrizando:");
 
-        tablaAvionesEnCola.setBackground(new java.awt.Color(51, 255, 204));
-        tablaAvionesEnCola.setForeground(new java.awt.Color(51, 153, 255));
+        tablaAvionesEnCola.setBackground(new java.awt.Color(102, 204, 255));
+        tablaAvionesEnCola.setForeground(new java.awt.Color(0, 0, 0));
         tablaAvionesEnCola.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -117,12 +117,7 @@ public class PanelInfoAterrizaje extends javax.swing.JPanel {
 
         labelID.setText("ID PISTA: " + pista.getIdDeArea());
 
-        labelCapacidad.setText(
-                "Capacidad: "
-                + pista.getCapacidadActual()
-                + "/"
-                + pista.getCapacidadMaxima()
-        );
+        labelCapacidad.setText(   "Capacidad: "+ pista.getCapacidadActual()     + "/" + pista.getCapacidadMaxima());
 
         if (pista.estaLLena()) {
             labelAvionesEnTurno.setText("Avion aterrizando: Ocupada");

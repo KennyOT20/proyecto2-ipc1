@@ -17,18 +17,42 @@ import java.io.Serializable;
  */
 public class Simulacion implements Serializable {
     
+    private boolean  simulacionActiva;
     private final Aeropuerto aeropuerto;
     private final ListaGenerica <Thread> listaDeHilos;
+    private final ControladorTraficoAereo traficoAereo;
     
     public Simulacion( Aeropuerto aeropuerto){
         this.aeropuerto = aeropuerto;
         this.listaDeHilos = new ListaGenerica<>();
+        this.traficoAereo = new ControladorTraficoAereo(aeropuerto); 
     }
 
     
      public void iniciarSimulacion() {
 
-        try {
+        simulacionActiva = true;
+        iniciarHilosAviones();
+
+        Thread hiloControl = new Thread(() -> {
+
+            while (simulacionActiva) {
+
+                traficoAereo.gestionarAeropuerto();
+
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
+        });
+
+        hiloControl.start();
+    }
+     
+     private void iniciarHilosAviones(){
+         try {
             iniciarLista(aeropuerto.getAvionesPequeños());
             iniciarLista(aeropuerto.getAvionesMedianos());
             iniciarLista(aeropuerto.getAvionesGrandes());
@@ -36,7 +60,7 @@ public class Simulacion implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+     }
      
      private void iniciarLista(ListaGenerica<Avion> lista) throws ListaEnlazadaExcepcion {
 
@@ -53,6 +77,10 @@ public class Simulacion implements Serializable {
             hilo.start();
         }
     }
+     
+     public void terminarSimulacion(){
+         simulacionActiva = false;
+     }
 
     public Aeropuerto getAeropuerto() {
         return aeropuerto;

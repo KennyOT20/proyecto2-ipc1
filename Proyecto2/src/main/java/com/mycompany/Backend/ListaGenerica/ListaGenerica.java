@@ -116,6 +116,35 @@ public class ListaGenerica <T> {
         return false;
     }
      
+     public T eliminarPorIndice(int indice) throws ListaEnlazadaExcepcion {
+
+        if (indice < 0 || indice >= tamañoDeLista) {
+            throw new ListaEnlazadaExcepcion("Indice inválido");
+        }
+
+        if (indice == 0) {
+            return desencolar();
+        }
+
+        NodoGenerico<T> actual = nodoInicial;
+
+        for (int i = 0; i < indice - 1; i++) {
+            actual = actual.getSiguienteNodo();
+        }
+
+        T eliminado = (T) actual.getSiguienteNodo().getContenidoDeLista();
+
+        actual.setSiguienteNodo(actual.getSiguienteNodo().getSiguienteNodo());
+
+        if (actual.getSiguienteNodo() == null) {
+            nodoFinal = actual;
+        }
+
+        tamañoDeLista--;
+
+        return eliminado;
+}
+     
      public boolean listaVaciaPublica() {
         return nodoInicial == null;
     }

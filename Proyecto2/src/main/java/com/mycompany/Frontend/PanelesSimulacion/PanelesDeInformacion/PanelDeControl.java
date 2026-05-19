@@ -4,7 +4,12 @@
  */
 package com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion;
 
+import com.mycompany.Backend.Aviones.Avion;
 import com.mycompany.Backend.Estaciones.EstacionDeControl;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
+import com.mycompany.Backend.ListaGenerica.ListaGenerica;
+import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
+import com.mycompany.Backend.Pistas.PistaDespegue;
 
 /**
  *
@@ -70,11 +75,6 @@ public class PanelDeControl extends javax.swing.JPanel {
         avionesColaDespeuge.setBackground(new java.awt.Color(102, 102, 255));
         avionesColaDespeuge.setForeground(new java.awt.Color(0, 0, 0));
         avionesColaDespeuge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        avionesColaDespeuge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avionesColaDespeugeActionPerformed(evt);
-            }
-        });
 
         listaPistasDespegue.setBackground(new java.awt.Color(255, 153, 153));
         listaPistasDespegue.setForeground(new java.awt.Color(0, 0, 0));
@@ -94,11 +94,21 @@ public class PanelDeControl extends javax.swing.JPanel {
         botonAterrizaje.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         botonAterrizaje.setForeground(new java.awt.Color(0, 0, 0));
         botonAterrizaje.setText("Aterrizar");
+        botonAterrizaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAterrizajeActionPerformed(evt);
+            }
+        });
 
         botonDespeuge.setBackground(new java.awt.Color(102, 255, 153));
         botonDespeuge.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         botonDespeuge.setForeground(new java.awt.Color(0, 0, 0));
         botonDespeuge.setText("Despegar");
+        botonDespeuge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDespeugeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,17 +169,170 @@ public class PanelDeControl extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void avionesColaDespeugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avionesColaDespeugeActionPerformed
+    private void botonAterrizajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAterrizajeActionPerformed
+
+     try {
+
+            int indexPista = listaPistasAterrizaje.getSelectedIndex();
+
+            if (indexPista == -1) return;
+
+            ListaGenerica<Avion> cola = estacionDeControl.getAvionesEnLista();
+
+            if (cola.getTamañoDeLista() == 0) return;
+
+            Avion avion = cola.obtenerContenido(0); 
+            
+            PistaDeAterrizaje pista = estacionDeControl
+                    .getPistasAterrizaje()
+                    .obtenerContenido(indexPista);
+
+            if (pista.estaLLena()) {
+                return;
+            }
+
+            pista.ingresarAvion(avion);
+            avion.getControladorAvion().darPermisoAterrizar();
+
+            cola.desencolar();
+
+            actualizarDatos();
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botonAterrizajeActionPerformed
+
+    private void botonDespeugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDespeugeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_avionesColaDespeugeActionPerformed
+        try {
 
-    private void cargarDatos() {
-        labelId.setText("ID PISTA: " + estacionDeControl.getIdDeArea());
-        labelCapacidad.setText("Capacidad: " + estacionDeControl.getCapacidadMaxima());
-        
+            int indexPista = listaPistasDespegue.getSelectedIndex();
 
+            if (indexPista == -1) {
+                return;
+            }
+
+            ListaGenerica<Avion> cola = estacionDeControl.getAvionesDespegue();
+
+            if (cola.getTamañoDeLista() == 0) {
+                return;
+            }
+
+            Avion avion = cola.obtenerContenido(0);
+
+            PistaDespegue pista = estacionDeControl
+                    .getPistasDespegue()
+                    .obtenerContenido(indexPista);
+
+            if (pista.estaLLena()) {
+                return;
+            }
+
+            pista.ingresarAvion(avion);
+            avion.getControladorAvion().darPermisoDespegue();
+
+            cola.desencolar();
+
+            actualizarDatos();
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_botonDespeugeActionPerformed
+
+    public void cargarDatos() {
+        labelId.setText("ID ESTACION: " + estacionDeControl.getIdDeArea());
+        labelCapacidad.setText( "Capacidad: "+ estacionDeControl.getCapacidadActual()  + "/"+ estacionDeControl.getCapacidadMaxima());
+
+        cargarAvionesAterrizaje();
+        cargarAvionesDespegue();
+        cargarPistasAterrizaje();
+        cargarPistasDespegue();
+    }
+    
+    private void cargarAvionesAterrizaje() {
+        avionesColaAterrizaje.removeAllItems();
+
+        try {
+            ListaGenerica<Avion> cola = estacionDeControl.getAvionesEnLista();
+
+            for (int i = 0; i < cola.getTamañoDeLista(); i++) {
+                Avion avion = cola.obtenerContenido(i);
+
+                avionesColaAterrizaje.addItem(
+                        avion.getIdAvion() + " - " + avion.getTipo()
+                );
+            }
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void cargarAvionesDespegue() {
+        avionesColaDespeuge.removeAllItems();
+
+        try {
+            ListaGenerica<Avion> cola = estacionDeControl.getAvionesDespegue();
+
+            for (int i = 0; i < cola.getTamañoDeLista(); i++) {
+                Avion avion = cola.obtenerContenido(i);
+
+                avionesColaDespeuge.addItem(avion.getIdAvion() + " - " + avion.getTipo());
+            }
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void cargarPistasAterrizaje() {
+        listaPistasAterrizaje.removeAllItems();
+
+        try {
+            ListaGenerica<PistaDeAterrizaje> pistas =  estacionDeControl.getPistasAterrizaje();
+
+            for (int i = 0; i < pistas.getTamañoDeLista(); i++) {
+                PistaDeAterrizaje pista = pistas.obtenerContenido(i);
+
+                if (!pista.estaLLena()) {
+                    listaPistasAterrizaje.addItem(
+                            "Pista " + pista.getIdDeArea()
+                    );
+                }
+            }
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
+    }
+    private void cargarPistasDespegue() {
+        listaPistasDespegue.removeAllItems();
+
+        try {
+            ListaGenerica<PistaDespegue> pistas =
+                    estacionDeControl.getPistasDespegue();
+
+            for (int i = 0; i < pistas.getTamañoDeLista(); i++) {
+                PistaDespegue pista = pistas.obtenerContenido(i);
+
+                if (!pista.estaLLena()) {
+                    listaPistasDespegue.addItem("Pista " + pista.getIdDeArea() );
+                }
+            }
+
+        } catch (ListaEnlazadaExcepcion e) {
+            e.printStackTrace();
+        }
     }
 
+    public void actualizarDatos() {
+        cargarDatos();
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> avionesColaAterrizaje;
     private javax.swing.JComboBox<String> avionesColaDespeuge;

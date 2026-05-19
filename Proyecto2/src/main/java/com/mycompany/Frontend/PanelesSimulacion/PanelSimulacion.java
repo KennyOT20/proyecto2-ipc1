@@ -290,10 +290,13 @@ public class PanelSimulacion extends javax.swing.JPanel implements Runnable {
 
     private void botonPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPausarActionPerformed
         // TODO add your handling code here:
+        botonEdicion.setEnabled(true);
+        botonFinalizar.setEnabled(true);
     }//GEN-LAST:event_botonPausarActionPerformed
 
     private void botonDesbordajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDesbordajeActionPerformed
         // TODO add your handling code here:
+        
         panelDesbordaje.cargarCuadricula();
         irADesbordaje();
     }//GEN-LAST:event_botonDesbordajeActionPerformed
