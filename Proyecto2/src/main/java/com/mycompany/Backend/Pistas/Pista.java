@@ -14,6 +14,7 @@ public class Pista extends AreaDeAviones{
     
     public Pista(int idDeArea, String tipoDeArea, int capacidadMaxima) {
         super(idDeArea, tipoDeArea, capacidadMaxima);
+        setCapacidadMaxima(capacidadMaxima);
     }
     
 

@@ -14,6 +14,7 @@ public class Estacion extends AreaDeAviones {
 
     public Estacion(int idDeArea, String tipoDeArea, int capacidadMaxima) {
         super(idDeArea, tipoDeArea, capacidadMaxima);
+        setCapacidadMaxima(capacidadMaxima);
     }
 
   

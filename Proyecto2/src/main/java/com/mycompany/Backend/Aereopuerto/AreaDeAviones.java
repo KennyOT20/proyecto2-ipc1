@@ -14,28 +14,48 @@ import com.mycompany.Backend.ListaGenerica.ListaGenerica;
  */
 public abstract class AreaDeAviones {
 
-    private final ListaGenerica <Avion> avionesEnLista;
+    private final ListaGenerica<Avion> avionesEnLista;
     private String tipoDeArea;
-    private int capacidad;
+    private int capacidadActual;
     private int capacidadMaxima;
     private final int idDeArea;
-    
-    public AreaDeAviones(int idDeArea, String tipoDeArea, int capacidadMaxima){
+
+    public AreaDeAviones(int idDeArea, String tipoDeArea, int capacidadMaxima) {
         this.idDeArea = idDeArea;
         this.tipoDeArea = tipoDeArea;
-        this.avionesEnLista = new ListaGenerica<>();
         this.capacidadMaxima = capacidadMaxima;
+        this.capacidadActual = 0;
+        this.avionesEnLista = new ListaGenerica<>();
     }
- 
-    public boolean estaLLena(){
-        return capacidad >= capacidadMaxima;
+
+    public boolean estaLLena() {
+        return capacidadActual >= capacidadMaxima;
     }
-    
-    public void ingresarAvion(Avion avion){
+
+    public boolean ingresarAvion(Avion avion) {
+
+        if (estaLLena()) {
+            return false;
+        }
+
         avionesEnLista.encolar(avion);
+        capacidadActual++;
+        return true;
     }
-    public Avion liberarAvion() throws ListaEnlazadaExcepcion{
-        return avionesEnLista.desencolar();
+
+    public Avion liberarAvion() {
+
+        Avion avion = avionesEnLista.desencolar();
+
+        if (avion != null) {
+            capacidadActual--;
+        }
+
+        return avion;
+    }
+
+    public int getCapacidadActual() {
+        return capacidadActual;
     }
 
     public String getTipoDeArea() {
@@ -53,9 +73,8 @@ public abstract class AreaDeAviones {
     public void setCapacidadMaxima(int capacidadMaxima) {
         this.capacidadMaxima = capacidadMaxima;
     }
-    
-    
-    
-    
-    
+
+    public ListaGenerica<Avion> getAvionesEnLista() {
+        return avionesEnLista;
+    }
 }

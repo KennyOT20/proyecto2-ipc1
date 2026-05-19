@@ -27,6 +27,7 @@ public abstract class Avion{
     private int capacidadMin;
     private boolean estaVivo;
     private int tiempoDeAterrizaje;
+    private int ultimoAvisoEnviado;
 
     //Constructor para guardar un avion en datos
 
@@ -58,6 +59,7 @@ public abstract class Avion{
         this.tipo = tipo;
         this.estaVivo = true;
         this.controladorAvion = new CabinaDeAvion(this);
+        this.ultimoAvisoEnviado = 100;
     }
     
     public void decrementarCombustible(){
@@ -75,10 +77,22 @@ public abstract class Avion{
         return vueloFallado;
     }
     
-    public boolean lanzarAvisoEmergencia(){
+    public boolean lanzarAvisoEmergencia() {
         return combustible <= 25;
-    }
+    }   
     
+    public boolean lanzarAvisoNormal() {
+
+        if (combustible <= 60 && combustible % 10 == 0
+                && combustible < ultimoAvisoEnviado) {
+
+            ultimoAvisoEnviado = combustible;
+            return true;
+        }
+
+        return false;
+    }
+
     public int getCombustible() {
         return combustible;
     }

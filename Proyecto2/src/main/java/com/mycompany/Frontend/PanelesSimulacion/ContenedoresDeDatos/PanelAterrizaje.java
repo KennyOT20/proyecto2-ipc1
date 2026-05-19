@@ -10,16 +10,10 @@ import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 import com.mycompany.Backend.Pistas.PistaDeAterrizaje;
 import com.mycompany.Frontend.PanelesSimulacion.PanelSimulacion;
 import com.mycompany.Frontend.PanelesSimulacion.PanelesDeInformacion.PanelInfoAterrizaje;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -27,7 +21,9 @@ import javax.swing.SwingConstants;
  */
 public class PanelAterrizaje extends javax.swing.JPanel {
 
+    private final ListaGenerica<PanelInfoAterrizaje> paneles;
     private final PanelSimulacion panelSimulacion;
+    private PanelInfoAterrizaje panel;
     
     /**
      * Creates new form PanelAterrizaje
@@ -35,6 +31,7 @@ public class PanelAterrizaje extends javax.swing.JPanel {
      */
     public PanelAterrizaje(PanelSimulacion panelSimulacion) {
         this.panelSimulacion = panelSimulacion;
+        this.paneles = new ListaGenerica<>();
         initComponents();
         forzarScroll();
     }
@@ -112,42 +109,56 @@ public class PanelAterrizaje extends javax.swing.JPanel {
                     .getSimulacion()
                     .getAeropuerto();
 
-            ListaGenerica<PistaDeAterrizaje> pistas =
-                    aeropuerto.getPistasDeAterrizaje();
+            ListaGenerica<PistaDeAterrizaje> pistas =aeropuerto.getPistasDeAterrizaje();
 
             for (int i = 0; i < pistas.getTamañoDeLista(); i++) {
+
                 PistaDeAterrizaje pista = pistas.obtenerContenido(i);
 
                 PanelInfoAterrizaje panel = new PanelInfoAterrizaje(pista);
+
+                paneles.agregarContenidoAlFinal(panel);
                 panelContenedor.add(panel);
             }
 
-            int columnas = 3;
-            int filas = (int) Math.ceil(
-                    pistas.getTamañoDeLista() / (double) columnas
-            );
-
-            int alturaCelda = 300;
-            int separacion = 15;
-            int alturaTotal = filas * (alturaCelda + separacion * 2);
-
-            panelContenedor.setPreferredSize(
-                    new Dimension(1000, alturaTotal)
-            );
-
-            panelContenedor.revalidate();
-            panelContenedor.repaint();
+            ajustarTamaño(pistas.getTamañoDeLista());
 
         } catch (ListaEnlazadaExcepcion e) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Error al cargar pistas: " + e.getMessage()
-                );
-            }
+            e.printStackTrace();
+        }
     }
 
     
+   private void ajustarTamaño(int cantidad) {
+        int columnas = 3;
+        int filas = (int) Math.ceil(cantidad / (double) columnas);
 
+        int alturaCelda = 300;
+        int separacion = 15;
+        int alturaTotal = filas * (alturaCelda + separacion * 2);
+
+        panelContenedor.setPreferredSize(
+                new Dimension(1000, alturaTotal)
+        );
+
+        panelContenedor.revalidate();
+        panelContenedor.repaint();
+    }
+   
+   public void actualizarPaneles() {
+    try {
+        for (int i = 0; i < paneles.getTamañoDeLista(); i++) {
+
+            PanelInfoAterrizaje panel = paneles.obtenerContenido(i);
+            panel.cargarDatos();
+        }
+
+    } catch (ListaEnlazadaExcepcion e) {
+        e.printStackTrace();
+    }
+}
+   
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;

@@ -34,7 +34,7 @@ public class ListaGenerica <T> {
         tamañoDeLista ++;
     }
     
-    private boolean listaVacia(){
+    public boolean listaVacia(){
         return nodoInicial == null;
     }
     
@@ -63,10 +63,10 @@ public class ListaGenerica <T> {
         agregarContenidoAlFinal(contenido);
     }
     
-     public T desencolar() throws ListaEnlazadaExcepcion {
+     public T desencolar()  {
 
         if (listaVacia()) {
-            throw new ListaEnlazadaExcepcion("La cola está vacía");
+           return null;
         }
 
         T contenido = nodoInicial.getContenidoDeLista();
@@ -86,6 +86,38 @@ public class ListaGenerica <T> {
         return tamañoDeLista;
     }
      
+     public T verPrimero() throws ListaEnlazadaExcepcion {
+        if (listaVacia()) {
+            throw new ListaEnlazadaExcepcion("Lista vacia");
+        }
+
+        return nodoInicial.getContenidoDeLista();
+    }
      
+     public void limpiar() {
+        nodoInicial = null;
+        nodoFinal = null;
+        tamañoDeLista = 0;
+    }
+     
+     public boolean contiene(T dato) throws ListaEnlazadaExcepcion {
+
+        NodoGenerico<T> actual = nodoInicial;
+
+        while (actual != null) {
+
+            if (actual.getContenidoDeLista().equals(dato)) {
+                return true;
+            }
+
+            actual = actual.getSiguienteNodo();
+        }
+
+        return false;
+    }
+     
+     public boolean listaVaciaPublica() {
+        return nodoInicial == null;
+    }
     
 }

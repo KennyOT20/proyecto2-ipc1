@@ -5,42 +5,53 @@
 package com.mycompany.Backend.Aereopuerto.Gestores;
 
 import com.mycompany.Backend.Aviones.Avion;
+import com.mycompany.Backend.Excepciones.ListaEnlazadaExcepcion;
 import com.mycompany.Backend.ListaGenerica.ListaGenerica;
 
 /**
  *
  * @author Kenny
  */
-public class GestorDeAviones {
-    
-    private final ListaGenerica <Avion> avionesEnEstaciones;
+/*public class GestorDeAviones {
+
+    private final ListaGenerica<Avion> avionesEnEstaciones;
     private int contadorDeAviones;
-    private boolean listaLLena;
     private int limiteDeAviones;
-    
-    public GestorDeAviones(){
+
+    public GestorDeAviones() {
         this.avionesEnEstaciones = new ListaGenerica<>();
         this.contadorDeAviones = 0;
-        this.listaLLena = false;
     }
-    
-    
-    public void agregarAvionEnLista(Avion avion){
-        avionesEnEstaciones.agregarContenidoAlFinal(avion);
-        contadorDeAviones ++;
-        
-        if(contadorDeAviones >= limiteDeAviones){
-            listaLLena = true;
+
+    public void agregarAvionEnLista(Avion avion) {
+
+        if (isListaLlena()) {
+            return;
         }
-        
-        
+
+        avionesEnEstaciones.agregarContenidoAlFinal(avion);
+        contadorDeAviones++;
+    }
+
+    public Avion sacarAvion() {
+
+        try {
+            Avion avion = avionesEnEstaciones.desencolar();
+            contadorDeAviones--;
+            return avion;
+
+        } catch (ListaEnlazadaExcepcion e) {
+            return null;
+        }
+}
+
+    public boolean isListaLlena() {
+        return contadorDeAviones >= limiteDeAviones;
     }
 
     public int getContadorDeAviones() {
         return contadorDeAviones;
     }
-    
-    
 
     public int getLimiteDeAviones() {
         return limiteDeAviones;
@@ -49,7 +60,5 @@ public class GestorDeAviones {
     public void setLimiteDeAviones(int limiteDeAviones) {
         this.limiteDeAviones = limiteDeAviones;
     }
-    
-    
-    
 }
+*/

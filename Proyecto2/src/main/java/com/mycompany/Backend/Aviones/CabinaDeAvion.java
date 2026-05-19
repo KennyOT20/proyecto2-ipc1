@@ -14,19 +14,33 @@ public class CabinaDeAvion implements Runnable {
 
     private final Avion avion;
     private String estadoDeAvion;
-
+    private String estadoDeSolicitud;
+    
     private boolean simulacionPausada;
-
+    private boolean tienePermisoAterrizar;
+    private boolean tienePermisoDespegar;
+    private boolean tienePermisoDesborde;
+    private boolean tienePermisoMantenimiento;
+    
     private final String VOLANDO = "VOLANDO";
     private final String ATERRIZANDO = "ATERRIZANDO";
     private final String DESBORDAJE = "DESBORDAJE";
     private final String MANTENIMIENTO = "MANTENIMIENTO";
     private final String DESPEGUE = "DESPEGUE";
+    
+    private final String SIN_SOLICITUD = "SIN SOLICITUD";
+    private final String SOLICITUD_NORMAL = "SOLICITUD NORMAL";
+    private final String EMERGENCIA = "EMERGENCIA";
 
     public CabinaDeAvion(Avion avion) {
         this.avion = avion;
         this.simulacionPausada = false;
         this.estadoDeAvion = VOLANDO;
+        this.tienePermisoAterrizar = false;
+        this.tienePermisoDesborde = false;
+        this.tienePermisoMantenimiento = false;
+        this.tienePermisoDespegar = false;
+        this.estadoDeSolicitud = SIN_SOLICITUD;
     }
 
     @Override
@@ -36,7 +50,6 @@ public class CabinaDeAvion implements Runnable {
 
             try {
 
-                // Manejo de pausa
                 if (simulacionPausada) {
                     Thread.sleep(200);
                     continue;
@@ -79,47 +92,98 @@ public class CabinaDeAvion implements Runnable {
             return;
         }
 
-        dormir(avion.getTiempoConsumo());
+        if (!dormir(avion.getTiempoConsumo())) {
+            return;
+        }
+
         avion.decrementarCombustible();
 
-        // Ejemplo simple de transición
-        if (avion.getCombustible() <= 3) {
+        if (avion.lanzarAvisoEmergencia()) {
+            solicitarEmergencia();
+
+        } else if (avion.lanzarAvisoNormal()) {
+            solicitarAterrizajeNormal();
+        }
+
+        if (tienePermisoAterrizar) {
             estadoDeAvion = ATERRIZANDO;
+            estadoDeSolicitud = SIN_SOLICITUD;
+            tienePermisoAterrizar = false;
         }
     }
 
     private void controlarAterrizaje() {
-        dormir(avion.getTiempoDeAterrizaje());
-        estadoDeAvion = DESBORDAJE;
-    }
+        if (!dormir(avion.getTiempoDeAterrizaje())){ 
+            return;
 
-    private void controlarDesbordaje() {
-        dormir(avion.getTiempoDeDesbordaje() * avion.getCapacidadMax());
-        estadoDeAvion = MANTENIMIENTO;
-    }
+        }
 
-    private void controlarMantenimiento() {
-        dormir(avion.getTiempoDeMantenimiento());
-        estadoDeAvion = DESPEGUE;
-    }
-
-    private void controlarDespegue() {
-        dormir(avion.getTiempoDeDespegue());
-
-        // IMPORTANTE: cerrar ciclo
-        estadoDeAvion = VOLANDO;
-    }
-
-    // Método auxiliar
-    private void dormir(int tiempo) {
-        try {
-            Thread.sleep(tiempo);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        if (tienePermisoDesborde) {
+            estadoDeAvion = DESBORDAJE;
+            tienePermisoDesborde = false;
         }
     }
 
-    // Control de simulación
+    private void controlarDesbordaje() {
+        if (!dormir(avion.getTiempoDeDesbordaje() * avion.getCapacidadMax())){
+            return;
+        }
+
+        if (tienePermisoMantenimiento) {
+            estadoDeAvion = MANTENIMIENTO;
+            tienePermisoMantenimiento = false;
+        }
+    }
+
+    private void controlarMantenimiento() {
+        if (!dormir(avion.getTiempoDeMantenimiento())) {
+            return;
+        }
+
+        if (tienePermisoDespegar) {
+            estadoDeAvion = DESPEGUE;
+            tienePermisoDespegar = false;
+        }
+    }
+
+    private void controlarDespegue() {
+        if (!dormir(avion.getTiempoDeDespegue())){
+            return;
+        }
+
+        estadoDeAvion = VOLANDO;
+    }
+
+    private boolean dormir(int tiempo) {
+        try {
+            Thread.sleep(tiempo);
+            return true;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return false;
+        }
+    }
+    
+    public String getEstadoSolicitud() {
+        return estadoDeSolicitud;
+    }   
+
+    public void darPermisoDesborde(){
+        tienePermisoDesborde = true;
+    }
+    
+    public void darPermisoAterrizar(){
+        tienePermisoAterrizar = true;
+    }    
+    
+    public void darPermisoMantenimiento(){
+        tienePermisoMantenimiento = true;
+    }
+    
+    public void darPermisoDespegue(){
+        tienePermisoDespegar = true;
+    }
+    
     public void pausarSimulacion() {
         simulacionPausada = true;
     }
@@ -128,7 +192,6 @@ public class CabinaDeAvion implements Runnable {
         simulacionPausada = false;
     }
 
-    // Getters y setters
     public String getEstadoDeAvion() {
         return estadoDeAvion;
     }
@@ -137,6 +200,14 @@ public class CabinaDeAvion implements Runnable {
         this.estadoDeAvion = estadoDeAvion;
     }
 
+    public void solicitarAterrizajeNormal() {
+    estadoDeSolicitud = SOLICITUD_NORMAL;
+    }
+
+    public void solicitarEmergencia() {
+        estadoDeSolicitud = EMERGENCIA;
+    }
+    
     public boolean isSimulacionPausada() {
         return simulacionPausada;
     }

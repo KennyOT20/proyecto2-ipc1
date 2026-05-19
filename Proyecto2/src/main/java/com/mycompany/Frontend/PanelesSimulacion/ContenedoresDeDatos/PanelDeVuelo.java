@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelDeVuelo extends javax.swing.JPanel {
 
     private final PanelSimulacion panelSimulacion;
+    private DefaultTableModel modelo;
     
     /**
      * Creates new form PanelDeVuelo
@@ -27,6 +28,7 @@ public class PanelDeVuelo extends javax.swing.JPanel {
     public PanelDeVuelo(PanelSimulacion panelSimulacion){
         this.panelSimulacion = panelSimulacion;
         initComponents();
+        inicializarTabla();
     }
 
     /**
@@ -97,34 +99,37 @@ public class PanelDeVuelo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public final void mostrarDatosTabla() {
+    
+    
+    private void inicializarTabla() {
+        modelo = new DefaultTableModel(
+                new String[]{"Tipo", "ID", "Combustible", "Estado", "Solicitud"},
+                0
+        );
+
+        TablaEstadoDeAviones.setModel(modelo);
+    }
+    
+    public void mostrarDatosTabla() {
 
         try {
-            Aeropuerto aeropuerto = panelSimulacion .getPanelContenedorSimulacion() .getSimulacion()   .getAeropuerto();
+            modelo.setRowCount(0);
 
-            DefaultTableModel modelo = new DefaultTableModel(
-                    new String[]{"Tipo", "ID", "Combustible", "Estado"},
-                    0
-            );
+            Aeropuerto aeropuerto = panelSimulacion
+                    .getPanelContenedorSimulacion()
+                    .getSimulacion()
+                    .getAeropuerto();
 
-            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesPequeños());
-            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesMedianos());
-            cargarAvionesEnTabla(modelo, aeropuerto.getAvionesGrandes());
-
-            TablaEstadoDeAviones.setModel(modelo);
+            cargarAvionesEnTabla(aeropuerto.getAvionesPequeños());
+            cargarAvionesEnTabla(aeropuerto.getAvionesMedianos());
+            cargarAvionesEnTabla(aeropuerto.getAvionesGrandes());
 
         } catch (ListaEnlazadaExcepcion e) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Error cargando datos de aviones."
-            );
-
             e.printStackTrace();
         }
     }
     
-   private void cargarAvionesEnTabla(  DefaultTableModel modelo, ListaGenerica<Avion> listaAviones) throws ListaEnlazadaExcepcion {
+   private void cargarAvionesEnTabla(ListaGenerica<Avion> listaAviones) throws ListaEnlazadaExcepcion {
 
         for (int i = 0; i < listaAviones.getTamañoDeLista(); i++) {
 
@@ -134,7 +139,8 @@ public class PanelDeVuelo extends javax.swing.JPanel {
                 avion.getTipo(),
                 avion.getIdAvion(),
                 avion.getCombustible(),
-                avion.getControladorAvion().getEstadoDeAvion()
+                avion.getControladorAvion().getEstadoDeAvion(),
+                avion.getControladorAvion().getEstadoSolicitud()
             };
 
             modelo.addRow(fila);

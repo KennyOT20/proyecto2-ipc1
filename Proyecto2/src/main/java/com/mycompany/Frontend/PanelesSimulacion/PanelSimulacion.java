@@ -17,8 +17,9 @@ import java.awt.CardLayout;
  *
  * @author Kenny
  */
-public class PanelSimulacion extends javax.swing.JPanel {
+public class PanelSimulacion extends javax.swing.JPanel implements Runnable {
     
+    private boolean simulacionActiva;
     private final PanelContenedorSimulacion panelContenedorSimulacion;
     private final PanelAterrizaje aterrizaje;
     private final PanelDeVuelo panelVuelo;
@@ -49,6 +50,7 @@ public class PanelSimulacion extends javax.swing.JPanel {
         this.panelMantenimiento = new PanelEstacionesDeMantenimiento(this);
         this.panelDesbordaje = new PanelEstacionesDesbordaje(this);
         this.panelLogs = new PanelLogs(this);
+        this.simulacionActiva = false;
         initComponents();
         agregarPaneles();
         botonPausar.setEnabled(false);
@@ -271,7 +273,13 @@ public class PanelSimulacion extends javax.swing.JPanel {
 
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         // TODO add your handling code here:{
-        botonFinalizar.setEnabled(false);
+        botonIniciar.setEnabled(false);
+        botonPausar.setEnabled(true);
+        botonEdicion.setEnabled(false);
+        activarSimulacion();
+        Thread hilo = new Thread(this);
+        hilo.start();
+        panelContenedorSimulacion.getSimulacion().iniciarSimulacion();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
     private void botonDespegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDespegueActionPerformed
@@ -374,6 +382,30 @@ public class PanelSimulacion extends javax.swing.JPanel {
         return panelContenedorSimulacion;
     }
     
+       /* private final PanelAterrizaje aterrizaje;
+    private final PanelDeVuelo panelVuelo;
+    private final PanelDespegue panelDespegue;
+    private final PanelEstacionesDeControl panelControl;
+    private final PanelEstacionesDeMantenimiento panelMantenimiento;
+    private final PanelEstacionesDesbordaje panelDesbordaje;
+    private final PanelLogs panelLogs;*/
+    
+    private void actualizarDatos(){
+        aterrizaje.actualizarPaneles();
+        panelVuelo.mostrarDatosTabla();
+        panelDespegue.cargarCuadricula();
+        panelControl.cargarCuadricula();
+        panelMantenimiento.cargarCuadricula();
+        panelDesbordaje.cargarCuadricula();
+    }
+    
+    public void activarSimulacion(){
+        simulacionActiva = true;
+    }
+    
+    public void desactivarSimulacion(){
+        simulacionActiva = false;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -393,4 +425,20 @@ public class PanelSimulacion extends javax.swing.JPanel {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel panelContenedorDatosSimulacion;
     // End of variables declaration//GEN-END:variables
+
+    
+    @Override
+    public void run() {
+
+        while (simulacionActiva) {
+
+            actualizarDatos();
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
+    }
 }
