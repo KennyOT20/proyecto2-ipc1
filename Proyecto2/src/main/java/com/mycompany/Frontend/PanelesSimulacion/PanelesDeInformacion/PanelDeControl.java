@@ -15,10 +15,12 @@ public class PanelDeControl extends javax.swing.JPanel {
     private final EstacionDeControl estacionDeControl;
     /**
      * Creates new form PanelDeControl
+     * @param estacionDeControl
      */
     public PanelDeControl(EstacionDeControl estacionDeControl) {
         this.estacionDeControl = estacionDeControl;
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -161,6 +163,12 @@ public class PanelDeControl extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_avionesColaDespeugeActionPerformed
 
+    private void cargarDatos() {
+        labelId.setText("ID PISTA: " + estacionDeControl.getIdDeArea());
+        labelCapacidad.setText("Capacidad: " + estacionDeControl.getCapacidadMaxima());
+        
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> avionesColaAterrizaje;

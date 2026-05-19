@@ -270,7 +270,8 @@ public class PanelSimulacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:{
+        botonFinalizar.setEnabled(false);
     }//GEN-LAST:event_botonIniciarActionPerformed
 
     private void botonDespegueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDespegueActionPerformed

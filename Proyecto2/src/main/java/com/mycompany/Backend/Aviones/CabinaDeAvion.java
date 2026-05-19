@@ -10,90 +10,125 @@ package com.mycompany.Backend.Aviones;
  * dentro del avion ya que se encarga de controlar los avisos, controlar tiempos.
  * @author Kenny
  */
-public class CabinaDeAvion implements Runnable{
+public class CabinaDeAvion implements Runnable {
 
     private final Avion avion;
     private String estadoDeAvion;
-    private final boolean simulacionPausada;
+
+    private boolean simulacionPausada;
+
     private final String VOLANDO = "VOLANDO";
     private final String ATERRIZANDO = "ATERRIZANDO";
     private final String DESBORDAJE = "DESBORDAJE";
     private final String MANTENIMIENTO = "MANTENIMIENTO";
     private final String DESPEGUE = "DESPEGUE";
-    
-    public CabinaDeAvion(Avion avion){
+
+    public CabinaDeAvion(Avion avion) {
         this.avion = avion;
         this.simulacionPausada = false;
         this.estadoDeAvion = VOLANDO;
     }
-    
+
     @Override
     public void run() {
-        
-        try {
-            while(avion.isEstaVivo() || !simulacionPausada){
-                
-                switch(estadoDeAvion){
+
+        while (avion.isEstaVivo()) {
+
+            try {
+
+                // Manejo de pausa
+                if (simulacionPausada) {
+                    Thread.sleep(200);
+                    continue;
+                }
+
+                switch (estadoDeAvion) {
+
                     case VOLANDO:
                         controlarVuelo();
                         break;
+
                     case ATERRIZANDO:
                         controlarAterrizaje();
                         break;
+
                     case DESBORDAJE:
                         controlarDesbordaje();
                         break;
+
                     case MANTENIMIENTO:
                         controlarMantenimiento();
                         break;
+
                     case DESPEGUE:
                         controlarDespegue();
                         break;
-                    default:
-                        break;
                 }
-                
+
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
             }
-        } catch (InterruptedException e) {
         }
     }
-    
-    /**
-     * Metodo encargado de controlar el vuelo siempre y cuando el avion tenga combustible y evite chocar
-     * gasta el combustible con el tiempo establecido..
-     * @throws InterruptedException 
-     */
-    private void controlarVuelo() throws InterruptedException{
-        
-        if(!avion.isEstaVivo()){
+
+    private void controlarVuelo() {
+
+        if (!avion.isEstaVivo()) {
             avion.lanzarAvisoVueloFallado();
             return;
         }
-        Thread.sleep(avion.getTiempoConsumo());
+
+        dormir(avion.getTiempoConsumo());
         avion.decrementarCombustible();
+
+        // Ejemplo simple de transición
+        if (avion.getCombustible() <= 3) {
+            estadoDeAvion = ATERRIZANDO;
+        }
     }
-    
-    private void controlarAterrizaje() throws InterruptedException{
-        Thread.sleep(avion.getTiempoDeAterrizaje());
+
+    private void controlarAterrizaje() {
+        dormir(avion.getTiempoDeAterrizaje());
         estadoDeAvion = DESBORDAJE;
-   }
-    
-    private void controlarDesbordaje() throws InterruptedException{
-        Thread.sleep(avion.getTiempoDeDesbordaje() * avion.getCapacidadMax());
+    }
+
+    private void controlarDesbordaje() {
+        dormir(avion.getTiempoDeDesbordaje() * avion.getCapacidadMax());
         estadoDeAvion = MANTENIMIENTO;
     }
-    
-    private void controlarMantenimiento() throws InterruptedException{
-       Thread.sleep(avion.getTiempoDeMantenimiento());
-       estadoDeAvion = DESPEGUE;
+
+    private void controlarMantenimiento() {
+        dormir(avion.getTiempoDeMantenimiento());
+        estadoDeAvion = DESPEGUE;
     }
-    
-    private void controlarDespegue() throws InterruptedException{
-        Thread.sleep(avion.getTiempoDeDespegue());
-        
+
+    private void controlarDespegue() {
+        dormir(avion.getTiempoDeDespegue());
+
+        // IMPORTANTE: cerrar ciclo
+        estadoDeAvion = VOLANDO;
     }
-    
-    // Getters y setters.
+
+    // Método auxiliar
+    private void dormir(int tiempo) {
+        try {
+            Thread.sleep(tiempo);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    // Control de simulación
+    public void pausarSimulacion() {
+        simulacionPausada = true;
+    }
+
+    public void reanudarSimulacion() {
+        simulacionPausada = false;
+    }
+
+    // Getters y setters
     public String getEstadoDeAvion() {
         return estadoDeAvion;
     }
@@ -105,7 +140,4 @@ public class CabinaDeAvion implements Runnable{
     public boolean isSimulacionPausada() {
         return simulacionPausada;
     }
-    
-    
-    
 }
